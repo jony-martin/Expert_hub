@@ -32,15 +32,11 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboards -->
-        <li class="menu-header small">
-            <span class="menu-header-text">Home</span>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('admin.dashboard') }}" class="menu-link">
-                <i class="menu-icon icon-base ti tabler-smart-home"></i>
-                <div>Dashboard</div>
-            </a>
-        </li>
+        @if (auth()->user()->role == 'admin')
+            @include('backend.layouts.includes.sidebar.admin')
+        @elseif(auth()->user()->role == 'user')
+            @include('backend.layouts.includes.sidebar.user')
+        @endif
 
         <!-- Apps & Pages -->
         <li class="menu-header small">
@@ -80,28 +76,30 @@
         </li>
 
         <!-- Components -->
-        <li class="menu-header small">
-            <span class="menu-header-text" data-i18n="Web Seetings">Web Seetings</span>
-        </li>
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon icon-base ti tabler-users"></i>
-                <div data-i18n="User Management">User Management</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('users.index') }}" class="menu-link">
-                        <div data-i18n="User List">User List</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('settings.index') }}" class="menu-link">
-                <i class="menu-icon icon-base ti tabler-settings"></i>
-                <div>Settings</div>
-            </a>
-        </li>
+        @if (auth()->user()->role == 'admin')
+            <li class="menu-header small">
+                <span class="menu-header-text" data-i18n="Web Seetings">Web Seetings</span>
+            </li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon icon-base ti tabler-users"></i>
+                    <div data-i18n="User Management">User Management</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{ route('users.index') }}" class="menu-link">
+                            <div data-i18n="User List">User List</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="{{ route('settings.index') }}" class="menu-link">
+                    <i class="menu-icon icon-base ti tabler-settings"></i>
+                    <div>Settings</div>
+                </a>
+            </li>
+        @endif
     </ul>
 
 </aside>
