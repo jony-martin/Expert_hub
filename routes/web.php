@@ -6,29 +6,12 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.register');
 });
 
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified',
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
-// Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
-
-//     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-
-// });
-
-Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
 
     Route::resource('profile', ProfileController::class);
-
     // product routes
     Route::resource('products', ProductController::class);
-
 });
