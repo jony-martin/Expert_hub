@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/slick.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css">
 
+    @stack('styles')
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body>
@@ -34,6 +39,8 @@
     <script src="{{ asset('frontend') }}/assets/js/owl.carousel.min.js"></script>
     <script src="{{ asset('frontend') }}/assets/js/slick.min.js"></script>
     <script src="{{ asset('frontend') }}/assets/js/custom.js"></script>
+
+    @stack('scripts')
 
 </body>
 

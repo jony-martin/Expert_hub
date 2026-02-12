@@ -5,12 +5,14 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('auth.register');
-// });
+Route::get('/', function () {
+    return view('auth.register');
+});
 
 Route::controller(FrontendController::class)->group(function () {
-    Route::get('/', 'index')->name('home');
+
+    Route::get('/home', 'index')->name('home');
+
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {

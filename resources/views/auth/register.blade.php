@@ -58,4 +58,150 @@
         </form>
     </x-authentication-card>
 </x-guest-layout> --}}
+@extends('frontend.layouts.main')
+@push('styles')
+    @include('frontend.pages.register.style')
+@endpush
+@section('content')
+    <section>
 
+        <div class="info">
+            <h1>Please complete the following steps to register!</h1>
+        </div>
+
+        <form class="steps" novalidate>
+            <ul id="progressbar">
+                <li class="active">User Information</li>
+                <li>Details</li>
+                <li>Security</li>
+                <li>Social Media</li>
+            </ul>
+
+            <!-- Basic Information-->
+            <fieldset>
+                <h2 class="fs-title">Basic Information</h2>
+                <h3 class="fs-subtitle">
+                    We just need some basic information to begin your scoring
+                </h3>
+
+                <div class="hs_firstname field hs-form-field">
+                    <label for="firstname">Enter your Name*</label>
+                    <input id="firstname" name="firstname" type="text" required
+                        data-msg-required="Please include your first name" autocomplete="given-name"
+                        aria-describedby="firstname-error" />
+                    <span id="firstname-error" class="error1" style="display: none;">
+                        Please include your first name
+                    </span>
+                </div>
+
+                <div class="hs_email field hs-form-field">
+                    <label for="email">Enter your E-mail Address*</label>
+                    <input id="email" name="email" required data-msg-required="Please enter a valid email address."
+                        autocomplete="email" aria-describedby="email-error" />
+                    <span id="email-error" class="error1" style="display: none;">
+                        Please enter a valid email address.
+                    </span>
+                </div>
+
+                <button type="button" class="next action-button">Next</button>
+            </fieldset>
+
+            <!-- User Details -->
+            <fieldset>
+                <h2 class="fs-title">User Details</h2>
+                <h3 class="fs-subtitle">
+                    Please provide some additional information
+                </h3>
+                <div class="hs-form-field">
+                    <label for="edit-submitted-acquisition-amount-1">Phone Number*</label>
+                    <input id="edit-submitted-acquisition-amount-1" name="phone" type="tel" required
+                        autocomplete="tel" aria-describedby="phone-error" />
+                    <span id="phone-error" class="error1" style="display: none;">
+                        Please enter your phone number.
+                    </span>
+                </div>
+
+                <div class="hs-form-field">
+                    <label for="edit-submitted-acquisition-amount-2">Address</label>
+                    <input id="edit-submitted-acquisition-amount-2" name="address" type="text"
+                        autocomplete="address-line1" />
+                </div>
+
+                <button type="button" class="previous action-button">Previous</button>
+                <button type="button" class="next action-button">Next</button>
+            </fieldset>
+
+            <!-- Security -->
+            <fieldset>
+                <h2 class="fs-title">Security</h2>
+                <h3 class="fs-subtitle">
+                    Enter a password to secure your account
+                </h3>
+                <div class="hs-form-field">
+                    <label for="edit-submitted-cultivation-amount-1">Password*</label>
+                    <div class="password-container">
+                        <input id="edit-submitted-cultivation-amount-1" name="password" type="password" required
+                            autocomplete="new-password" aria-describedby="password-error" />
+                        <button type="button" class="toggle-password" data-target="edit-submitted-cultivation-amount-1">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span id="password-error" class="error1" style="display: none;">
+                        Please enter a password.
+                    </span>
+                </div>
+
+                <div class="hs-form-field">
+                    <label for="edit-submitted-cultivation-amount-2">Confirm Password*</label>
+                    <div class="password-container">
+                        <input id="edit-submitted-cultivation-amount-2" name="confirm_password" type="password" required
+                            autocomplete="new-password" aria-describedby="confirm-password-error" />
+                        <button type="button" class="toggle-password" data-target="edit-submitted-cultivation-amount-2">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span id="confirm-password-error" class="error1" style="display: none;">
+                        Passwords do not match.
+                    </span>
+                </div>
+
+                <button type="button" class="previous action-button">Previous</button>
+                <button type="button" class="next action-button">Next</button>
+            </fieldset>
+
+            <!-- Social Media -->
+            <fieldset>
+                <h2 class="fs-title">Social Media</h2>
+                <h3 class="fs-subtitle">
+                    Add your social media profiles to help spread the word
+                </h3>
+                <div class="hs-form-field">
+                    <label for="edit-submitted-cultivation-amount-3">Facebook</label>
+                    <input id="edit-submitted-cultivation-amount-3" name="facebook" type="url"
+                        placeholder="https://facebook.com/yourprofile" autocomplete="url" />
+                </div>
+
+                <div class="hs-form-field">
+                    <label for="edit-submitted-cultivation-amount-4">LinkedIn</label>
+                    <input id="edit-submitted-cultivation-amount-4" name="linkedin" type="url"
+                        placeholder="https://linkedin.com/in/yourprofile" autocomplete="url" />
+                </div>
+
+                <button type="button" class="previous action-button">Previous</button>
+                <button type="button" class="submit action-button">Submit</button>
+            </fieldset>
+
+            <!-- THANK YOU STEP -->
+            <fieldset>
+                <h2 class="fs-title">It's on the way!</h2>
+                <h3 class="fs-subtitle">
+                    Check your email for your fundraising report card.
+                </h3>
+            </fieldset>
+        </form>
+
+    </section>
+@endsection
+@push('scripts')
+    @include('frontend.pages.register.script')
+@endpush
