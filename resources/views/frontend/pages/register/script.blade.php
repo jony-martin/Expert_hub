@@ -140,45 +140,81 @@
             });
         });
 
-        // Submit button click
+        // Submit button click (opens OTP modal)
         $(".submit").click(function() {
+            console.log("Submit button clicked!");
             if (validateStep(current)) {
-                var current_fs = $(this).parent();
-                var next_fs = current_fs.next();
+                console.log("Validation passed, opening modal.");
+                $('#otp-modal').addClass('modal-show');
+                $('#otp-method').addClass('active'); // Show first step
+            } else {
+                console.log("Validation failed.");
+            }
+        });
 
-                // Sliding for all devices (faster: 400ms)
-                next_fs.css({
-                    'z-index': 10,
-                    left: '100%'
-                }).show();
-                current_fs.css({
-                    'z-index': 5
-                });
+        // Password toggle functionality
+        $('.toggle-password').on('click', function() {
+            const targetId = $(this).data('target');
+            const input = $('#' + targetId);
+            const icon = $(this).find('i');
 
-                current_fs.animate({
-                    left: '-100%'
-                }, 400, function() {
-                    current_fs.hide().css({
-                        left: '0',
-                        'z-index': 1
-                    });
-                    current++;
-                    updateProgressBar(current);
-                });
-                next_fs.animate({
-                    left: '0'
-                }, 400, function() {
-                    next_fs.css({
-                        'z-index': 1
-                    });
-                });
+            if (input.attr('type') === 'password') {
+                input.attr('type', 'text');
+                icon.removeClass('fa-eye').addClass('fa-eye-slash');
+            } else {
+                input.attr('type', 'password');
+                icon.removeClass('fa-eye-slash').addClass('fa-eye');
+            }
+        });
 
-                console.log("Form submitted!");
+        // OTP method selection
+        $('.otp-option').on('click', function() {
+            const method = $(this).data('method');
+            $('#selected-method').text(method.charAt(0).toUpperCase() + method.slice(1)); // Capitalize
+
+            // Animate to OTP input
+            $('#otp-method').removeClass('active');
+            setTimeout(() => {
+                $('#otp-input').addClass('active');
+            }, 250); // Delay for smooth transition
+        });
+
+        // Back button
+        $('.otp-back-btn').on('click', function() {
+            $('#otp-input').removeClass('active');
+            setTimeout(() => {
+                $('#otp-method').addClass('active');
+            }, 250);
+        });
+
+        // OTP form submission
+        $('#otp-form').on('submit', function(e) {
+            e.preventDefault();
+            const otp = $('#otp-code').val();
+            if (otp.length === 6 && /^\d+$/.test(otp)) {
+                alert('OTP Verified! Form submitted successfully.');
+                $('#otp-modal').removeClass('modal-show');
+                // Here, you can add actual submission logic (e.g., AJAX)
+            } else {
+                alert('Please enter a valid 6-digit OTP.');
+            }
+        });
+
+        // Close modal on overlay click or Escape
+        $('body').on('click', '.modal-overlay, .modal-close', function() {
+            $('.modal').removeClass('modal-show');
+            $('.modal-step').removeClass('active'); // Reset steps
+        });
+
+        $(document).on('keydown', function(e) {
+            if (e.key === 'Escape') {
+                $('.modal').removeClass('modal-show');
+                $('.modal-step').removeClass('active');
             }
         });
     });
 
-    // Modal module (unchanged)
+    // Modal module (for other modals, if needed)
     var modules = {
         $window: $(window),
         $html: $('html'),
@@ -230,21 +266,6 @@
             }
         }
     };
-
-    // Password toggle functionality
-    $('.toggle-password').on('click', function() {
-        const targetId = $(this).data('target');
-        const input = $('#' + targetId);
-        const icon = $(this).find('i');
-
-        if (input.attr('type') === 'password') {
-            input.attr('type', 'text');
-            icon.removeClass('fa-eye').addClass('fa-eye-slash');
-        } else {
-            input.attr('type', 'password');
-            icon.removeClass('fa-eye-slash').addClass('fa-eye');
-        }
-    });
 
     modules.init();
 </script>
