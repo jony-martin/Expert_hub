@@ -4,14 +4,73 @@
 
         var current = 1;
         var steps = $("fieldset").length;
+        var storageKey = 'registrationFormData'; // Key for localStorage
+
+        // Function to save form data to localStorage
+        function saveFormData() {
+            var formData = {
+                currentStep: current,
+                inputs: {}
+            };
+            // Collect all input values
+            $('input, textarea').each(function() {
+                formData.inputs[$(this).attr('id')] = $(this).val();
+            });
+            localStorage.setItem(storageKey, JSON.stringify(formData));
+        }
+
+        // Function to restore form data from localStorage
+        function restoreFormData() {
+            var storedData = localStorage.getItem(storageKey);
+            if (storedData) {
+                try {
+                    var formData = JSON.parse(storedData);
+                    current = formData.currentStep || 1;
+                    // Populate inputs
+                    for (var id in formData.inputs) {
+                        $('#' + id).val(formData.inputs[id]);
+                    }
+                    // Update progress bar
+                    updateProgressBar(current);
+                    // Position fieldsets correctly for the restored step
+                    $('fieldset').each(function(index) {
+                        var stepIndex = index + 1;
+                        if (stepIndex < current) {
+                            $(this).css({
+                                'left': '-100%',
+                                'z-index': 1
+                            }).hide();
+                        } else if (stepIndex === current) {
+                            $(this).css({
+                                'left': '0',
+                                'z-index': 1
+                            }).show();
+                        } else {
+                            $(this).css({
+                                'left': '100%',
+                                'z-index': 1
+                            }).hide();
+                        }
+                    });
+                } catch (e) {
+                    console.error('Error restoring form data:', e);
+                    localStorage.removeItem(storageKey); // Clear corrupted data
+                }
+            }
+        }
+
+        // Function to clear form data from localStorage
+        function clearFormData() {
+            localStorage.removeItem(storageKey);
+        }
+
+        // Restore data on page load
+        restoreFormData();
 
         // Update on resize (for dynamic responsiveness)
         $(window).resize(function() {
             console.log("Window resized - width:", $(window).width());
         });
-
-        // Hide all fieldsets except the first
-        $("fieldset:not(:first)").hide();
 
         // Function to update progress bar
         function updateProgressBar(step) {
@@ -53,6 +112,9 @@
                 if (!password) {
                     $("#password-error").text("Please enter a password.").show();
                     isValid = false;
+                } else if (password.length < 8) {
+                    $("#password-error").text("Password must be at least 8 characters long.").show();
+                    isValid = false;
                 } else {
                     $("#password-error").hide();
                 }
@@ -66,6 +128,22 @@
                     isValid = false;
                 } else {
                     $("#confirm-password-error").hide();
+                }
+            } else if (step === 4) {
+                var facebook = $("#edit-submitted-cultivation-amount-3").val().trim();
+                if (!facebook) {
+                    $("#facebook-error").text("Please enter your Facebook profile URL.").show();
+                    isValid = false;
+                } else {
+                    $("#facebook-error").hide();
+                }
+
+                var linkedin = $("#edit-submitted-cultivation-amount-4").val().trim();
+                if (!linkedin) {
+                    $("#linkedin-error").text("Please enter your LinkedIn profile URL.").show();
+                    isValid = false;
+                } else {
+                    $("#linkedin-error").hide();
                 }
             }
 
@@ -96,6 +174,7 @@
                     });
                     current++;
                     updateProgressBar(current);
+                    saveFormData(); // Save after step change
                 });
                 next_fs.animate({
                     left: '0'
@@ -130,6 +209,7 @@
                 });
                 current--;
                 updateProgressBar(current);
+                saveFormData(); // Save after step change
             });
             previous_fs.animate({
                 left: '0'
@@ -143,13 +223,20 @@
         // Submit button click (opens OTP modal)
         $(".submit").click(function() {
             console.log("Submit button clicked!");
+            console.log("Current step:", current);
             if (validateStep(current)) {
                 console.log("Validation passed, opening modal.");
                 $('#otp-modal').addClass('modal-show');
                 $('#otp-method').addClass('active'); // Show first step
+                saveFormData(); // Save before modal opens
             } else {
                 console.log("Validation failed.");
             }
+        });
+
+        // Save data on input change (for real-time persistence)
+        $('input, textarea').on('input', function() {
+            saveFormData();
         });
 
         // Password toggle functionality
@@ -192,11 +279,13 @@
             e.preventDefault();
             const otp = $('#otp-code').val();
             if (otp.length === 6 && /^\d+$/.test(otp)) {
-                alert('OTP Verified! Form submitted successfully.');
+                // Close modal and clear data
                 $('#otp-modal').removeClass('modal-show');
-                // Here, you can add actual submission logic (e.g., AJAX)
+                clearFormData(); // Clear stored data on success
+                // Redirect to shop page
+                window.location.href = '/shop'; // Adjust this URL if your shop page is different
             } else {
-                alert('Please enter a valid 6-digit OTP.');
+                alert('Please enter 6-digit OTP.');
             }
         });
 
