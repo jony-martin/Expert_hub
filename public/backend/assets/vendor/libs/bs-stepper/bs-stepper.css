@@ -133,40 +133,18 @@
 .bs-stepper .content:not(.fade) {
     display: none;
 }
-/* .bs-stepper .content.fade,
+.bs-stepper .content.fade,
 .bs-stepper-pane.fade {
     visibility: hidden;
     transition-duration: 0.3s;
     transition-property: opacity;
-} */
-
-/* Animated hidden state */
-.bs-stepper .content.fade,
-.bs-stepper-pane.fade {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateX(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* .bs-stepper-pane.fade.active,
-.bs-stepper .content.fade.active {
-    visibility: visible;
-    opacity: 1;
-} */
 .bs-stepper-pane.fade.active,
 .bs-stepper .content.fade.active {
     visibility: visible;
     opacity: 1;
-    transform: translateX(0);
 }
-.bs-stepper .content.active,
-.bs-stepper-pane.active {
-    opacity: 1 !important;
-    transform: translateX(0) !important;
-    visibility: visible !important;
-}
-/* code added ended */
 
 .bs-stepper-pane.active:not(.fade),
 .bs-stepper .content.active:not(.fade) {
@@ -495,18 +473,4 @@
         margin: 0;
     }
 }
-/* code added */
-/* Base state for all steps */
-.bs-stepper .content {
-    display: none;             /* hide inactive steps */
-    opacity: 0;
-    transform: translateX(40px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
 
-/* Active step - visible */
-.bs-stepper .content.active {
-    display: block !important; /* Stepper needs display:block */
-    opacity: 1;
-    transform: translateX(0);
-}
