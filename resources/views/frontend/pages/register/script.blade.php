@@ -273,7 +273,6 @@
                 $('#otp-method').addClass('active');
             }, 250);
         });
-        
         // OTP form submission (reinforced validation)
         $('#otp-form').on('submit', function(e) {
             e.preventDefault(); // Always prevent default submission
