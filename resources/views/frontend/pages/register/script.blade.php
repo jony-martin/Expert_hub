@@ -273,20 +273,42 @@
                 $('#otp-method').addClass('active');
             }, 250);
         });
-
-        // OTP form submission
+        
+        // OTP form submission (reinforced validation)
         $('#otp-form').on('submit', function(e) {
-            e.preventDefault();
-            const otp = $('#otp-code').val();
-            if (otp.length === 6 && /^\d+$/.test(otp)) {
-                // Close modal and clear data
-                $('#otp-modal').removeClass('modal-show');
-                clearFormData(); // Clear stored data on success
-                // Redirect to shop page
-                window.location.href = '/shop'; // Adjust this URL if your shop page is different
-            } else {
-                alert('Please enter 6-digit OTP.');
+            e.preventDefault(); // Always prevent default submission
+            const otp = $('#otp-code').val().trim(); // Trim whitespace
+            if (!otp) {
+                alert('Please enter the OTP.');
+                $('#otp-code').focus(); // Focus on the input
+                return false;
             }
+            if (otp.length !== 6 || !/^\d+$/.test(otp)) {
+                iziToast.error({
+                    message: 'Please enter 6-digit OTP!',
+                    position: 'topRight'
+                });
+                $('#otp-code').focus();
+                return false;
+            }
+            // OTP valid: Submit the registration form
+            $('#registration-form').submit(); // Assumes your multi-step form has id="registration-form"
+            // Fortify will handle registration and redirection
+        });
+
+        // Additional button click handler for "Verify OTP" (extra prevention)
+        $('.otp-submit-btn').on('click', function(e) {
+            const otp = $('#otp-code').val().trim();
+            if (!otp || otp.length !== 6 || !/^\d+$/.test(otp)) {
+                e.preventDefault(); // Prevent form submission
+                iziToast.error({
+                    message: 'Please enter 6-digit OTP!',
+                    position: 'topRight'
+                });
+                $('#otp-code').focus();
+                return false;
+            }
+            // If valid, allow form submission to proceed
         });
 
         // Close modal on overlay click or Escape

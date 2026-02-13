@@ -69,7 +69,8 @@
             <h1>Please complete the following steps to register!</h1>
         </div>
 
-        <form class="steps" novalidate>
+        <form id="registration-form" method="POST" action="{{ route('register') }}" class="steps" novalidate>
+            @csrf
             <ul id="progressbar">
                 <li class="active">User Information</li>
                 <li>Details</li>
@@ -86,7 +87,7 @@
 
                 <div class="hs_firstname field hs-form-field">
                     <label for="firstname">Enter your Name*</label>
-                    <input id="firstname" name="firstname" type="text" required
+                    <input id="firstname" name="name" type="text" required
                         data-msg-required="Please include your first name" autocomplete="given-name"
                         aria-describedby="firstname-error" />
                     <span id="firstname-error" class="error1" style="display: none;">
@@ -154,8 +155,8 @@
                 <div class="hs-form-field">
                     <label for="edit-submitted-cultivation-amount-2">Confirm Password*</label>
                     <div class="password-container">
-                        <input id="edit-submitted-cultivation-amount-2" name="confirm_password" type="password" required
-                            autocomplete="new-password" aria-describedby="confirm-password-error" />
+                        <input id="edit-submitted-cultivation-amount-2" name="password_confirmation" type="password"
+                            required autocomplete="new-password" aria-describedby="confirm-password-error" />
                         <button type="button" class="toggle-password" data-target="edit-submitted-cultivation-amount-2">
                             <i class="fas fa-eye"></i>
                         </button>
@@ -199,42 +200,43 @@
                 <button type="button" class="submit action-button">Submit</button>
             </fieldset>
 
-        </form>
 
-        <!-- Modal for OTP -->
-        <div id="otp-modal" class="modal"> <!-- Removed modal-show to hide it on page load -->
-            <div class="modal-content">
-                <!-- Popup 1: OTP Method Selection -->
-                <div id="otp-method" class="modal-step active">
-                    <h3>Where should we send the OTP?</h3>
-                    <div class="otp-options">
-                        <button class="otp-option" data-method="email">
-                            <i class="fas fa-envelope"></i> Email
-                        </button>
-                        <button class="otp-option" data-method="sms">
-                            <i class="fas fa-sms"></i> SMS
-                        </button>
-                        <button class="otp-option" data-method="whatsapp">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </button>
+
+            <!-- Modal for OTP -->
+            <div id="otp-modal" class="modal"> <!-- Removed modal-show to hide it on page load -->
+                <div class="modal-content">
+                    <!-- Popup 1: OTP Method Selection -->
+                    <div id="otp-method" class="modal-step active">
+                        <h3>Where should we send the OTP?</h3>
+                        <div class="otp-options">
+                            <button type="button" class="otp-option" data-method="email">
+                                <i class="fas fa-envelope"></i> Email
+                            </button>
+                            <button type="button" class="otp-option" data-method="sms">
+                                <i class="fas fa-sms"></i> SMS
+                            </button>
+                            <button type="button" class="otp-option" data-method="whatsapp">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Popup 2: OTP Input -->
+                    <div id="otp-input" class="modal-step">
+                        <h3>Enter the OTP sent to your <span id="selected-method"></span></h3>
+                        <form id="otp-form">
+                            <div class="otp-input-container">
+                                <input type="text" id="otp-code" maxlength="6" placeholder="Enter 6-digit OTP"
+                                    required />
+                            </div>
+                            <button type="submit" class="otp-submit-btn">Verify OTP</button>
+                            <button type="button" class="otp-back-btn">Back</button>
+                        </form>
                     </div>
                 </div>
-
-                <!-- Popup 2: OTP Input -->
-                <div id="otp-input" class="modal-step">
-                    <h3>Enter the OTP sent to your <span id="selected-method"></span></h3>
-                    <form id="otp-form">
-                        <div class="otp-input-container">
-                            <input type="text" id="otp-code" maxlength="6" placeholder="Enter 6-digit OTP"
-                                required />
-                        </div>
-                        <button type="submit" class="otp-submit-btn">Verify OTP</button>
-                        <button type="button" class="otp-back-btn">Back</button>
-                    </form>
-                </div>
             </div>
-        </div>
 
+        </form>
 
     </section>
 @endsection

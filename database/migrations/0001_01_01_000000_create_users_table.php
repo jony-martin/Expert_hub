@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('detail')->nullable();
             $table->string('image')->nullable();
             $table->string('status')->default(1);
+            $table->string('facebook')->nullable();
+            $table->string('linkedin')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -22,12 +22,13 @@
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <div class="">
+    <div>
 
         @include('frontend.layouts.includes.header')
 
@@ -43,7 +44,8 @@
     <script src="{{ asset('frontend') }}/assets/js/owl.carousel.min.js"></script>
     <script src="{{ asset('frontend') }}/assets/js/slick.min.js"></script>
     <script src="{{ asset('frontend') }}/assets/js/custom.js"></script>
-
+    <script src="{{ asset('js/iziToast.js') }}"></script>
+    
     @stack('scripts')
 
 </body>

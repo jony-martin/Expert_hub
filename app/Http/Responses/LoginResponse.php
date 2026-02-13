@@ -13,9 +13,9 @@ class LoginResponse implements LoginResponseContract
         if (Auth::user()->role == 'admin') {
             return redirect('admin/dashboard');
         } else if (Auth::user()->role == 'user') {
-            return redirect('user/dashboard');
+            return redirect('shop');
         } else {
-            return redirect()->route('home');
+            return redirect()->route('shop');
         }
     }
 }

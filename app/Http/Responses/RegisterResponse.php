@@ -12,9 +12,9 @@ class RegisterResponse implements RegisterResponseContract
         if ($request->role == 'admin') {
             return redirect('admin/dashboard');
         } elseif ($request->role == 'user') {
-            return redirect('user/dashboard');
+            return redirect('shop');
         } else {
-            return redirect()->route('home');
+            return redirect()->route('shop');
         }
     }
 }
