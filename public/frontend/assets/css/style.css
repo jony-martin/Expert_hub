@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 
 * {
     margin: 0;
@@ -20,7 +20,7 @@ img {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     background: #efefef;
 }
 
@@ -57,12 +57,17 @@ div,
 /* header_top start */
 .header_top {
     background: #ffffff;
-    padding: 25px 0px;
-    border-bottom: 1px solid #7367F0;
+    border-bottom: 1px solid #6748EB;
+    width: 100%; /* Full width for background to cover the entire body */
 }
 
+.header_top .row {
+    max-width: 1280px; /* Constrain content width */
+    margin: 0 auto; /* Center the content */
+    padding: 30px 0px; /* Padding for content */
+}
 .header_top_item a img {
-    padding-left: 20px;
+    padding-left: 0px;
 }
 
 .header_top_item a {
@@ -78,10 +83,10 @@ div,
     position: absolute;
     height: 100%;
     width: 1px;
-    background: #DDDDDD;
+    background: #dddddd;
     right: 0;
     top: 0;
-    content: '';
+    content: "";
 }
 
 .header_top_item a:last-child::after {
@@ -89,20 +94,21 @@ div,
 }
 
 .header_top_item a i {
-    color: #7367F0;
+    color: #6748EB;
     font-size: 20px;
     padding-right: 20px;
 }
 
 .header_top_icon a {
     display: block;
-    padding: 0px 12px;
-    font-size: 23px;
-    color: #000;
+    padding: 0px 0px;
+    font-size: 25px;
+    color: #6748EB;
+    margin-top: 5px;
 }
 
 .header_top_icon:hover a {
-    color: #7367F0;
+    color: #6748EB;
 }
 
 .home_icon a i {
@@ -115,7 +121,7 @@ div,
 .footer {
     background: #ffffff;
     padding: 40px 40px;
-    border-top: 1px solid #7367F0;
+    border-top: 1px solid #6748EB;
 }
 
 /* footer end */

@@ -6,7 +6,7 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-headline" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                Discover Amazing Products
+                Discover Our Expert Hub Collection
             </h1>
             <p class="hero-subtext" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
                 Shop the Best Deals Today – Quality, Style, and Savings Await!

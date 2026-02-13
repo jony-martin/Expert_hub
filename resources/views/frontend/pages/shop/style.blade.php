@@ -28,7 +28,7 @@
     .hero-content {
         position: relative;
         z-index: 2;
-        max-width: 800px;
+        max-width: 1200px;
         padding: 0 20px;
     }
 
@@ -152,8 +152,8 @@
 
     /* Product Section Styles */
     .product-section {
-        padding: 60px 20px;
-        background: #f8f9fa;
+        padding: 60px 0px;
+        background: #efefef;
         text-align: center;
     }
 
@@ -453,6 +453,9 @@
     }
 
     @media (max-width: 480px) {
+        .product-section {
+        padding: 60px 15px;
+    }
         .product-grid {
             grid-template-columns: 1fr;
         }

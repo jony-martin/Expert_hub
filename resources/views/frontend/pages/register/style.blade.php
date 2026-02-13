@@ -29,7 +29,7 @@
         border-radius: 0 0 12px 12px;
         /* Removed top border-radius for seamless connection */
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        margin-bottom: 35px;
+        margin-bottom: 40px;
         padding-bottom: 15px;
     }
 
@@ -432,7 +432,7 @@
     }
 
     .info h1 {
-        font-size: 30px;
+        font-size: 25px;
         font-weight: 700;
         color: #ffffff;
         text-transform: none;
@@ -483,7 +483,7 @@
             height: auto;
             min-height: 700px;
             padding: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .steps fieldset {
@@ -557,7 +557,7 @@
         }
 
         .fs-title {
-            font-size: 20px;
+            font-size: 25px;
         }
 
         .fs-subtitle {

@@ -27,7 +27,7 @@
 
 <body>
 
-    <div class="container">
+    <div class="">
 
         @include('frontend.layouts.includes.header')
 
