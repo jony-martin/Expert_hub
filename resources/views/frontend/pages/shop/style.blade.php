@@ -104,6 +104,7 @@
         .hero-banner {
             height: 40vh;
             padding-top: 60px;
+            padding-bottom: 50px;
         }
 
         .hero-headline {
@@ -153,7 +154,7 @@
     /* Product Section Styles */
     .product-section {
         padding: 60px 0px;
-        background: #efefef;
+        background: #fbfbfb;
         text-align: center;
     }
 
@@ -335,6 +336,15 @@
         color: #858585;
         margin-bottom: 10px;
         text-align: left;
+        cursor: pointer;
+        /* Makes it look clickable */
+        transition: color 0.3s ease;
+        /* Smooth color transition */
+    }
+
+    .product-name:hover {
+        color: #7367F0;
+        /* Change color on hover for visual feedback */
     }
 
     .product-rating {
@@ -454,8 +464,9 @@
 
     @media (max-width: 480px) {
         .product-section {
-        padding: 60px 15px;
-    }
+            padding: 60px 15px;
+        }
+
         .product-grid {
             grid-template-columns: 1fr;
         }

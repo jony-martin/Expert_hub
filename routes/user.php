@@ -20,7 +20,5 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','u
 
     Route::get('/user/dashboard', [AdminController::class, 'index'])->name('user.dashboard');
 
-    // product routes
-    Route::resource('products', ProductController::class);
 
 });

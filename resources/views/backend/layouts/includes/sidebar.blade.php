@@ -61,45 +61,40 @@
             @include('backend.layouts.includes.sidebar.user')
         @endif
 
-
-        <!-- Apps & Pages -->
-        <li class="menu-header small">
-            <span class="menu-header-text" data-i18n="CMS & Inventory">CMS &amp; Inventory</span>
-        </li>
-
-        <!-- e-commerce-app menu start -->
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon icon-base ti tabler-category"></i>
-                <div data-i18n="Item Management">Item Management</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <div data-i18n="Products">Products</div>
-                    </a>
-                    <ul class="menu-sub">
-                        <li class="menu-item">
-                            <a href="{{ route('products.index') }}" class="menu-link">
-                                <div data-i18n="Product List">Product List</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="{{ route('products.create') }}" class="menu-link">
-                                <div data-i18n="Add Product">Add Product</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#" class="menu-link">
-                                <div data-i18n="Category List">Category List</div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-
         @if (auth()->user()->role == 'admin')
+            <!-- Apps & Pages -->
+            <li class="menu-header small">
+                <span class="menu-header-text" data-i18n="CMS & Inventory">CMS &amp; Inventory</span>
+            </li>
+
+            <!-- e-commerce-app menu start -->
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon icon-base ti tabler-category"></i>
+                    <div data-i18n="Item Management">Item Management</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <div data-i18n="Products">Products</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ route('products.index') }}" class="menu-link">
+                                    <div data-i18n="Product List">Product List</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('products.create') }}" class="menu-link">
+                                    <div data-i18n="Add Product">Add Product</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+
             <!-- Components -->
             <li class="menu-header small">
                 <span class="menu-header-text" data-i18n="Web Seetings">Web Seetings</span>
