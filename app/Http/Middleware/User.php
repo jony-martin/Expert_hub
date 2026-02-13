@@ -19,6 +19,6 @@ class User
         if(Auth::user()->role == 'user'){
             return $next($request);
         }
-        return redirect()->route('home');
+        return redirect()->route('shop');
     }
 }

@@ -199,8 +199,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <h6 class="mb-0">John Doe</h6>
-                                                    <small class="text-body-secondary">Admin</small>
+                                                    <h6 class="mb-0">{{ auth()->user()->name }}</h6>
                                                 </div>
                                             </div>
                                         </a>

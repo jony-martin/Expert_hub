@@ -19,6 +19,6 @@ class Admin
         if(Auth::user()->role == 'admin'){
             return $next($request);
         }
-        return redirect()->route('home');
+        return redirect()->route('shop');
     }
 }

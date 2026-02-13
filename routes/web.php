@@ -10,13 +10,16 @@ Route::get('/', function () {
 });
 
 Route::controller(FrontendController::class)->group(function () {
-    Route::get('/shop', 'shop')->name('shop');
 
+    Route::get('/home', 'index')->name('home');
+    Route::get('/shop', 'shop')->name('shop');
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
 
     Route::resource('profile', ProfileController::class);
+
     // product routes
     Route::resource('products', ProductController::class);
+
 });
