@@ -35,6 +35,18 @@
 
     <!-- Background css -->
     <link rel="stylesheet" id="bg-switcher-css" href="{{ asset('frontend') }}/assets/css/backgrounds/bg-4.css" />
+
+    {{-- row code purpose --}}
+    @stack('styles')
+    <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    {{-- end row code purpose --}}
+
 </head>
 
 <body>
@@ -52,6 +64,8 @@
 
     @include('frontend.layouts.includes.partials.cart')
 
+    {{-- @include('frontend.layouts.includes.partials.breadcrumb') --}}
+
     {{-- @include('frontend.layouts.includes.partials.category-sidebar') --}}
 
     @yield('content')
@@ -59,6 +73,10 @@
     <!-- Footer Start -->
     @include('frontend.layouts.includes.footer')
     <!-- Footer Area End -->
+
+    @include('frontend.layouts.includes.partials.modal')
+
+    @include('frontend.layouts.includes.partials.mobile-navbar')
 
     @include('frontend.layouts.includes.partials.others')
 
@@ -82,6 +100,11 @@
     <!-- Main Js -->
     <script src="{{ asset('frontend') }}/assets/js/vendor/index.js"></script>
     <script src="{{ asset('frontend') }}/assets/js/main.js"></script>
+
+    {{-- row code purpose  --}}
+    <script src="{{ asset('js/iziToast.js') }}"></script>
+    @stack('scripts')
+    
 </body>
 
 </html>

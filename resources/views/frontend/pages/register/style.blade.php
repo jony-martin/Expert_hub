@@ -91,14 +91,14 @@
     .steps input:focus,
     .steps textarea:focus {
         color: #495057;
-        border: 2px solid #7367F0;
+        border: 2px solid #3474D4;
         background: #ffffff;
         box-shadow: 0 0 8px rgba(115, 103, 240, 0.2);
     }
 
     /* error styling */
     .error1 {
-        color: #7367F0;
+        color: #3474D4;
         font-size: 14px;
         font-weight: 400;
         margin-top: 8px;
@@ -112,7 +112,7 @@
     .steps .action-button,
     .action-button {
         width: 120px;
-        background: linear-gradient(135deg, #7367F0 0%, #5a4fcf 100%);
+        background: linear-gradient(135deg, #3474D4 0%, #5a4fcf 100%);
         font-weight: 500;
         color: white;
         border: none;
@@ -169,7 +169,7 @@
     .fs-title {
         font-size: 24px;
         font-weight: 700;
-        color: #7367F0;
+        color: #3474D4;
         margin-bottom: 10px;
         text-align: center;
         text-transform: none;
@@ -223,7 +223,7 @@
     }
 
     #progressbar li.active:before {
-        background: #7367F0;
+        background: #3474D4;
         content: '\f00c';
         font-family: 'Font Awesome 6 Free';
         font-weight: 900;
@@ -246,7 +246,7 @@
     }
 
     #progressbar li.active:after {
-        background: #7367F0;
+        background: #3474D4;
     }
 
     /* modal */
@@ -293,7 +293,7 @@
     }
 
     .modal-step h3 {
-        color: #7367F0;
+        color: #3474D4;
         font-size: 20px;
         margin-bottom: 20px;
         text-align: center;
@@ -320,9 +320,9 @@
     }
 
     .otp-option:hover {
-        background: #7367F0;
+        background: #3474D4;
         color: #ffffff;
-        border-color: #7367F0;
+        border-color: #3474D4;
     }
 
     .otp-option i {
@@ -346,7 +346,7 @@
 
     .otp-submit-btn,
     .otp-back-btn {
-        background: linear-gradient(135deg, #7367F0 0%, #5a4fcf 100%);
+        background: linear-gradient(135deg, #3474D4 0%, #5a4fcf 100%);
         color: white;
         border: none;
         padding: 10px 20px;
@@ -402,12 +402,12 @@
     }
 
     .toggle-password:hover {
-        color: #7367F0;
+        color: #3474D4;
         background: rgba(115, 103, 240, 0.1);
     }
 
     .toggle-password:focus {
-        outline: 2px solid #7367F0;
+        outline: 2px solid #3474D4;
         outline-offset: 2px;
     }
 
@@ -421,7 +421,7 @@
 
     /* Registration Form Header */
     .info {
-        background: linear-gradient(135deg, #7367F0 0%, #5a4fcf 100%);
+        background: linear-gradient(135deg, #3474D4 0%, #5a4fcf 100%);
         padding: 30px 20px;
         border-radius: 12px 12px 0 0;
         box-shadow: 0 4px 20px rgba(115, 103, 240, 0.3);

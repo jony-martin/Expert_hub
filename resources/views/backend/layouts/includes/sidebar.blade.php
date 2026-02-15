@@ -80,12 +80,12 @@
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="{{ route('products.index') }}" class="menu-link">
+                                <a href="{{ route('admin.products.index') }}" class="menu-link">
                                     <div data-i18n="Product List">Product List</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('products.create') }}" class="menu-link">
+                                <a href="{{ route('admin.products.create') }}" class="menu-link">
                                     <div data-i18n="Add Product">Add Product</div>
                                 </a>
                             </li>

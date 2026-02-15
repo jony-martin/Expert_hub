@@ -17,19 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','admin'])->group(function () {
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'admin'])->group(function () {
 
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
-    //admin routes
-
     //general setting route list
     Route::resource('settings', SettingsController::class);
-
     //resource routes
     Route::resource('users', UserController::class);
-    
-    
 
 });
+
+Route::prefix('admin')
+    ->name('admin.')->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'admin'])->group(function () {
+
+        // product routes
+        Route::resource('products', ProductController::class);
+
+    });
