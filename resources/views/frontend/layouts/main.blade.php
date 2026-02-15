@@ -1,53 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Expert Hub</title>
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap-icons.css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/venobox.min.css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/slick.css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css">
+    <meta name="keywords"
+        content="apparel, catalog, clean, ecommerce, ecommerce HTML, electronics, fashion, html eCommerce, html store, minimal, multipurpose, multipurpose ecommerce, online store, responsive ecommerce template, shops" />
+    <meta name="description" content="Best ecommerce html template for single and multi vendor store." />
+    <meta name="author" content="ashishmaraviya" />
 
-    @stack('styles')
+    <!-- site Favicon -->
+    <link rel="icon" href="{{ asset('frontend') }}/assets/images/favicon/favicon.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="{{ asset('frontend') }}/assets/images/favicon/favicon.png" />
+    <meta name="msapplication-TileImage" content="{{ asset('frontend') }}/assets/images/favicon/favicon.png" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- css Icon Font -->
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/vendor/ecicons.min.css" />
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
+    <!-- css All Plugins Files -->
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/plugins/animate.css" />
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/plugins/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/plugins/jquery-ui.min.css" />
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/plugins/countdownTimer.css" />
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/plugins/slick.min.css" />
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/plugins/bootstrap.css" />
 
+    <!-- Main Style -->
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/demo1.css" />
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css" />
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css" />
+
+    <!-- Background css -->
+    <link rel="stylesheet" id="bg-switcher-css" href="{{ asset('frontend') }}/assets/css/backgrounds/bg-4.css" />
 </head>
 
 <body>
-
-    <div>
-
-        @include('frontend.layouts.includes.header')
-
-        @yield('content')
-
-        @include('frontend.layouts.includes.footer')
-
+    <div id="ec-overlay">
+        <div class="ec-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
+    <!-- Header start  -->
+    @include('frontend.layouts.includes.header')
+    <!-- Header End  -->
 
-    <script src="{{ asset('frontend') }}/assets/js/jquery-3.6.0.min.js"></script>
-    <script src="{{ asset('frontend') }}/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('frontend') }}/assets/js/venobox.min.js"></script>
-    <script src="{{ asset('frontend') }}/assets/js/owl.carousel.min.js"></script>
-    <script src="{{ asset('frontend') }}/assets/js/slick.min.js"></script>
-    <script src="{{ asset('frontend') }}/assets/js/custom.js"></script>
-    <script src="{{ asset('js/iziToast.js') }}"></script>
-    
-    @stack('scripts')
+    @include('frontend.layouts.includes.partials.cart')
 
+    {{-- @include('frontend.layouts.includes.partials.category-sidebar') --}}
+
+    @yield('content')
+
+    <!-- Footer Start -->
+    @include('frontend.layouts.includes.footer')
+    <!-- Footer Area End -->
+
+    @include('frontend.layouts.includes.partials.others')
+
+    <!-- Vendor JS -->
+    <script src="{{ asset('frontend') }}/assets/js/vendor/jquery-3.5.1.min.js"></script>
+    <script src="{{ asset('frontend') }}/assets/js/vendor/popper.min.js"></script>
+    <script src="{{ asset('frontend') }}/assets/js/vendor/bootstrap.min.js"></script>
+    <script src="{{ asset('frontend') }}/assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="{{ asset('frontend') }}/assets/js/vendor/modernizr-3.11.2.min.js"></script>
+
+    <!--Plugins JS-->
+    <script src="{{ asset('frontend') }}/assets/js/plugins/swiper-bundle.min.js"></script>
+    <script src="{{ asset('frontend') }}/assets/js/plugins/countdownTimer.min.js"></script>
+    <script src="{{ asset('frontend') }}/assets/js/plugins/scrollup.js"></script>
+    <script src="{{ asset('frontend') }}/assets/js/plugins/jquery.zoom.min.js"></script>
+    <script src="{{ asset('frontend') }}/assets/js/plugins/slick.min.js"></script>
+    <script src="{{ asset('frontend') }}/assets/js/plugins/infiniteslidev2.js"></script>
+    <script src="{{ asset('frontend') }}/assets/js/vendor/jquery.magnific-popup.min.js"></script>
+    <script src="{{ asset('frontend') }}/assets/js/plugins/jquery.sticky-sidebar.js"></script>
+
+    <!-- Main Js -->
+    <script src="{{ asset('frontend') }}/assets/js/vendor/index.js"></script>
+    <script src="{{ asset('frontend') }}/assets/js/main.js"></script>
 </body>
 
 </html>
