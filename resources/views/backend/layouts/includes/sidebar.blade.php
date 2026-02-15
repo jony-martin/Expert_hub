@@ -75,6 +75,13 @@
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item">
+                        <a href="{{ route('admin.banners.index') }}" class="menu-link">
+                            <div data-i18n="Banners">Banners</div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="menu-sub">
+                    <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <div data-i18n="Products">Products</div>
                         </a>

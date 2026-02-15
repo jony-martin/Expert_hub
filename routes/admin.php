@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SettingsController;
 use App\Http\Controllers\Backend\UserController;
@@ -29,9 +30,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 });
 
 Route::prefix('admin')
-    ->name('admin.')->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'admin'])->group(function () {
+    ->name('admin.')
+    ->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'admin'])->group(function () {
 
         // product routes
         Route::resource('products', ProductController::class);
-
+        // banner routes
+        Route::resource('banners', BannerController::class);
     });
