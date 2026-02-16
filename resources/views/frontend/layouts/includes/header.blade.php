@@ -7,8 +7,9 @@
                     <!-- Ec Header Logo Start -->
                     <div class="align-self-center">
                         <div class="header-logo">
-                            <a href="{{ route('home') }}"><img src="{{ asset('frontend') }}/assets/images/logo/logo.png" alt="Site Logo" /><img
-                                    class="dark-logo" src="{{ asset('frontend') }}/assets/images/logo/dark-logo.png" alt="Site Logo"
+                            <a href="{{ route('home') }}"><img src="{{ asset('frontend') }}/assets/images/logo/logo.png"
+                                    alt="Site Logo" /><img class="dark-logo"
+                                    src="{{ asset('frontend') }}/assets/images/logo/dark-logo.png" alt="Site Logo"
                                     style="display: none" /></a>
                         </div>
                     </div>
@@ -37,11 +38,21 @@
                                     <i class="fi-rr-user"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
+                                    @if (Auth::check() && Auth::user()->role == 'admin')
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                        </li>
+                                    @elseif(Auth::check() && Auth::user()->role == 'user')
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('user.dashboard') }}">Dashboard</a>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                                        </li>
+                                    @endif
                                     <li>
                                         <a class="dropdown-item" href="{{ route('register') }}">Register</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('login') }}">Login</a>
                                     </li>
                                 </ul>
                             </div>
@@ -74,8 +85,9 @@
                 <!-- Ec Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="{{ route('home') }}"><img src="{{ asset('frontend') }}/assets/images/logo/logo.png" alt="Site Logo"/><img
-                                class="dark-logo" src="{{ asset('frontend') }}/assets/images/logo/dark-logo.png" alt="Site Logo"
+                        <a href="{{ route('home') }}"><img src="{{ asset('frontend') }}/assets/images/logo/logo.png"
+                                alt="Site Logo" /><img class="dark-logo"
+                                src="{{ asset('frontend') }}/assets/images/logo/dark-logo.png" alt="Site Logo"
                                 style="display: none" /></a>
                     </div>
                 </div>
@@ -84,8 +96,7 @@
                 <div class="col">
                     <div class="header-search">
                         <form class="ec-btn-group-form" action="#">
-                            <input class="form-control ec-search-bar" placeholder="Search products..."
-                                type="text" />
+                            <input class="form-control ec-search-bar" placeholder="Search products..." type="text" />
                             <button class="submit" type="submit">
                                 <i class="fi-rr-search"></i>
                             </button>

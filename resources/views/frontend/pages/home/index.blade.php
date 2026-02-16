@@ -1,44 +1,28 @@
 @extends('frontend.layouts.main')
 @section('content')
-   <!-- Main Slider Start -->
+    <!-- Main Slider Start -->
     <div class="sticky-header-next-sec ec-main-slider section section-space-pb">
         <div class="ec-slider swiper-container main-slider-nav main-slider-dot">
             <!-- Main slider -->
             <div class="swiper-wrapper">
-                <div class="ec-slide-item swiper-slide d-flex ec-slide-1">
-                    <div class="container align-self-center">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
-                                <div class="ec-slide-content slider-animation">
-                                    <h1 class="ec-slide-title">New Fashion Collection</h1>
-                                    <h2 class="ec-slide-stitle">Sale Offer</h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                        sed do
-                                    </p>
-                                    <a href="#" class="btn btn-lg btn-secondary">Order Now</a>
+                @foreach ($banners as $banner)
+                    <div class="ec-slide-item swiper-slide d-flex ec-slide-2">
+                        <div class="container align-self-center">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                                    <div class="ec-slide-content slider-animation">
+                                        <h1 class="ec-slide-title">{{ $banner->title }}</h1>
+                                        <h2 class="ec-slide-stitle">{{ $banner->sub_title }}</h2>
+                                        <p>
+                                            {!! $banner->description !!}
+                                        </p>
+                                        <a href="{{ $banner->button_url }}" class="btn btn-lg btn-secondary">{{ $banner->button_name }}</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="ec-slide-item swiper-slide d-flex ec-slide-2">
-                    <div class="container align-self-center">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
-                                <div class="ec-slide-content slider-animation">
-                                    <h1 class="ec-slide-title">Boat Headphone Sets</h1>
-                                    <h2 class="ec-slide-stitle">Sale Offer</h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                        sed do
-                                    </p>
-                                    <a href="#" class="btn btn-lg btn-secondary">Order Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="swiper-pagination swiper-pagination-white"></div>
             <div class="swiper-buttons">
@@ -105,18 +89,19 @@
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
                                                     <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/6_1.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/6_1.jpg"
+                                                        alt="Product" />
                                                     <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/6_2.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/6_2.jpg"
+                                                        alt="Product" />
                                                 </a>
                                                 <span class="percentage">20%</span>
                                                 <a href="#" class="quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i
-                                                        class="fi-rr-eye"></i></a>
+                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -192,9 +177,11 @@
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
                                                     <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/7_1.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/7_1.jpg"
+                                                        alt="Product" />
                                                     <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/7_2.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/7_2.jpg"
+                                                        alt="Product" />
                                                 </a>
                                                 <span class="percentage">20%</span>
                                                 <span class="flags">
@@ -202,11 +189,10 @@
                                                 </span>
                                                 <a href="#" class="quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i
-                                                        class="fi-rr-eye"></i></a>
+                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -282,9 +268,11 @@
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
                                                     <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg"
+                                                        alt="Product" />
                                                     <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/1_2.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/1_2.jpg"
+                                                        alt="Product" />
                                                 </a>
                                                 <span class="percentage">20%</span>
                                                 <span class="flags">
@@ -292,11 +280,10 @@
                                                 </span>
                                                 <a href="#" class="quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i
-                                                        class="fi-rr-eye"></i></a>
+                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -382,9 +369,11 @@
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
                                                     <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/2_1.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/2_1.jpg"
+                                                        alt="Product" />
                                                     <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/2_2.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/2_2.jpg"
+                                                        alt="Product" />
                                                 </a>
                                                 <span class="percentage">20%</span>
                                                 <span class="flags">
@@ -392,11 +381,10 @@
                                                 </span>
                                                 <a href="#" class="quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i
-                                                        class="fi-rr-eye"></i></a>
+                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -448,9 +436,11 @@
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
                                                     <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/3_1.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/3_1.jpg"
+                                                        alt="Product" />
                                                     <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/3_2.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/3_2.jpg"
+                                                        alt="Product" />
                                                 </a>
                                                 <span class="percentage">20%</span>
                                                 <span class="flags">
@@ -458,11 +448,10 @@
                                                 </span>
                                                 <a href="#" class="quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i
-                                                        class="fi-rr-eye"></i></a>
+                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -535,17 +524,18 @@
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
                                                     <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/4_1.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/4_1.jpg"
+                                                        alt="Product" />
                                                     <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/4_2.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/4_2.jpg"
+                                                        alt="Product" />
                                                 </a>
                                                 <a href="#" class="quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i
-                                                        class="fi-rr-eye"></i></a>
+                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -618,20 +608,21 @@
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
                                                     <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/5_1.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/5_1.jpg"
+                                                        alt="Product" />
                                                     <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/5_2.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/5_2.jpg"
+                                                        alt="Product" />
                                                 </a>
                                                 <span class="flags">
                                                     <span class="new">New</span>
                                                 </span>
                                                 <a href="#" class="quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i
-                                                        class="fi-rr-eye"></i></a>
+                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -703,9 +694,11 @@
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
                                                     <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/8_1.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/8_1.jpg"
+                                                        alt="Product" />
                                                     <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/8_2.jpg" alt="Product" />
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/8_2.jpg"
+                                                        alt="Product" />
                                                 </a>
                                                 <span class="percentage">20%</span>
                                                 <span class="flags">
@@ -713,11 +706,10 @@
                                                 </span>
                                                 <a href="#" class="quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i
-                                                        class="fi-rr-eye"></i></a>
+                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -789,8 +781,7 @@
                                 <li><a href="#">4</a></li>
                                 <li><a href="#">5</a></li>
                                 <li>
-                                    <a class="next" href="#">Next <i
-                                            class="ecicon eci-angle-right"></i></a>
+                                    <a class="next" href="#">Next <i class="ecicon eci-angle-right"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -883,8 +874,8 @@
                                 <ul>
                                     <li>
                                         <div class="ec-sidebar-block-item">
-                                            <input type="checkbox" value="" checked /><a
-                                                href="#">S</a><span class="checked"></span>
+                                            <input type="checkbox" value="" checked /><a href="#">S</a><span
+                                                class="checked"></span>
                                         </div>
                                     </li>
                                     <li>
@@ -981,8 +972,8 @@
                             </div>
                             <div class="ec-sb-block-content es-price-slider">
                                 <div class="ec-price-filter">
-                                    <div id="ec-sliderPrice" class="filter__slider-price" data-min="0"
-                                        data-max="250" data-step="10"></div>
+                                    <div id="ec-sliderPrice" class="filter__slider-price" data-min="0" data-max="250"
+                                        data-step="10"></div>
                                     <div class="ec-price-input">
                                         <label class="filter__label"><input type="text"
                                                 class="filter__input" /></label>
@@ -1029,17 +1020,16 @@
                                 <span class="flags">
                                     <span class="sale">Sale</span>
                                 </span>
-                                <a href="#" class="quickview" data-link-action="quickview"
-                                    title="Quick view" data-bs-toggle="modal"
-                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
+                                <a href="#" class="quickview" data-link-action="quickview" title="Quick view"
+                                    data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><i
+                                        class="fi-rr-eye"></i></a>
                                 <div class="ec-pro-actions">
                                     <a href="#" class="ec-btn-group compare" title="Compare"><i
                                             class="fi fi-rr-arrows-repeat"></i></a>
                                     <button title="Add To Cart" class="add-to-cart">
                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                     </button>
-                                    <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                            class="fi-rr-heart"></i></a>
+                                    <a class="ec-btn-group wishlist" title="Wishlist"><i class="fi-rr-heart"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -1066,15 +1056,13 @@
                                             <a href="#" class="ec-opt-clr-img"
                                                 data-src="{{ asset('frontend') }}/assets/images/product-image/9_1.jpg"
                                                 data-src-hover="{{ asset('frontend') }}/assets/images/product-image/9_1.jpg"
-                                                data-tooltip="Orange"><span
-                                                    style="background-color: #74c7ff"></span></a>
+                                                data-tooltip="Orange"><span style="background-color: #74c7ff"></span></a>
                                         </li>
                                         <li>
                                             <a href="#" class="ec-opt-clr-img"
                                                 data-src="{{ asset('frontend') }}/assets/images/product-image/9_2.jpg"
                                                 data-src-hover="{{ asset('frontend') }}/assets/images/product-image/9_2.jpg"
-                                                data-tooltip="Green"><span
-                                                    style="background-color: #7af6ff"></span></a>
+                                                data-tooltip="Green"><span style="background-color: #7af6ff"></span></a>
                                         </li>
                                         <li>
                                             <a href="#" class="ec-opt-clr-img"
@@ -1089,20 +1077,20 @@
                                     <span class="ec-pro-opt-label">Size</span>
                                     <ul class="ec-opt-size">
                                         <li class="active">
-                                            <a href="#" class="ec-opt-sz" data-old="$20.00"
-                                                data-new="$15.00" data-tooltip="Small">S</a>
+                                            <a href="#" class="ec-opt-sz" data-old="$20.00" data-new="$15.00"
+                                                data-tooltip="Small">S</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="ec-opt-sz" data-old="$22.00"
-                                                data-new="$17.00" data-tooltip="Medium">M</a>
+                                            <a href="#" class="ec-opt-sz" data-old="$22.00" data-new="$17.00"
+                                                data-tooltip="Medium">M</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="ec-opt-sz" data-old="$25.00"
-                                                data-new="$20.00" data-tooltip="Large">X</a>
+                                            <a href="#" class="ec-opt-sz" data-old="$25.00" data-new="$20.00"
+                                                data-tooltip="Large">X</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="ec-opt-sz" data-old="$27.00"
-                                                data-new="$22.00" data-tooltip="Extra Large">XL</a>
+                                            <a href="#" class="ec-opt-sz" data-old="$27.00" data-new="$22.00"
+                                                data-tooltip="Extra Large">XL</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -1125,17 +1113,16 @@
                                 <span class="flags">
                                     <span class="new">New</span>
                                 </span>
-                                <a href="#" class="quickview" data-link-action="quickview"
-                                    title="Quick view" data-bs-toggle="modal"
-                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
+                                <a href="#" class="quickview" data-link-action="quickview" title="Quick view"
+                                    data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><i
+                                        class="fi-rr-eye"></i></a>
                                 <div class="ec-pro-actions">
                                     <a href="#" class="ec-btn-group compare" title="Compare"><i
                                             class="fi fi-rr-arrows-repeat"></i></a>
                                     <button title="Add To Cart" class="add-to-cart">
                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                     </button>
-                                    <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                            class="fi-rr-heart"></i></a>
+                                    <a class="ec-btn-group wishlist" title="Wishlist"><i class="fi-rr-heart"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -1162,22 +1149,19 @@
                                             <a href="#" class="ec-opt-clr-img"
                                                 data-src="{{ asset('frontend') }}/assets/images/product-image/11_1.jpg"
                                                 data-src-hover="{{ asset('frontend') }}/assets/images/product-image/11_1.jpg"
-                                                data-tooltip="Gray"><span
-                                                    style="background-color: #dba4ff"></span></a>
+                                                data-tooltip="Gray"><span style="background-color: #dba4ff"></span></a>
                                         </li>
                                         <li>
                                             <a href="#" class="ec-opt-clr-img"
                                                 data-src="{{ asset('frontend') }}/assets/images/product-image/11_2.jpg"
                                                 data-src-hover="{{ asset('frontend') }}/assets/images/product-image/11_2.jpg"
-                                                data-tooltip="Orange"><span
-                                                    style="background-color: #ff4a77"></span></a>
+                                                data-tooltip="Orange"><span style="background-color: #ff4a77"></span></a>
                                         </li>
                                         <li>
                                             <a href="#" class="ec-opt-clr-img"
                                                 data-src="{{ asset('frontend') }}/assets/images/product-image/11_3.jpg"
                                                 data-src-hover="{{ asset('frontend') }}/assets/images/product-image/11_3.jpg"
-                                                data-tooltip="Green"><span
-                                                    style="background-color: #c9ff55"></span></a>
+                                                data-tooltip="Green"><span style="background-color: #c9ff55"></span></a>
                                         </li>
                                         <li>
                                             <a href="#" class="ec-opt-clr-img"
@@ -1205,17 +1189,16 @@
                                         alt="Product" />
                                 </a>
                                 <span class="percentage">5%</span>
-                                <a href="#" class="quickview" data-link-action="quickview"
-                                    title="Quick view" data-bs-toggle="modal"
-                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
+                                <a href="#" class="quickview" data-link-action="quickview" title="Quick view"
+                                    data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><i
+                                        class="fi-rr-eye"></i></a>
                                 <div class="ec-pro-actions">
                                     <a href="#" class="ec-btn-group compare" title="Compare"><i
                                             class="fi fi-rr-arrows-repeat"></i></a>
                                     <button title="Add To Cart" class="add-to-cart">
                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                     </button>
-                                    <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                            class="fi-rr-heart"></i></a>
+                                    <a class="ec-btn-group wishlist" title="Wishlist"><i class="fi-rr-heart"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -1242,8 +1225,7 @@
                                             <a href="#" class="ec-opt-clr-img"
                                                 data-src="{{ asset('frontend') }}/assets/images/product-image/12_1.jpg"
                                                 data-src-hover="{{ asset('frontend') }}/assets/images/product-image/12_1.jpg"
-                                                data-tooltip="Gray"><span
-                                                    style="background-color: #db9dff"></span></a>
+                                                data-tooltip="Gray"><span style="background-color: #db9dff"></span></a>
                                         </li>
                                         <li>
                                             <a href="#" class="ec-opt-clr-img"
@@ -1256,8 +1238,7 @@
                                             <a href="#" class="ec-opt-clr-img"
                                                 data-src="{{ asset('frontend') }}/assets/images/product-image/12_3.jpg"
                                                 data-src-hover="{{ asset('frontend') }}/assets/images/product-image/12_3.jpg"
-                                                data-tooltip="Green"><span
-                                                    style="background-color: #ffa7f3"></span></a>
+                                                data-tooltip="Green"><span style="background-color: #ffa7f3"></span></a>
                                         </li>
                                         <li>
                                             <a href="#" class="ec-opt-clr-img"
@@ -1272,20 +1253,20 @@
                                     <span class="ec-pro-opt-label">Size</span>
                                     <ul class="ec-opt-size">
                                         <li class="active">
-                                            <a href="#" class="ec-opt-sz" data-old="$50.00"
-                                                data-new="$40.00" data-tooltip="Small">6</a>
+                                            <a href="#" class="ec-opt-sz" data-old="$50.00" data-new="$40.00"
+                                                data-tooltip="Small">6</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="ec-opt-sz" data-old="$60.00"
-                                                data-new="$50.00" data-tooltip="Medium">7</a>
+                                            <a href="#" class="ec-opt-sz" data-old="$60.00" data-new="$50.00"
+                                                data-tooltip="Medium">7</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="ec-opt-sz" data-old="$70.00"
-                                                data-new="$60.00" data-tooltip="Large">8</a>
+                                            <a href="#" class="ec-opt-sz" data-old="$70.00" data-new="$60.00"
+                                                data-tooltip="Large">8</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="ec-opt-sz" data-old="$80.00"
-                                                data-new="$70.00" data-tooltip="Extra Large">9</a>
+                                            <a href="#" class="ec-opt-sz" data-old="$80.00" data-new="$70.00"
+                                                data-tooltip="Extra Large">9</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -1305,17 +1286,16 @@
                                         src="{{ asset('frontend') }}/assets/images/product-image/13_2.jpg"
                                         alt="Product" />
                                 </a>
-                                <a href="#" class="quickview" data-link-action="quickview"
-                                    title="Quick view" data-bs-toggle="modal"
-                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
+                                <a href="#" class="quickview" data-link-action="quickview" title="Quick view"
+                                    data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><i
+                                        class="fi-rr-eye"></i></a>
                                 <div class="ec-pro-actions">
                                     <a href="#" class="ec-btn-group compare" title="Compare"><i
                                             class="fi fi-rr-arrows-repeat"></i></a>
                                     <button title="Add To Cart" class="add-to-cart">
                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                     </button>
-                                    <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                            class="fi-rr-heart"></i></a>
+                                    <a class="ec-btn-group wishlist" title="Wishlist"><i class="fi-rr-heart"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -1342,8 +1322,7 @@
                                             <a href="#" class="ec-opt-clr-img"
                                                 data-src="{{ asset('frontend') }}/assets/images/product-image/13_1.jpg"
                                                 data-src-hover="{{ asset('frontend') }}/assets/images/product-image/13_1.jpg"
-                                                data-tooltip="Gray"><span
-                                                    style="background-color: #deffa4"></span></a>
+                                                data-tooltip="Gray"><span style="background-color: #deffa4"></span></a>
                                         </li>
                                         <li>
                                             <a href="#" class="ec-opt-clr-img"
@@ -1356,8 +1335,7 @@
                                             <a href="#" class="ec-opt-clr-img"
                                                 data-src="{{ asset('frontend') }}/assets/images/product-image/13_3.jpg"
                                                 data-src-hover="{{ asset('frontend') }}/assets/images/product-image/13_3.jpg"
-                                                data-tooltip="Green"><span
-                                                    style="background-color: #ff94df"></span></a>
+                                                data-tooltip="Green"><span style="background-color: #ff94df"></span></a>
                                         </li>
                                         <li>
                                             <a href="#" class="ec-opt-clr-img"
