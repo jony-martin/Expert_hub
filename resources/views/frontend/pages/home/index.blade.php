@@ -16,7 +16,8 @@
                                         <p>
                                             {!! $banner->description !!}
                                         </p>
-                                        <a href="{{ $banner->button_url }}" class="btn btn-lg btn-secondary">{{ $banner->button_name }}</a>
+                                        <a href="{{ $banner->button_url }}"
+                                            class="btn btn-lg btn-secondary">{{ $banner->button_name }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -33,7 +34,6 @@
     </div>
     <!-- Main Slider End -->
 
-    <!--  shop full width Start -->
     <!-- Ec Shop page -->
     <section class="ec-page-content section-space-p">
         <div class="container">
@@ -1358,3 +1358,82 @@
     </section>
     <!-- New Product end -->
 @endsection
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sortSelect = document.getElementById('ec-select');
+            const productsContainer = document.querySelector('.shop-pro-inner .row'); // Parent of product elements
+
+            // Function to get sort value from a product element
+            function getSortValue(product, criteria) {
+                const titleEl = product.querySelector('.ec-pro-title a');
+                const priceEl = product.querySelector('.new-price');
+
+                switch (criteria) {
+                    case 'name-asc':
+                        return titleEl ? titleEl.textContent.trim().toLowerCase() : '';
+                    case 'name-desc':
+                        return titleEl ? titleEl.textContent.trim().toLowerCase() : '';
+                    case 'price-asc':
+                        return priceEl ? parseFloat(priceEl.textContent.replace('$', '')) || 0 : 0;
+                    case 'price-desc':
+                        return priceEl ? parseFloat(priceEl.textContent.replace('$', '')) || 0 : 0;
+                    default:
+                        return 0; // For relevance, no specific value needed
+                }
+            }
+
+            // Function to sort and reorder products
+            function sortProducts(criteria) {
+                const products = Array.from(productsContainer.querySelectorAll('.pro-gl-content'));
+
+                if (criteria === 'relevance') {
+                    // For relevance, do nothing (keep original order)
+                    return;
+                }
+
+                products.sort((a, b) => {
+                    const valA = getSortValue(a, criteria);
+                    const valB = getSortValue(b, criteria);
+
+                    if (criteria === 'name-desc' || criteria === 'price-desc') {
+                        return valB > valA ? 1 : valB < valA ? -1 : 0; // Descending
+                    } else {
+                        return valA > valB ? 1 : valA < valB ? -1 : 0; // Ascending
+                    }
+                });
+
+                // Re-append sorted products to the container
+                products.forEach(product => productsContainer.appendChild(product));
+            }
+
+            // Listen for select changes
+            sortSelect.addEventListener('change', function() {
+                const selectedValue = this.value;
+                let criteria = '';
+
+                switch (selectedValue) {
+                    case '1': // Relevance
+                        criteria = 'relevance';
+                        break;
+                    case '2': // Name, A to Z
+                        criteria = 'name-asc';
+                        break;
+                    case '3': // Name, Z to A
+                        criteria = 'name-desc';
+                        break;
+                    case '4': // Price, low to high
+                        criteria = 'price-asc';
+                        break;
+                    case '5': // Price, high to low
+                        criteria = 'price-desc';
+                        break;
+                    default:
+                        return; // Do nothing for invalid values
+                }
+
+                sortProducts(criteria);
+            });
+        });
+    </script>
+@endpush

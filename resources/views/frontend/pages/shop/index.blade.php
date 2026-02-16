@@ -68,9 +68,11 @@
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
-                                                    <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/6_1.jpg"
+                                                    <img class="main-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/6_1.jpg"
                                                         alt="Product" />
-                                                    <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/6_2.jpg"
+                                                    <img class="hover-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/6_2.jpg"
                                                         alt="Product" />
                                                 </a>
                                                 <span class="percentage">20%</span>
@@ -151,9 +153,11 @@
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
-                                                    <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/7_1.jpg"
+                                                    <img class="main-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/7_1.jpg"
                                                         alt="Product" />
-                                                    <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/7_2.jpg"
+                                                    <img class="hover-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/7_2.jpg"
                                                         alt="Product" />
                                                 </a>
                                                 <span class="flags">
@@ -163,8 +167,8 @@
                                                     title="Quick view" data-bs-toggle="modal"
                                                     data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -232,17 +236,19 @@
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
-                                                    <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg"
+                                                    <img class="main-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg"
                                                         alt="Product" />
-                                                    <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/1_2.jpg"
+                                                    <img class="hover-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/1_2.jpg"
                                                         alt="Product" />
                                                 </a>
                                                 <a href="#" class="quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
                                                     data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -314,9 +320,11 @@
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
-                                                    <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/2_1.jpg"
+                                                    <img class="main-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/2_1.jpg"
                                                         alt="Product" />
-                                                    <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/2_2.jpg"
+                                                    <img class="hover-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/2_2.jpg"
                                                         alt="Product" />
                                                 </a>
                                                 <span class="flags">
@@ -326,8 +334,8 @@
                                                     title="Quick view" data-bs-toggle="modal"
                                                     data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -378,9 +386,11 @@
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
-                                                    <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/3_1.jpg"
+                                                    <img class="main-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/3_1.jpg"
                                                         alt="Product" />
-                                                    <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/3_2.jpg"
+                                                    <img class="hover-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/3_2.jpg"
                                                         alt="Product" />
                                                 </a>
                                                 <span class="flags">
@@ -390,8 +400,8 @@
                                                     title="Quick view" data-bs-toggle="modal"
                                                     data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -456,17 +466,19 @@
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
-                                                    <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/4_1.jpg"
+                                                    <img class="main-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/4_1.jpg"
                                                         alt="Product" />
-                                                    <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/4_2.jpg"
+                                                    <img class="hover-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/4_2.jpg"
                                                         alt="Product" />
                                                 </a>
                                                 <a href="#" class="quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
                                                     data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -532,9 +544,11 @@
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
-                                                    <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/5_1.jpg"
+                                                    <img class="main-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/5_1.jpg"
                                                         alt="Product" />
-                                                    <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/5_2.jpg"
+                                                    <img class="hover-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/5_2.jpg"
                                                         alt="Product" />
                                                 </a>
                                                 <span class="flags">
@@ -544,8 +558,8 @@
                                                     title="Quick view" data-bs-toggle="modal"
                                                     data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -612,9 +626,11 @@
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
-                                                    <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/8_1.jpg"
+                                                    <img class="main-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/8_1.jpg"
                                                         alt="Product" />
-                                                    <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/8_2.jpg"
+                                                    <img class="hover-image"
+                                                        src="{{ asset('frontend') }}/assets/images/product-image/8_2.jpg"
                                                         alt="Product" />
                                                 </a>
                                                 <span class="percentage">20%</span>
@@ -625,8 +641,8 @@
                                                     title="Quick view" data-bs-toggle="modal"
                                                     data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                                 <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare"
-                                                        title="Compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                            class="fi fi-rr-arrows-repeat"></i></a>
                                                     <button title="Add To Cart" class="add-to-cart">
                                                         <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                     </button>
@@ -909,3 +925,246 @@
     </section>
     <!-- End Shop page -->
 @endsection
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sortSelect = document.getElementById('ec-select');
+            const productsContainer = document.querySelector('.shop-pro-inner .row'); // Parent of product elements
+
+            // Function to get sort value from a product element
+            function getSortValue(product, criteria) {
+                const titleEl = product.querySelector('.ec-pro-title a');
+                const priceEl = product.querySelector('.new-price');
+
+                switch (criteria) {
+                    case 'name-asc':
+                        return titleEl ? titleEl.textContent.trim().toLowerCase() : '';
+                    case 'name-desc':
+                        return titleEl ? titleEl.textContent.trim().toLowerCase() : '';
+                    case 'price-asc':
+                        return priceEl ? parseFloat(priceEl.textContent.replace('$', '')) || 0 : 0;
+                    case 'price-desc':
+                        return priceEl ? parseFloat(priceEl.textContent.replace('$', '')) || 0 : 0;
+                    default:
+                        return 0; // For relevance, no specific value needed
+                }
+            }
+
+            // Function to sort and reorder products
+            function sortProducts(criteria) {
+                const products = Array.from(productsContainer.querySelectorAll('.pro-gl-content'));
+
+                if (criteria === 'relevance') {
+                    // For relevance, do nothing (keep original order)
+                    return;
+                }
+
+                products.sort((a, b) => {
+                    const valA = getSortValue(a, criteria);
+                    const valB = getSortValue(b, criteria);
+
+                    if (criteria === 'name-desc' || criteria === 'price-desc') {
+                        return valB > valA ? 1 : valB < valA ? -1 : 0; // Descending
+                    } else {
+                        return valA > valB ? 1 : valA < valB ? -1 : 0; // Ascending
+                    }
+                });
+
+                // Re-append sorted products to the container
+                products.forEach(product => productsContainer.appendChild(product));
+            }
+
+            // Listen for select changes
+            sortSelect.addEventListener('change', function() {
+                const selectedValue = this.value;
+                let criteria = '';
+
+                switch (selectedValue) {
+                    case '1': // Relevance
+                        criteria = 'relevance';
+                        break;
+                    case '2': // Name, A to Z
+                        criteria = 'name-asc';
+                        break;
+                    case '3': // Name, Z to A
+                        criteria = 'name-desc';
+                        break;
+                    case '4': // Price, low to high
+                        criteria = 'price-asc';
+                        break;
+                    case '5': // Price, high to low
+                        criteria = 'price-desc';
+                        break;
+                    default:
+                        return; // Do nothing for invalid values
+                }
+
+                sortProducts(criteria);
+            });
+        });
+        // filter products by
+        document.addEventListener('DOMContentLoaded', function() {
+            const productsContainer = document.querySelector('.shop-pro-inner .row');
+            const categoryCheckboxes = document.querySelectorAll(
+            '#shop_sidebar input[type="checkbox"]'); // All checkboxes in sidebar
+            const colorSpans = document.querySelectorAll('.ec-sidebar-block-clr .ec-sidebar-block-item span');
+            const minPriceInput = document.querySelector('.filter__input:nth-child(1)');
+            const maxPriceInput = document.querySelector('.filter__input:nth-child(2)');
+            const moreToggle = document.getElementById('ec-more-toggle');
+            const moreContent = document.getElementById('ec-more-toggle-content');
+
+            // Initialize price slider (requires jQuery UI)
+            if (typeof $ !== 'undefined' && $('#ec-sliderPrice').length) {
+                $('#ec-sliderPrice').slider({
+                    range: true,
+                    min: 0,
+                    max: 250,
+                    step: 10,
+                    values: [0, 250],
+                    slide: function(event, ui) {
+                        minPriceInput.value = ui.values[0];
+                        maxPriceInput.value = ui.values[1];
+                        filterProducts();
+                    }
+                });
+                minPriceInput.value = $('#ec-sliderPrice').slider('values', 0);
+                maxPriceInput.value = $('#ec-sliderPrice').slider('values', 1);
+            }
+
+            // Handle manual input changes for price
+            [minPriceInput, maxPriceInput].forEach(input => {
+                input.addEventListener('input', function() {
+                    const minVal = parseFloat(minPriceInput.value) || 0;
+                    const maxVal = parseFloat(maxPriceInput.value) || 250;
+                    if (typeof $ !== 'undefined') {
+                        $('#ec-sliderPrice').slider('values', [minVal, maxVal]);
+                    }
+                    filterProducts();
+                });
+            });
+
+            // Make color spans clickable
+            colorSpans.forEach(span => {
+                span.addEventListener('click', function() {
+                    this.parentElement.parentElement.classList.toggle('active');
+                    filterProducts();
+                });
+            });
+
+            // Handle "More Categories" toggle
+            if (moreToggle) {
+                moreToggle.addEventListener('click', function() {
+                    moreContent.style.display = moreContent.style.display === 'none' ? 'block' : 'none';
+                });
+            }
+
+            // Listen for checkbox changes (Category and Size)
+            categoryCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', filterProducts);
+            });
+
+            // Function to get selected filters
+            function getSelectedFilters() {
+                const selectedCategories = Array.from(document.querySelectorAll(
+                    '#shop_sidebar .ec-sidebar-block:nth-child(1) input[type="checkbox"]:checked')).map(cb => cb
+                    .nextElementSibling.textContent.trim().toLowerCase()); // Category block only
+                const selectedSizes = Array.from(document.querySelectorAll(
+                    '#shop_sidebar .ec-sidebar-block:nth-child(2) input[type="checkbox"]:checked')).map(cb => cb
+                    .nextElementSibling.textContent.trim().toUpperCase()); // Size block only
+                const selectedColors = Array.from(document.querySelectorAll(
+                    '.ec-sidebar-block-clr .ec-sidebar-block-item.active span')).map(span => span.style
+                    .backgroundColor);
+                const minPrice = parseFloat(minPriceInput.value) || 0;
+                const maxPrice = parseFloat(maxPriceInput.value) || 250;
+                return {
+                    selectedCategories,
+                    selectedSizes,
+                    selectedColors,
+                    minPrice,
+                    maxPrice
+                };
+            }
+
+            // Function to infer category from product title
+            function inferCategory(title) {
+                const lowerTitle = title.toLowerCase();
+                if (lowerTitle.includes('t-shirt') || lowerTitle.includes('shirt')) return 'clothes';
+                if (lowerTitle.includes('bag') || lowerTitle.includes('purse')) return 'bags';
+                if (lowerTitle.includes('shoe')) return 'shoes';
+                if (lowerTitle.includes('cosmetic')) return 'cosmetics';
+                if (lowerTitle.includes('electric') || lowerTitle.includes('watch')) return 'electrics';
+                if (lowerTitle.includes('phone')) return 'phone';
+                if (lowerTitle.includes('cap')) return 'cap';
+                return ''; // No match
+            }
+
+            // Function to extract product data
+            function getProductData(product) {
+                const titleEl = product.querySelector('.ec-pro-title a');
+                const category = titleEl ? inferCategory(titleEl.textContent.trim()) : '';
+                const sizes = Array.from(product.querySelectorAll('.ec-pro-size .ec-opt-sz')).map(el => el
+                    .textContent.trim().toUpperCase());
+                const colors = Array.from(product.querySelectorAll('.ec-pro-color .ec-opt-swatch span')).map(span =>
+                    span.style.backgroundColor);
+                const priceEl = product.querySelector('.new-price');
+                const price = priceEl ? parseFloat(priceEl.textContent.replace('$', '')) || 0 : 0;
+                return {
+                    category,
+                    sizes,
+                    colors,
+                    price
+                };
+            }
+
+            // Function to filter products
+            function filterProducts() {
+                const {
+                    selectedCategories,
+                    selectedSizes,
+                    selectedColors,
+                    minPrice,
+                    maxPrice
+                } = getSelectedFilters();
+                const products = document.querySelectorAll('.pro-gl-content');
+
+                products.forEach(product => {
+                    const {
+                        category,
+                        sizes,
+                        colors,
+                        price
+                    } = getProductData(product);
+
+                    let show = true;
+
+                    // Check category
+                    if (selectedCategories.length > 0 && !selectedCategories.some(cat => category ===
+                        cat)) {
+                        show = false;
+                    }
+
+                    // Check size
+                    if (selectedSizes.length > 0 && !selectedSizes.some(size => sizes.includes(size))) {
+                        show = false;
+                    }
+
+                    // Check color
+                    if (selectedColors.length > 0 && !selectedColors.some(color => colors.includes(
+                        color))) {
+                        show = false;
+                    }
+
+                    // Check price
+                    if (price < minPrice || price > maxPrice) {
+                        show = false;
+                    }
+
+                    product.style.display = show ? '' : 'none';
+                });
+            }
+
+            // Initial filter (show all if no selections)
+            filterProducts();
+        });
+    </script>
+@endpush

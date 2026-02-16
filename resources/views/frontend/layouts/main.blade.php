@@ -39,7 +39,7 @@
     {{-- row code purpose --}}
     @stack('styles')
     <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -103,8 +103,11 @@
 
     {{-- row code purpose  --}}
     <script src="{{ asset('js/iziToast.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
     @stack('scripts')
-    
+
 </body>
 
 </html>
