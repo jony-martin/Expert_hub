@@ -33,16 +33,16 @@
                                 <div class="col-12 col-md-6 mb-4">
                                     <label class="form-label" for="ecommerce-product-name">Name</label>
                                     <input type="text" class="form-control" id="ecommerce-product-name"
-                                        placeholder="Product title" name="productTitle" aria-label="Product title" />
+                                        placeholder="Product title" name="name" aria-label="Product title" />
                                 </div>
                                 <!-- Category -->
                                 <div class="col-12 col-md-6 mb-4">
                                     <div class="d-flex justify-content-between align-items-center mb-1">
                                         <div class="mb-6 col ecommerce-select2-dropdown">
-                                            <label class="form-label mb-1" for="category-org">
+                                            <label class="form-label mb-1" for="category">
                                                 <span>Category</span>
                                             </label>
-                                            <select id="category-org" class="select2 form-select"
+                                            <select id="category" name="category" class="select2 form-select"
                                                 data-placeholder="Select Category">
                                                 <option value="">Select Category</option>
                                                 <option value="Household">Household</option>
@@ -57,9 +57,9 @@
                                 <!-- Status -->
                                 <div class="col-12 col-md-6 mb-4">
                                     <div class="mb-6 col ecommerce-select2-dropdown">
-                                        <label class="form-label mb-1" for="status-org">Status
+                                        <label class="form-label mb-1" for="status">Status
                                         </label>
-                                        <select id="status-org" class="select2 form-select" data-placeholder="Published">
+                                        <select id="status" name="status" class="select2 form-select" data-placeholder="Published">
                                             <option value="">Published</option>
                                             <option value="Published">Published</option>
                                             <option value="Scheduled">Scheduled</option>
@@ -70,9 +70,9 @@
                                 <!-- Tags -->
                                 <div class="col-12 col-md-6 mb-4">
                                     <div>
-                                        <label for="ecommerce-product-tags" class="form-label mb-1">Tags</label>
-                                        <input id="ecommerce-product-tags" class="form-control"
-                                            name="ecommerce-product-tags" value="Normal,Standard,Premium"
+                                        <label for="tags" class="form-label mb-1">Tags</label>
+                                        <input id="tags" class="form-control"
+                                            name="tags" value="Normal,Standard,Premium"
                                             aria-label="Product Tags" />
                                     </div>
                                 </div>
@@ -129,8 +129,8 @@
                                 </div>
                                 <!-- Description -->
                                 <div class="col-12 col-md-12 mb-6">
-                                    <label class="form-label" for="detail">Details</label>
-                                    <textarea class="form-control" id="detail" name="detail" rows="3">{{ old('detail') }}</textarea>
+                                    <label class="form-label" for="description">Description</label>
+                                    <textarea class="form-control" id="description" name="description" rows="3">{{ old('description') }}</textarea>
                                 </div>
 
                             </div>
@@ -148,14 +148,14 @@
                                     <div class="mb-6">
                                         <label class="form-label" for="ecommerce-product-price">Base Price</label>
                                         <input type="number" class="form-control" id="ecommerce-product-price"
-                                            placeholder="Price" name="productPrice" aria-label="Product price" />
+                                            placeholder="Price" name="base_price" aria-label="Product price" />
                                     </div>
                                     <!-- Discounted Price -->
                                     <div class="mb-6">
                                         <label class="form-label" for="ecommerce-product-discount-price">Discounted
                                             Price</label>
                                         <input type="number" class="form-control" id="ecommerce-product-discount-price"
-                                            placeholder="Discounted Price" name="productDiscountedPrice"
+                                            placeholder="Discounted Price" name="discounted_price"
                                             aria-label="Product discounted price" />
                                     </div>
                                     <!-- Instock switch -->
@@ -176,7 +176,6 @@
                             <div class="card mb-6">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <h5 class="mb-0 card-title">Product Image</h5>
-                                    <a href="javascript:void(0);" class="fw-medium">Add media from URL</a>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
@@ -184,7 +183,7 @@
                                             <div class="mb-6">
                                                 <label class="form-label" for="ecommerce-product-image">Image</label>
                                                 <input type="file" class="form-control" id="ecommerce-product-image"
-                                                    name="productImage" aria-label="Product image" />
+                                                    name="image" aria-label="Product image" />
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4 mb-6">
@@ -229,7 +228,7 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('#detail').summernote({
+            $('#description').summernote({
                 placeholder: 'Write something about user...',
                 tabsize: 2,
                 height: 100

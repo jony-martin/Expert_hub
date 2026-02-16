@@ -90,6 +90,7 @@
     <!-- Page CSS -->
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/vendor/css/pages/cards-advance.css" />
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/vendor/css/pages/page-profile.css" />
+    <link rel="stylesheet" href="{{ asset('backend') }}/assets/vendor/css/pages/app-ecommerce.css" />
 
     <!-- Helpers -->
     <script src="{{ asset('backend') }}/assets/vendor/js/helpers.js"></script>
@@ -199,6 +200,7 @@
     <script src="{{ asset('backend') }}/assets/js/app-user-view-account.js"></script>
     <script src="{{ asset('backend') }}/assets/js/pages-account-settings-account.js"></script>
     <script src="{{ asset('backend') }}/assets/js/forms-pickers.js"></script>
+    <script src="{{ asset('backend') }}/assets/js/app-ecommerce-category-list.js"></script>
 
     {{-- summernote --}}
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>

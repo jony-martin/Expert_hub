@@ -96,11 +96,15 @@
                                     <div data-i18n="Add Product">Add Product</div>
                                 </a>
                             </li>
+                            <li class="menu-item">
+                                <a href="{{ route('admin.categories.index') }}" class="menu-link">
+                                    <div data-i18n="Category List">Category List</div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
             </li>
-
 
             <!-- Components -->
             <li class="menu-header small">

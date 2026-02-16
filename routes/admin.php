@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SettingsController;
 use App\Http\Controllers\Backend\UserController;
@@ -36,4 +37,5 @@ Route::prefix('admin')
         Route::resource('products', ProductController::class);
         // banner routes
         Route::resource('banners', BannerController::class);
+        Route::resource('categories', CategoryController::class);
     });
