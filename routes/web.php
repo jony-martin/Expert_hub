@@ -13,9 +13,9 @@ Route::controller(FrontendController::class)->group(function () {
 
     Route::get('/', 'index')->name('home');
     Route::get('/shop', 'shop')->name('shop');
+    Route::get('/cart', 'cart')->name('cart');
+    Route::get('/product', 'product')->name('product');
 
-    // product details route
-    Route::resource('product', ProductController::class);
 
 });
 
@@ -23,7 +23,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::resource('profile', ProfileController::class);
     // checkout route
-    Route::get('/cart', [FrontendController::class, 'cart'])->name('cart');
     Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout');
 
 

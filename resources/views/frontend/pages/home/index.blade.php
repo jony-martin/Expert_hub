@@ -112,7 +112,7 @@
                                         </div>
                                         <div class="ec-pro-content">
                                             <h5 class="ec-pro-title">
-                                                <a href="{{ route('product.index') }}">Round Neck T-Shirt</a>
+                                                <a href="{{ route('product') }}">Round Neck T-Shirt</a>
                                             </h5>
                                             <div class="ec-pro-rating">
                                                 <i class="ecicon eci-star fill"></i>

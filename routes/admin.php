@@ -26,7 +26,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::resource('settings', SettingsController::class);
     //resource routes
     Route::resource('users', UserController::class);
-
 });
 
 Route::prefix('admin')

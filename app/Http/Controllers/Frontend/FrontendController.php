@@ -17,6 +17,10 @@ class FrontendController extends Controller
         return view('frontend.pages.shop.index');
     }
 
+    public function product(){
+        return view('frontend.pages.products.index');
+    }
+
     public function checkout(){
         return view('frontend.pages.checkout.index');
     }

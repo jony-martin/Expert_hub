@@ -84,6 +84,7 @@
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/vendor/libs/@form-validation/form-validation.css" />
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/vendor/libs/animate-css/animate.css" />
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/vendor/libs/sweetalert2/sweetalert2.css" />
+
     <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
 
     <!-- Page CSS -->
@@ -179,6 +180,8 @@
     <script src="{{ asset('backend') }}/assets/vendor/libs/@form-validation/bootstrap5.js"></script>
     <script src="{{ asset('backend') }}/assets/vendor/libs/@form-validation/auto-focus.js"></script>
     <script src="{{ asset('backend') }}/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+    <script src="{{ asset('backend') }}/assets/vendor/libs/pickr/pickr.js"></script>
+
     <script src="{{ asset('js/iziToast.js') }}"></script>
     @include('vendor.lara-izitoast.toast')
 
@@ -195,6 +198,7 @@
     <script src="{{ asset('backend') }}/assets/js/app-user-list.js"></script>
     <script src="{{ asset('backend') }}/assets/js/app-user-view-account.js"></script>
     <script src="{{ asset('backend') }}/assets/js/pages-account-settings-account.js"></script>
+    <script src="{{ asset('backend') }}/assets/js/forms-pickers.js"></script>
 
     {{-- summernote --}}
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>

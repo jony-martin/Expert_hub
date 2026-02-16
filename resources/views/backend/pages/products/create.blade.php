@@ -10,273 +10,230 @@
                 class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-6 row-gap-4">
                 <div class="d-flex flex-column justify-content-center">
                     <h4 class="mb-1">Add a new Product</h4>
-                    <p class="mb-0">Orders placed across your store</p>
                 </div>
                 <div class="d-flex align-content-center flex-wrap gap-4">
                     <div class="d-flex gap-4">
-                        <button class="btn btn-label-secondary">Discard</button>
-                        <button class="btn btn-label-primary">Save draft</button>
+                        <a href="" class="btn btn-primary">
+                            product List
+                        </a>
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                        Publish product
-                    </button>
                 </div>
             </div>
 
             <div class="row">
                 <!-- First column-->
-                <div class="col-12 col-lg-8">
+                <div class="col-12 col-lg-12">
                     <!-- Product Information -->
                     <div class="card mb-6">
                         <div class="card-header">
                             <h5 class="card-tile mb-0">Product information</h5>
                         </div>
                         <div class="card-body">
-                            <div class="mb-6">
-                                <label class="form-label" for="ecommerce-product-name">Name</label>
-                                <input type="text" class="form-control" id="ecommerce-product-name"
-                                    placeholder="Product title" name="productTitle" aria-label="Product title" />
-                            </div>
-                            <div class="row mb-6">
-                                <div class="col">
-                                    <label class="form-label" for="ecommerce-product-sku">SKU</label>
-                                    <input type="number" class="form-control" id="ecommerce-product-sku" placeholder="SKU"
-                                        name="productSku" aria-label="Product SKU" />
+                            <div class="row">
+                                <div class="col-12 col-md-6 mb-4">
+                                    <label class="form-label" for="ecommerce-product-name">Name</label>
+                                    <input type="text" class="form-control" id="ecommerce-product-name"
+                                        placeholder="Product title" name="productTitle" aria-label="Product title" />
                                 </div>
-                                <div class="col">
-                                    <label class="form-label" for="ecommerce-product-barcode">Barcode</label>
-                                    <input type="text" class="form-control" id="ecommerce-product-barcode"
-                                        placeholder="0123-4567" name="productBarcode" aria-label="Product barcode" />
-                                </div>
-                            </div>
-                            <!-- Description -->
-                            <div>
-                                <label class="mb-1">Description (Optional)</label>
-                                <div class="form-control p-0">
-                                    {{-- <div class="comment-toolbar border-0 border-bottom">
-                                        <div class="d-flex justify-content-start">
-                                            <span class="ql-formats me-0">
-                                                <button class="ql-bold"></button>
-                                                <button class="ql-italic"></button>
-                                                <button class="ql-underline"></button>
-                                                <button class="ql-list" value="ordered"></button>
-                                                <button class="ql-list" value="bullet"></button>
-                                                <button class="ql-link"></button>
-                                                <button class="ql-image"></button>
-                                            </span>
+                                <!-- Category -->
+                                <div class="col-12 col-md-6 mb-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <div class="mb-6 col ecommerce-select2-dropdown">
+                                            <label class="form-label mb-1" for="category-org">
+                                                <span>Category</span>
+                                            </label>
+                                            <select id="category-org" class="select2 form-select"
+                                                data-placeholder="Select Category">
+                                                <option value="">Select Category</option>
+                                                <option value="Household">Household</option>
+                                                <option value="Management">Management</option>
+                                                <option value="Electronics">Electronics</option>
+                                                <option value="Office">Office</option>
+                                                <option value="Automotive">Automotive</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="comment-editor border-0 pb-6" id="ecommerce-category-description"></div> --}}
-                                    <textarea class="form-control" id="ecommerce-product-description" name="productDescription" rows="3"
-                                        placeholder="Product description"></textarea>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Product Information -->
-                    <!-- Media -->
-                    <div class="card mb-6">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0 card-title">Product Image</h5>
-                            <a href="javascript:void(0);" class="fw-medium">Add media from URL</a>
-                        </div>
-                        {{-- <div class="card-body">
-                            <form action="/upload" class="dropzone needsclick p-0" id="dropzone-basic">
-                                <div class="dz-message needsclick">
-                                    <p class="h4 needsclick pt-3 mb-2">
-                                        Drag and drop your image here
-                                    </p>
-                                    <p class="h6 text-body-secondary d-block fw-normal mb-2">
-                                        or
-                                    </p>
-                                    <span class="needsclick btn btn-sm btn-label-primary" id="btnBrowse">Browse image</span>
-                                </div>
-                                <div class="fallback">
-                                    <input name="file" type="file" />
-                                </div>
-                            </form>
-                        </div> --}}
-                        <div class="card-body">
-                            <div class="mb-6">
-                                <label class="form-label" for="ecommerce-product-image">Image</label>
-                                <input type="file" class="form-control" id="ecommerce-product-image" name="productImage"
-                                    aria-label="Product image" />
-                            </div>
-                            <div class="mb-6">
-                                <div class="form-control">
-                                    <label class="form-label" for="logo_preview">Logo Preview</label>
-                                    <div class="image-preview">
-                                        <img id="logo_preview"
-                                            src="https://prodinsight.verticasoft.tech/uploads/settings/prodinsight1767380471695815f79b43c.png"
-                                            class="img-fluid rounded" alt="Logo Preview" />
+                                <!-- Status -->
+                                <div class="col-12 col-md-6 mb-4">
+                                    <div class="mb-6 col ecommerce-select2-dropdown">
+                                        <label class="form-label mb-1" for="status-org">Status
+                                        </label>
+                                        <select id="status-org" class="select2 form-select" data-placeholder="Published">
+                                            <option value="">Published</option>
+                                            <option value="Published">Published</option>
+                                            <option value="Scheduled">Scheduled</option>
+                                            <option value="Inactive">Inactive</option>
+                                        </select>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Media -->
-                    <!-- Variants -->
-                    <div class="card mb-6">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Variants</h5>
-                        </div>
-                        <div class="card-body">
-                            <form class="form-repeater">
-                                <div data-repeater-list="group-a">
-                                    <div data-repeater-item>
-                                        <div class="row g-sm-6 mb-6">
-                                            <div class="col-sm-4">
-                                                <label class="form-label" for="form-repeater-1-1">Options</label>
-                                                <select id="form-repeater-1-1" class="select2 form-select"
-                                                    data-placeholder="Size">
-                                                    <option value="">Size</option>
-                                                    <option value="size">Size</option>
-                                                    <option value="color">Color</option>
-                                                    <option value="weight">Weight</option>
-                                                    <option value="smell">Smell</option>
-                                                </select>
+                                <!-- Tags -->
+                                <div class="col-12 col-md-6 mb-4">
+                                    <div>
+                                        <label for="ecommerce-product-tags" class="form-label mb-1">Tags</label>
+                                        <input id="ecommerce-product-tags" class="form-control"
+                                            name="ecommerce-product-tags" value="Normal,Standard,Premium"
+                                            aria-label="Product Tags" />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 mb-4">
+                                    <!-- Inline Checkboxes -->
+                                    <div class="row row-bordered g-0">
+                                        <label for="" class="form-label">Sizes</label>
+                                        <div class="col-md p-6">
+                                            <div class="form-check form-check-inline mt-2">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                                    value="option1" />
+                                                <label class="form-check-label" for="inlineCheckbox1">S</label>
                                             </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                                    value="option2" />
+                                                <label class="form-check-label" for="inlineCheckbox2">M</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
+                                                    value="option3" />
+                                                <label class="form-check-label" for="inlineCheckbox3">XL</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox4"
+                                                    value="option4" />
+                                                <label class="form-check-label" for="inlineCheckbox4">XXL</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- color -->
+                                <div class="col-12 col-md-6 mb-4">
+                                    <!-- Inline Checkboxes -->
+                                    <div class="row row-bordered g-0">
+                                        <label for="" class="form-label">Colors</label>
+                                        <!-- Color Picker -->
+                                        <div class="row">
+                                            <div class="classic col col-sm-3 col-lg-2">
+                                                <p>Classic</p>
+                                                <div id="color-picker-classic"></div>
+                                            </div>
+                                            <div class="monolith col col-sm-3 col-lg-2">
+                                                <p>Monolith</p>
+                                                <div id="color-picker-monolith"></div>
+                                            </div>
+                                            <div class="nano col col-sm-3 col-lg-2">
+                                                <p>Nano</p>
+                                                <div id="color-picker-nano"></div>
+                                            </div>
+                                        </div>
+                                        <!-- /Color Picker-->
+                                    </div>
+                                </div>
+                                <!-- Description -->
+                                <div class="col-12 col-md-12 mb-6">
+                                    <label class="form-label" for="detail">Details</label>
+                                    <textarea class="form-control" id="detail" name="detail" rows="3">{{ old('detail') }}</textarea>
+                                </div>
 
-                                            <div class="col-sm-8">
-                                                <label class="form-label invisible" for="form-repeater-1-2">Not
-                                                    visible</label>
-                                                <input type="number" id="form-repeater-1-2" class="form-control"
-                                                    placeholder="Enter size" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Pricing Card -->
+                        <div class="col-12 col-md-6 mb-6">
+                            <div class="card mb-6">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Pricing</h5>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Base Price -->
+                                    <div class="mb-6">
+                                        <label class="form-label" for="ecommerce-product-price">Base Price</label>
+                                        <input type="number" class="form-control" id="ecommerce-product-price"
+                                            placeholder="Price" name="productPrice" aria-label="Product price" />
+                                    </div>
+                                    <!-- Discounted Price -->
+                                    <div class="mb-6">
+                                        <label class="form-label" for="ecommerce-product-discount-price">Discounted
+                                            Price</label>
+                                        <input type="number" class="form-control" id="ecommerce-product-discount-price"
+                                            placeholder="Discounted Price" name="productDiscountedPrice"
+                                            aria-label="Product discounted price" />
+                                    </div>
+                                    <!-- Instock switch -->
+                                    <div class="d-flex justify-content-between align-items-center border-top pt-2">
+                                        <span class="mb-0">In stock</span>
+                                        <div class="w-25 d-flex justify-content-end">
+                                            <div class="form-check form-switch me-n3">
+                                                <input type="checkbox" class="form-check-input" checked />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <button class="btn btn-primary" data-repeater-create>
-                                        <i class="icon-base ti tabler-plus icon-xs me-2"></i>
-                                        Add another option
+                            </div>
+                        </div>
+                        <!-- /Pricing Card -->
+                        <!-- Media -->
+                        <div class="col-12 col-md-6 mb-6">
+                            <div class="card mb-6">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0 card-title">Product Image</h5>
+                                    <a href="javascript:void(0);" class="fw-medium">Add media from URL</a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12 col-md-8 mb-6">
+                                            <div class="mb-6">
+                                                <label class="form-label" for="ecommerce-product-image">Image</label>
+                                                <input type="file" class="form-control" id="ecommerce-product-image"
+                                                    name="productImage" aria-label="Product image" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-4 mb-6">
+                                            <div class="mb-6">
+                                                <div class="form-control">
+                                                    <label class="form-label" for="logo_preview">Image Preview</label>
+                                                    <div class="image-preview">
+                                                        <img id="logo_preview"
+                                                            src="https://prodinsight.verticasoft.tech/uploads/settings/prodinsight1767380471695815f79b43c.png"
+                                                            class="img-fluid rounded" alt="Logo Preview" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 form-control-validation d-flex justify-content-end gap-2 mt-6 p-6">
+                                    <button type="submit" class="btn btn-primary me-2">
+                                        <i class="icon-base ti tabler-device-floppy icon-xs me-2"></i>
+                                        Update
+                                    </button>
+                                    <button type="button" class="btn btn-secondary me-2"
+                                        onclick="window.location.href='#'">
+                                        <i class="icon-base ti tabler-x icon-xs me-2"></i>
+                                        Cancel
+                                    </button>
+                                    <button type="button" class="btn btn-danger" onclick="window.location.reload();">
+                                        <i class="icon-base ti tabler-refresh icon-xs me-2"></i>
+                                        Reset
                                     </button>
                                 </div>
-                            </form>
+                            </div>
                         </div>
+                        <!-- /Media -->
                     </div>
-                    <!-- /Variants -->
-                    
                 </div>
-                <!-- /Second column -->
-
-                <!-- Second column -->
-                <div class="col-12 col-lg-4">
-                    <!-- Pricing Card -->
-                    <div class="card mb-6">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Pricing</h5>
-                        </div>
-                        <div class="card-body">
-                            <!-- Base Price -->
-                            <div class="mb-6">
-                                <label class="form-label" for="ecommerce-product-price">Base Price</label>
-                                <input type="number" class="form-control" id="ecommerce-product-price"
-                                    placeholder="Price" name="productPrice" aria-label="Product price" />
-                            </div>
-                            <!-- Discounted Price -->
-                            <div class="mb-6">
-                                <label class="form-label" for="ecommerce-product-discount-price">Discounted Price</label>
-                                <input type="number" class="form-control" id="ecommerce-product-discount-price"
-                                    placeholder="Discounted Price" name="productDiscountedPrice"
-                                    aria-label="Product discounted price" />
-                            </div>
-                            <!-- Charge tax check box -->
-                            <div class="form-check ms-2 mt-2 mb-4">
-                                <input class="form-check-input" type="checkbox" value="" id="price-charge-tax"
-                                    checked />
-                                <label class="switch-label" for="price-charge-tax">
-                                    Charge tax on this product
-                                </label>
-                            </div>
-                            <!-- Instock switch -->
-                            <div class="d-flex justify-content-between align-items-center border-top pt-2">
-                                <span class="mb-0">In stock</span>
-                                <div class="w-25 d-flex justify-content-end">
-                                    <div class="form-check form-switch me-n3">
-                                        <input type="checkbox" class="form-check-input" checked />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Pricing Card -->
-                    <!-- Organize Card -->
-                    <div class="card mb-6">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Organize</h5>
-                        </div>
-                        <div class="card-body">
-                            <!-- Vendor -->
-                            <div class="mb-6 col ecommerce-select2-dropdown">
-                                <label class="form-label mb-1" for="vendor">
-                                    Vendor
-                                </label>
-                                <select id="vendor" class="select2 form-select" data-placeholder="Select Vendor">
-                                    <option value="">Select Vendor</option>
-                                    <option value="men-clothing">Men's Clothing</option>
-                                    <option value="women-clothing">
-                                        Women's-clothing
-                                    </option>
-                                    <option value="kid-clothing">Kid's-clothing</option>
-                                </select>
-                            </div>
-                            <!-- Category -->
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="mb-6 col ecommerce-select2-dropdown">
-                                    <label class="form-label mb-1" for="category-org">
-                                        <span>Category</span>
-                                    </label>
-                                    <select id="category-org" class="select2 form-select"
-                                        data-placeholder="Select Category">
-                                        <option value="">Select Category</option>
-                                        <option value="Household">Household</option>
-                                        <option value="Management">Management</option>
-                                        <option value="Electronics">Electronics</option>
-                                        <option value="Office">Office</option>
-                                        <option value="Automotive">Automotive</option>
-                                    </select>
-                                </div>
-                                <a href="javascript:void(0);" class="fw-medium btn btn-icon btn-label-primary ms-4"><i
-                                        class="icon-base ti tabler-plus icon-md"></i></a>
-                            </div>
-                            <!-- Collection -->
-                            <div class="mb-6 col ecommerce-select2-dropdown">
-                                <label class="form-label mb-1" for="collection">Collection
-                                </label>
-                                <select id="collection" class="select2 form-select" data-placeholder="Collection">
-                                    <option value="">Collection</option>
-                                    <option value="men-clothing">Men's Clothing</option>
-                                    <option value="women-clothing">
-                                        Women's-clothing
-                                    </option>
-                                    <option value="kid-clothing">Kid's-clothing</option>
-                                </select>
-                            </div>
-                            <!-- Status -->
-                            <div class="mb-6 col ecommerce-select2-dropdown">
-                                <label class="form-label mb-1" for="status-org">Status
-                                </label>
-                                <select id="status-org" class="select2 form-select" data-placeholder="Published">
-                                    <option value="">Published</option>
-                                    <option value="Published">Published</option>
-                                    <option value="Scheduled">Scheduled</option>
-                                    <option value="Inactive">Inactive</option>
-                                </select>
-                            </div>
-                            <!-- Tags -->
-                            <div>
-                                <label for="ecommerce-product-tags" class="form-label mb-1">Tags</label>
-                                <input id="ecommerce-product-tags" class="form-control" name="ecommerce-product-tags"
-                                    value="Normal,Standard,Premium" aria-label="Product Tags" />
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Organize Card -->
-                </div>
-                <!-- /Second column -->
             </div>
         </div>
     </div>
     <!-- / Content -->
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#detail').summernote({
+                placeholder: 'Write something about user...',
+                tabsize: 2,
+                height: 100
+            });
+        });
+    </script>
+@endpush
