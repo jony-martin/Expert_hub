@@ -13,7 +13,7 @@
                             <!-- ec-breadcrumb-list start -->
                             <ul class="ec-breadcrumb-list">
                                 <li class="ec-breadcrumb-item">
-                                    <a href="index.html">Home</a>
+                                    <a href="{{ route('home') }}">Home</a>
                                 </li>
                                 <li class="ec-breadcrumb-item active">Shop</li>
                             </ul>

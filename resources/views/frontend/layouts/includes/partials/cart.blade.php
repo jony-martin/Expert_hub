@@ -66,8 +66,8 @@
                 </table>
             </div>
             <div class="cart_btn">
-                <a href="cart.html" class="btn btn-primary">View Cart</a>
-                <a href="checkout.html" class="btn btn-secondary">Checkout</a>
+                <a href="{{ route('cart') }}" class="btn btn-primary">View Cart</a>
+                <a href="{{ route('checkout') }}" class="btn btn-secondary">Checkout</a>
             </div>
         </div>
     </div>

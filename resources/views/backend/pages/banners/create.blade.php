@@ -30,7 +30,7 @@
                             <form action="{{ route('admin.banners.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-6">
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-6 mb-6">
                                         <div class="mb-6">
                                             <label class="form-label" for="title">Title<span
                                                     class="text-danger">*</span></label>
@@ -39,7 +39,7 @@
                                                 aria-label="Enter title" />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-6 mb-6">
                                         <div class="mb-6">
                                             <label class="form-label" for="sub_title">Sub Title<span
                                                     class="text-danger">*</span></label>
@@ -49,23 +49,33 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-md-6">
-                                        <div class="mb-6">
-                                            <label class="form-label" for="button_name">Button Name<span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="button_name"
-                                                placeholder="Enter button name" value="{{ old('button_name') }}"
-                                                name="button_name" aria-label="button_name" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-3 mb-6">
                                         <div class="mb-6">
                                             <label class="form-label" for="button_url">Button URL<span
                                                     class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="button_url"
                                                 placeholder="Enter button Url" value="{{ old('button_url') }}"
                                                 name="button_url" aria-label="button_url" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-3 mb-6">
+                                        <label for="status" class="form-label mb-1">Status<span
+                                                    class="text-danger">*</span></label>
+                                        <select id="status" name="status" class="select2 form-select"
+                                            data-placeholder="status">
+                                            <option value="1">Active</option>
+                                            <option value="2">Inactive</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12 col-md-6 mb-6">
+                                        <div class="mb-6">
+                                            <label class="form-label" for="button_name">Button Name<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="button_name"
+                                                placeholder="Enter button name" value="{{ old('button_name') }}"
+                                                name="button_name" aria-label="button_name" />
                                         </div>
                                     </div>
 
@@ -93,7 +103,6 @@
                                                 class="text-danger">*</span></label>
                                         <textarea class="form-control" id="description" name="description" rows="3">{{ old('description') }}</textarea>
                                     </div>
-
 
                                 </div>
                                 <div class="col-12 form-control-validation d-flex justify-content-end gap-2">

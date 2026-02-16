@@ -15,7 +15,7 @@ class LoginResponse implements LoginResponseContract
         } else if (Auth::user()->role == 'user') {
             return redirect('user/dashboard');
         } else {
-            return redirect()->route('shop');
+            return redirect()->route('home');
         }
     }
 }

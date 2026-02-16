@@ -27,22 +27,33 @@
                         <tr class="text-center">
                             <th>Image</th>
                             <th>Title</th>
+                            <th>Sub Title</th>
                             <th>Description</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        @foreach ($banners as $banner)
                             <tr class="text-center">
                                 <td class="text-center">
-                                    
+                                   @if ($banner->image)
+                                        <img src="{{ asset('/backend/images/banners/' . $banner->image) }}"
+                                            alt="{{ $banner->title }}" style="max-width: 70px; max-height: 70px;">
+                                    @else
+                                        <img src="{{ asset('backend/images/no-image.jpg') }}" alt="{{ $banner->title }}"
+                                            style="max-width: 70px; max-height: 70px;">
+                                    @endif 
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $banner->title }}</td>
+                                <td>{{ $banner->sub_title }}</td>
+                                <td>{!! $banner->description !!}</td>
                                 <td>
-                                    
+                                    @if ($banner->status == 1)
+                                        <span class="badge bg-success">Active</span>
+                                    @else
+                                        <span class="badge bg-danger">Inactive</span>
+                                    @endif
                                 </td>
                                 <td class="text-center">
                                     <div class="dropdown">
@@ -53,13 +64,13 @@
 
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a class="dropdown-item" href="">
+                                                <a class="dropdown-item" href="{{ route('admin.banners.edit', $banner->id) }}">
                                                     <i class="icon-base ti tabler-pencil icon-xs me-2"></i> Edit
                                                 </a>
                                             </li>
                                             <li>
                                                 <button class="dropdown-item text-danger"
-                                                    onclick="">
+                                                    onclick="deleteBanner({{ $banner->id }})">
                                                     <i class="icon-base ti tabler-trash icon-xs me-2"></i> Delete
                                                 </button>
                                             </li>
@@ -67,7 +78,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -79,12 +90,12 @@
 
 @push('scripts')
     <script>
-        function {
-            let url = "";
+        function deleteBanner(id) {
+            let url = "{{ route('admin.banners.destroy', ':id') }}";
             url = url.replace(':id', id);
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You want to delete this User!",
+                text: "You want to delete this Banner!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#2f4cdd',
@@ -102,7 +113,7 @@
                             if (response.status) {
                                 Swal.fire(
                                     'Deleted!',
-                                    'User has been deleted.',
+                                    'Banner has been deleted.',
                                     'success'
                                 ).then((result) => {
                                     if (result.isConfirmed) {
@@ -112,7 +123,7 @@
                             } else {
                                 Swal.fire(
                                     'Deleted!',
-                                    'User has not been deleted.',
+                                    'Banner has not been deleted.',
                                     'error'
                                 )
                             }

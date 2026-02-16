@@ -128,7 +128,7 @@
         @endif
 
         <li class="menu-item">
-            <a href="{{ route('shop') }}" class="menu-link" target="_blank">
+            <a href="{{ route('home') }}" class="menu-link" target="_blank">
                 <i class="menu-icon icon-base ti tabler-world"></i>
                 <div>Visit Website</div>
             </a>

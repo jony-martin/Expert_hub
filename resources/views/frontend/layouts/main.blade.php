@@ -49,7 +49,7 @@
 
 </head>
 
-<body>
+<body class="checkout_page">
     <div id="ec-overlay">
         <div class="ec-ellipsis">
             <div></div>

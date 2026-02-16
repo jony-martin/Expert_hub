@@ -86,7 +86,7 @@
                                                 <div class="image-preview">
                                                     <img id="logo_preview"
                                                         src="{{ asset('backend/images/users/' . $user->image) }}"
-                                                        class="img-fluid rounded" alt="Logo Preview" />
+                                                        class="img-fluid rounded" alt="Image Preview" />
                                                 </div>
                                                 @else
                                                 <div class="image-preview">
