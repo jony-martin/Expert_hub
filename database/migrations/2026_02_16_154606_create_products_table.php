@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->integer('stock')->default(0);
             $table->string('sku')->unique()->nullable();
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }
