@@ -11,11 +11,13 @@ class FrontendController extends Controller
 {
     public function index(){
         $banners = Banner::where('status', 1)->get();
-        return view('frontend.pages.home.index', compact('banners'));
+        $products = Product::where('status', 1)->take(8)->get();
+        $new_collection = Product::where('status', 1)->orderBy('created_at', 'desc')->take(4)->get();
+        return view('frontend.pages.home.index', compact('banners', 'products', 'new_collection'));
     }
 
     public function shop(){
-        $products = Product::where('status', 1)->with('category')->get();
+        $products = Product::where('status', 1)->with('category')->take(8)->get();
         return view('frontend.pages.shop.index', compact('products'));
     }
 

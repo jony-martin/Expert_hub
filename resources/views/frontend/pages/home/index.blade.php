@@ -80,692 +80,113 @@
                     <div class="shop-pro-content">
                         <div class="shop-pro-inner">
                             <div class="row">
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
-                                    <div class="ec-product-inner">
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="###" class="image">
-                                                    <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/6_1.jpg"
-                                                        alt="Product" />
-                                                    <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/6_2.jpg"
-                                                        alt="Product" />
-                                                </a>
-                                                <span class="percentage">20%</span>
-                                                <a href="#" class="quickview" data-link-action="quickview"
-                                                    title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
-                                                <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
-                                                            class="fi fi-rr-arrows-repeat"></i></a>
-                                                    <button title="Add To Cart" class="add-to-cart">
-                                                        <i class="fi-rr-shopping-basket"></i> Add To Cart
-                                                    </button>
-                                                    <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                                            class="fi-rr-heart"></i></a>
+                                @foreach ($products as $product)
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
+                                        <div class="ec-product-inner">
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="{{ route('product', $product->slug) }}" class="image">
+                                                        @php
+                                                            $images = explode(',', $product->image); // Split images
+                                                            $mainImage = $images[0] ?? 'default.jpg'; // First image or default
+                                                            $hoverImage = $images[1] ?? $mainImage; // Second image or fallback
+                                                        @endphp
+                                                        <img class="main-image" src="{{ asset($mainImage) }}"
+                                                            alt="{{ $product->name }}" />
+                                                        <img class="hover-image" src="{{ asset($hoverImage) }}"
+                                                            alt="{{ $product->name }}" />
+                                                    </a>
+                                                    @if ($product->discount_price && $product->discount_price < $product->base_price)
+                                                        <span
+                                                            class="percentage">{{ round((($product->base_price - $product->discount_price) / $product->base_price) * 100) }}%</span>
+                                                    @endif
+                                                    <a href="#" class="quickview" data-link-action="quickview"
+                                                        title="Quick view" data-bs-toggle="modal"
+                                                        data-bs-target="#ec_quickview_modal"
+                                                        data-product-id="{{ $product->id }}">
+                                                        <i class="fi-rr-eye"></i>
+                                                    </a>
+                                                    <div class="ec-pro-actions">
+                                                        <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                                class="fi fi-rr-arrows-repeat"></i></a>
+                                                        <button title="Add To Cart" class="add-to-cart"
+                                                            onclick="addToCart({{ $product->id }}, '{{ $product->name }}', {{ $product->discount_price ?? $product->base_price }}, '{{ asset($mainImage) }}', 1)">
+                                                            <i class="fi-rr-shopping-basket"></i> Add To Cart
+                                                        </button>
+                                                        <a class="ec-btn-group wishlist" title="Wishlist"><i
+                                                                class="fi-rr-heart"></i></a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title">
-                                                <a href="###">Round Neck T-Shirt</a>
-                                            </h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <div class="ec-pro-list-desc">
-                                                Lorem Ipsum is simply dummy text of the printing and
-                                                typesetting industry. Lorem Ipsum is simply dutmmy
-                                                text.
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">$27.00</span>
-                                                <span class="new-price">$22.00</span>
-                                            </span>
-                                            <div class="ec-pro-option">
-                                                <div class="ec-pro-color">
-                                                    <span class="ec-pro-opt-label">Color</span>
-                                                    <ul class="ec-opt-swatch ec-change-img">
-                                                        <li class="active">
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/6_1.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/6_1.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color: #e8c2ff"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/6_2.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/6_2.jpg"
-                                                                data-tooltip="Orange"><span
-                                                                    style="background-color: #9cfdd5"></span></a>
-                                                        </li>
-                                                    </ul>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title">
+                                                    <a
+                                                        href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
+                                                </h5>
+                                                <div class="ec-pro-rating">
+                                                    <!-- Assuming a rating field; adjust if you have one -->
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
                                                 </div>
-                                                <div class="ec-pro-size">
-                                                    <span class="ec-pro-opt-label">Size</span>
-                                                    <ul class="ec-opt-size">
-                                                        <li class="active">
-                                                            <a href="#" class="ec-opt-sz" data-old="$25.00"
-                                                                data-new="$20.00" data-tooltip="Small">S</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-sz" data-old="$27.00"
-                                                                data-new="$22.00" data-tooltip="Medium">M</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-sz" data-old="$35.00"
-                                                                data-new="$30.00" data-tooltip="Extra Large">XL</a>
-                                                        </li>
-                                                    </ul>
+                                                <div class="ec-pro-list-desc">
+                                                    {{ Str::limit($product->description, 100) }}
+                                                    <!-- Limit description to 100 chars -->
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
-                                    <div class="ec-product-inner">
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="###" class="image">
-                                                    <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/7_1.jpg"
-                                                        alt="Product" />
-                                                    <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/7_2.jpg"
-                                                        alt="Product" />
-                                                </a>
-                                                <span class="percentage">20%</span>
-                                                <span class="flags">
-                                                    <span class="sale">Sale</span>
+                                                <span class="ec-price">
+                                                    @if ($product->discount_price && $product->discount_price < $product->base_price)
+                                                        <span
+                                                            class="old-price">${{ number_format($product->base_price, 2) }}</span>
+                                                        <span
+                                                            class="new-price">${{ number_format($product->discount_price, 2) }}</span>
+                                                    @else
+                                                        <span
+                                                            class="new-price">${{ number_format($product->base_price, 2) }}</span>
+                                                    @endif
                                                 </span>
-                                                <a href="#" class="quickview" data-link-action="quickview"
-                                                    title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
-                                                <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
-                                                            class="fi fi-rr-arrows-repeat"></i></a>
-                                                    <button title="Add To Cart" class="add-to-cart">
-                                                        <i class="fi-rr-shopping-basket"></i> Add To Cart
-                                                    </button>
-                                                    <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                                            class="fi-rr-heart"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title">
-                                                <a href="###">Full Sleeve Shirt</a>
-                                            </h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <div class="ec-pro-list-desc">
-                                                Lorem Ipsum is simply dummy text of the printing and
-                                                typesetting industry. Lorem Ipsum is simply dutmmy
-                                                text.
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">$12.00</span>
-                                                <span class="new-price">$10.00</span>
-                                            </span>
-                                            <div class="ec-pro-option">
-                                                <div class="ec-pro-color">
-                                                    <span class="ec-pro-opt-label">Color</span>
-                                                    <ul class="ec-opt-swatch ec-change-img">
-                                                        <li class="active">
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/7_1.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/7_1.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color: #01f1f1"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/7_2.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/7_2.jpg"
-                                                                data-tooltip="Orange"><span
-                                                                    style="background-color: #b89df8"></span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="ec-pro-size">
-                                                    <span class="ec-pro-opt-label">Size</span>
-                                                    <ul class="ec-opt-size">
-                                                        <li class="active">
-                                                            <a href="#" class="ec-opt-sz" data-old="$12.00"
-                                                                data-new="$10.00" data-tooltip="Small">S</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-sz" data-old="$15.00"
-                                                                data-new="$12.00" data-tooltip="Medium">M</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-sz" data-old="$20.00"
-                                                                data-new="$17.00" data-tooltip="Extra Large">XL</a>
-                                                        </li>
-                                                    </ul>
+                                                <div class="ec-pro-option">
+                                                    @if ($product->color)
+                                                        <div class="ec-pro-color">
+                                                            <span class="ec-pro-opt-label">Color</span>
+                                                            <ul class="ec-opt-swatch ec-change-img">
+                                                                @php $colors = explode(',', $product->color); @endphp
+                                                                @foreach ($colors as $index => $color)
+                                                                    <li class="{{ $index === 0 ? 'active' : '' }}">
+                                                                        <a href="#" class="ec-opt-clr-img"
+                                                                            data-src="{{ asset($images[$index] ?? $mainImage) }}"
+                                                                            data-src-hover="{{ asset($images[$index] ?? $hoverImage) }}"
+                                                                            data-tooltip="{{ $color }}">
+                                                                            <span
+                                                                                style="background-color: {{ $color }}"></span>
+                                                                        </a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endif
+                                                    @if ($product->size)
+                                                        <div class="ec-pro-size">
+                                                            <span class="ec-pro-opt-label">Size</span>
+                                                            <ul class="ec-opt-size">
+                                                                @php $sizes = explode(',', $product->size); @endphp
+                                                                @foreach ($sizes as $index => $size)
+                                                                    <li class="{{ $index === 0 ? 'active' : '' }}">
+                                                                        <a href="#" class="ec-opt-sz"
+                                                                            data-old="${{ number_format($product->base_price, 2) }}"
+                                                                            data-new="${{ number_format($product->discount_price ?? $product->base_price, 2) }}"
+                                                                            data-tooltip="{{ $size }}">{{ $size }}</a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
-                                    <div class="ec-product-inner">
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="###" class="image">
-                                                    <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg"
-                                                        alt="Product" />
-                                                    <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/1_2.jpg"
-                                                        alt="Product" />
-                                                </a>
-                                                <span class="percentage">20%</span>
-                                                <span class="flags">
-                                                    <span class="sale">Sale</span>
-                                                </span>
-                                                <a href="#" class="quickview" data-link-action="quickview"
-                                                    title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
-                                                <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
-                                                            class="fi fi-rr-arrows-repeat"></i></a>
-                                                    <button title="Add To Cart" class="add-to-cart">
-                                                        <i class="fi-rr-shopping-basket"></i> Add To Cart
-                                                    </button>
-                                                    <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                                            class="fi-rr-heart"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title">
-                                                <a href="###">Cute Baby Toy's</a>
-                                            </h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <div class="ec-pro-list-desc">
-                                                Lorem Ipsum is simply dummy text of the printing and
-                                                typesetting industry. Lorem Ipsum is simply dutmmy
-                                                text.
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">$40.00</span>
-                                                <span class="new-price">$30.00</span>
-                                            </span>
-                                            <div class="ec-pro-option">
-                                                <div class="ec-pro-color">
-                                                    <span class="ec-pro-opt-label">Color</span>
-                                                    <ul class="ec-opt-swatch ec-change-img">
-                                                        <li class="active">
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color: #90cdf7"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/1_2.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/1_2.jpg"
-                                                                data-tooltip="Orange"><span
-                                                                    style="background-color: #ff3b66"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/1_3.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/1_3.jpg"
-                                                                data-tooltip="Green"><span
-                                                                    style="background-color: #ffc476"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/1_4.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/1_4.jpg"
-                                                                data-tooltip="Sky Blue"><span
-                                                                    style="background-color: #1af0ba"></span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="ec-pro-size">
-                                                    <span class="ec-pro-opt-label">Size</span>
-                                                    <ul class="ec-opt-size">
-                                                        <li class="active">
-                                                            <a href="#" class="ec-opt-sz" data-old="$40.00"
-                                                                data-new="$30.00" data-tooltip="Small">S</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-sz" data-old="$50.00"
-                                                                data-new="$40.00" data-tooltip="Medium">M</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
-                                    <div class="ec-product-inner">
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="###" class="image">
-                                                    <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/2_1.jpg"
-                                                        alt="Product" />
-                                                    <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/2_2.jpg"
-                                                        alt="Product" />
-                                                </a>
-                                                <span class="percentage">20%</span>
-                                                <span class="flags">
-                                                    <span class="new">New</span>
-                                                </span>
-                                                <a href="#" class="quickview" data-link-action="quickview"
-                                                    title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
-                                                <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
-                                                            class="fi fi-rr-arrows-repeat"></i></a>
-                                                    <button title="Add To Cart" class="add-to-cart">
-                                                        <i class="fi-rr-shopping-basket"></i> Add To Cart
-                                                    </button>
-                                                    <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                                            class="fi-rr-heart"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title">
-                                                <a href="###">Jumbo Carry Bag</a>
-                                            </h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <div class="ec-pro-list-desc">
-                                                Lorem Ipsum is simply dummy text of the printing and
-                                                typesetting industry. Lorem Ipsum is simply dutmmy
-                                                text.
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">$50.00</span>
-                                                <span class="new-price">$40.00</span>
-                                            </span>
-                                            <div class="ec-pro-option">
-                                                <div class="ec-pro-color">
-                                                    <span class="ec-pro-opt-label">Color</span>
-                                                    <ul class="ec-opt-swatch ec-change-img">
-                                                        <li class="active">
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/2_1.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/2_2.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color: #fdbf04"></span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
-                                    <div class="ec-product-inner">
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="###" class="image">
-                                                    <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/3_1.jpg"
-                                                        alt="Product" />
-                                                    <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/3_2.jpg"
-                                                        alt="Product" />
-                                                </a>
-                                                <span class="percentage">20%</span>
-                                                <span class="flags">
-                                                    <span class="new">New</span>
-                                                </span>
-                                                <a href="#" class="quickview" data-link-action="quickview"
-                                                    title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
-                                                <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
-                                                            class="fi fi-rr-arrows-repeat"></i></a>
-                                                    <button title="Add To Cart" class="add-to-cart">
-                                                        <i class="fi-rr-shopping-basket"></i> Add To Cart
-                                                    </button>
-                                                    <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                                            class="fi-rr-heart"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title">
-                                                <a href="###">Designer Leather Purses</a>
-                                            </h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <div class="ec-pro-list-desc">
-                                                Lorem Ipsum is simply dummy text of the printing and
-                                                typesetting industry. Lorem Ipsum is simply dutmmy
-                                                text.
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">$40.00</span>
-                                                <span class="new-price">$30.00</span>
-                                            </span>
-                                            <div class="ec-pro-option">
-                                                <div class="ec-pro-color">
-                                                    <span class="ec-pro-opt-label">Color</span>
-                                                    <ul class="ec-opt-swatch ec-change-img">
-                                                        <li class="active">
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/3_1.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/3_1.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color: #75e3ff"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/3_2.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/3_2.jpg"
-                                                                data-tooltip="Orange"><span
-                                                                    style="background-color: #11f7d8"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/3_3.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/3_3.jpg"
-                                                                data-tooltip="Green"><span
-                                                                    style="background-color: #acff7c"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/3_5.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/3_5.jpg"
-                                                                data-tooltip="Sky Blue"><span
-                                                                    style="background-color: #e996fa"></span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
-                                    <div class="ec-product-inner">
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="###" class="image">
-                                                    <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/4_1.jpg"
-                                                        alt="Product" />
-                                                    <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/4_2.jpg"
-                                                        alt="Product" />
-                                                </a>
-                                                <a href="#" class="quickview" data-link-action="quickview"
-                                                    title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
-                                                <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
-                                                            class="fi fi-rr-arrows-repeat"></i></a>
-                                                    <button title="Add To Cart" class="add-to-cart">
-                                                        <i class="fi-rr-shopping-basket"></i> Add To Cart
-                                                    </button>
-                                                    <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                                            class="fi-rr-heart"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title">
-                                                <a href="###">Canvas Cowboy Hat</a>
-                                            </h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <div class="ec-pro-list-desc">
-                                                Lorem Ipsum is simply dummy text of the printing and
-                                                typesetting industry. Lorem Ipsum is simply dutmmy
-                                                text.
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">$12.00</span>
-                                                <span class="new-price">$10.00</span>
-                                            </span>
-                                            <div class="ec-pro-option">
-                                                <div class="ec-pro-color">
-                                                    <span class="ec-pro-opt-label">Color</span>
-                                                    <ul class="ec-opt-swatch ec-change-img">
-                                                        <li class="active">
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/4_1.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/4_1.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color: #ebbf60"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/4_2.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/4_2.jpg"
-                                                                data-tooltip="Orange"><span
-                                                                    style="background-color: #b4fc57"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/4_3.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/4_3.jpg"
-                                                                data-tooltip="Green"><span
-                                                                    style="background-color: #2ea1cd"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/4_4.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/4_4.jpg"
-                                                                data-tooltip="Sky Blue"><span
-                                                                    style="background-color: #c1a1fd"></span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
-                                    <div class="ec-product-inner">
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="###" class="image">
-                                                    <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/5_1.jpg"
-                                                        alt="Product" />
-                                                    <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/5_2.jpg"
-                                                        alt="Product" />
-                                                </a>
-                                                <span class="flags">
-                                                    <span class="new">New</span>
-                                                </span>
-                                                <a href="#" class="quickview" data-link-action="quickview"
-                                                    title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
-                                                <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
-                                                            class="fi fi-rr-arrows-repeat"></i></a>
-                                                    <button title="Add To Cart" class="add-to-cart">
-                                                        <i class="fi-rr-shopping-basket"></i> Add To Cart
-                                                    </button>
-                                                    <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                                            class="fi-rr-heart"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title">
-                                                <a href="###">Leather Belt for Men</a>
-                                            </h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <div class="ec-pro-list-desc">
-                                                Lorem Ipsum is simply dummy text of the printing and
-                                                typesetting industry. Lorem Ipsum is simply dutmmy
-                                                text.
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">$15.00</span>
-                                                <span class="new-price">$10.00</span>
-                                            </span>
-                                            <div class="ec-pro-option">
-                                                <div class="ec-pro-color">
-                                                    <span class="ec-pro-opt-label">Color</span>
-                                                    <ul class="ec-opt-swatch ec-change-img">
-                                                        <li class="active">
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/5_1.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/5_1.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color: #9e9e9e"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/5_2.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/5_2.jpg"
-                                                                data-tooltip="Orange"><span
-                                                                    style="background-color: #eb8e76"></span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="ec-pro-size">
-                                                    <span class="ec-pro-opt-label">Size</span>
-                                                    <ul class="ec-opt-size">
-                                                        <li class="active">
-                                                            <a href="#" class="ec-opt-sz" data-old="$15.00"
-                                                                data-new="$10.00" data-tooltip="Small">32</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-sz" data-old="$17.00"
-                                                                data-new="$12.00" data-tooltip="Medium">34</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
-                                    <div class="ec-product-inner">
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="###" class="image">
-                                                    <img class="main-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/8_1.jpg"
-                                                        alt="Product" />
-                                                    <img class="hover-image"
-                                                        src="{{ asset('frontend') }}/assets/images/product-image/8_2.jpg"
-                                                        alt="Product" />
-                                                </a>
-                                                <span class="percentage">20%</span>
-                                                <span class="flags">
-                                                    <span class="new">New</span>
-                                                </span>
-                                                <a href="#" class="quickview" data-link-action="quickview"
-                                                    title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
-                                                <div class="ec-pro-actions">
-                                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
-                                                            class="fi fi-rr-arrows-repeat"></i></a>
-                                                    <button title="Add To Cart" class="add-to-cart">
-                                                        <i class="fi-rr-shopping-basket"></i> Add To Cart
-                                                    </button>
-                                                    <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                                            class="fi-rr-heart"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title">
-                                                <a href="###">Digital Smart Watches</a>
-                                            </h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <div class="ec-pro-list-desc">
-                                                Lorem Ipsum is simply dummy text of the printing and
-                                                typesetting industry. Lorem Ipsum is simply dutmmy
-                                                text.
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">$100.00</span>
-                                                <span class="new-price">$80.00</span>
-                                            </span>
-                                            <div class="ec-pro-option">
-                                                <div class="ec-pro-color">
-                                                    <span class="ec-pro-opt-label">Color</span>
-                                                    <ul class="ec-opt-swatch ec-change-img">
-                                                        <li class="active">
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/8_2.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/8_2.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color: #e9dddd"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/8_3.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/8_3.jpg"
-                                                                data-tooltip="Orange"><span
-                                                                    style="background-color: #ffd5cb"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="ec-opt-clr-img"
-                                                                data-src="{{ asset('frontend') }}/assets/images/product-image/8_4.jpg"
-                                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/8_4.jpg"
-                                                                data-tooltip="Green"><span
-                                                                    style="background-color: #92e4fd"></span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <!-- Ec Pagination Start -->
@@ -786,7 +207,7 @@
                     </div>
                     <!--Shop content End -->
                 </div>
-                
+
             </div>
         </div>
     </section>
@@ -806,351 +227,106 @@
             </div>
             <div class="row">
                 <!-- New Product Content -->
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 ec-product-content" data-animation="flipInY">
-                    <div class="ec-product-inner">
-                        <div class="ec-pro-image-outer">
-                            <div class="ec-pro-image">
-                                <a href="###" class="image">
-                                    <img class="main-image"
-                                        src="{{ asset('frontend') }}/assets/images/product-image/9_1.jpg"
-                                        alt="Product" />
-                                    <img class="hover-image"
-                                        src="{{ asset('frontend') }}/assets/images/product-image/9_2.jpg"
-                                        alt="Product" />
-                                </a>
-                                <span class="flags">
-                                    <span class="sale">Sale</span>
+                @foreach ($new_collection as $product)
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
+                        <div class="ec-product-inner">
+                            <div class="ec-pro-image-outer">
+                                <div class="ec-pro-image">
+                                    <a href="{{ route('product', $product->slug) }}" class="image">
+                                        @php
+                                            $images = explode(',', $product->image); // Split images
+                                            $mainImage = $images[0] ?? 'default.jpg'; // First image or default
+                                            $hoverImage = $images[1] ?? $mainImage; // Second image or fallback
+                                        @endphp
+                                        <img class="main-image" src="{{ asset($mainImage) }}"
+                                            alt="{{ $product->name }}" />
+                                        <img class="hover-image" src="{{ asset($hoverImage) }}"
+                                            alt="{{ $product->name }}" />
+                                    </a>
+                                    @if ($product->discount_price && $product->discount_price < $product->base_price)
+                                        <span
+                                            class="percentage">{{ round((($product->base_price - $product->discount_price) / $product->base_price) * 100) }}%</span>
+                                    @endif
+                                    <a href="#" class="quickview" data-link-action="quickview" title="Quick view"
+                                        data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"
+                                        data-product-id="{{ $product->id }}">
+                                        <i class="fi-rr-eye"></i>
+                                    </a>
+                                    <div class="ec-pro-actions">
+                                        <a href="#" class="ec-btn-group compare" title="Compare"><i
+                                                class="fi fi-rr-arrows-repeat"></i></a>
+                                        <button title="Add To Cart" class="add-to-cart"
+                                            onclick="addToCart({{ $product->id }}, '{{ $product->name }}', {{ $product->discount_price ?? $product->base_price }}, '{{ asset($mainImage) }}', 1)">
+                                            <i class="fi-rr-shopping-basket"></i> Add To Cart
+                                        </button>
+                                        <a class="ec-btn-group wishlist" title="Wishlist"><i class="fi-rr-heart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ec-pro-content">
+                                <h5 class="ec-pro-title">
+                                    <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
+                                </h5>
+                                <div class="ec-pro-rating">
+                                    <!-- Assuming a rating field; adjust if you have one -->
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star"></i>
+                                </div>
+                                <div class="ec-pro-list-desc">
+                                    {{ Str::limit($product->description, 100) }}
+                                    <!-- Limit description to 100 chars -->
+                                </div>
+                                <span class="ec-price">
+                                    @if ($product->discount_price && $product->discount_price < $product->base_price)
+                                        <span class="old-price">${{ number_format($product->base_price, 2) }}</span>
+                                        <span class="new-price">${{ number_format($product->discount_price, 2) }}</span>
+                                    @else
+                                        <span class="new-price">${{ number_format($product->base_price, 2) }}</span>
+                                    @endif
                                 </span>
-                                <a href="#" class="quickview" data-link-action="quickview" title="Quick view"
-                                    data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><i
-                                        class="fi-rr-eye"></i></a>
-                                <div class="ec-pro-actions">
-                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
-                                            class="fi fi-rr-arrows-repeat"></i></a>
-                                    <button title="Add To Cart" class="add-to-cart">
-                                        <i class="fi-rr-shopping-basket"></i> Add To Cart
-                                    </button>
-                                    <a class="ec-btn-group wishlist" title="Wishlist"><i class="fi-rr-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ec-pro-content">
-                            <h5 class="ec-pro-title">
-                                <a href="###">Full Sleeve Cap T-Shirt</a>
-                            </h5>
-                            <div class="ec-pro-rating">
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star"></i>
-                            </div>
-                            <span class="ec-price">
-                                <span class="old-price">$20.00</span>
-                                <span class="new-price">$15.00</span>
-                            </span>
-                            <div class="ec-pro-option">
-                                <div class="ec-pro-color">
-                                    <span class="ec-pro-opt-label">Color</span>
-                                    <ul class="ec-opt-swatch ec-change-img">
-                                        <li>
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/9_1.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/9_1.jpg"
-                                                data-tooltip="Orange"><span style="background-color: #74c7ff"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/9_2.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/9_2.jpg"
-                                                data-tooltip="Green"><span style="background-color: #7af6ff"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/9_3.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/9_3.jpg"
-                                                data-tooltip="Sky Blue"><span
-                                                    style="background-color: #85ffeb"></span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="ec-pro-size">
-                                    <span class="ec-pro-opt-label">Size</span>
-                                    <ul class="ec-opt-size">
-                                        <li class="active">
-                                            <a href="#" class="ec-opt-sz" data-old="$20.00" data-new="$15.00"
-                                                data-tooltip="Small">S</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-sz" data-old="$22.00" data-new="$17.00"
-                                                data-tooltip="Medium">M</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-sz" data-old="$25.00" data-new="$20.00"
-                                                data-tooltip="Large">X</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-sz" data-old="$27.00" data-new="$22.00"
-                                                data-tooltip="Extra Large">XL</a>
-                                        </li>
-                                    </ul>
+                                <div class="ec-pro-option">
+                                    @if ($product->color)
+                                        <div class="ec-pro-color">
+                                            <span class="ec-pro-opt-label">Color</span>
+                                            <ul class="ec-opt-swatch ec-change-img">
+                                                @php $colors = explode(',', $product->color); @endphp
+                                                @foreach ($colors as $index => $color)
+                                                    <li class="{{ $index === 0 ? 'active' : '' }}">
+                                                        <a href="#" class="ec-opt-clr-img"
+                                                            data-src="{{ asset($images[$index] ?? $mainImage) }}"
+                                                            data-src-hover="{{ asset($images[$index] ?? $hoverImage) }}"
+                                                            data-tooltip="{{ $color }}">
+                                                            <span style="background-color: {{ $color }}"></span>
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+                                    @if ($product->size)
+                                        <div class="ec-pro-size">
+                                            <span class="ec-pro-opt-label">Size</span>
+                                            <ul class="ec-opt-size">
+                                                @php $sizes = explode(',', $product->size); @endphp
+                                                @foreach ($sizes as $index => $size)
+                                                    <li class="{{ $index === 0 ? 'active' : '' }}">
+                                                        <a href="#" class="ec-opt-sz"
+                                                            data-old="${{ number_format($product->base_price, 2) }}"
+                                                            data-new="${{ number_format($product->discount_price ?? $product->base_price, 2) }}"
+                                                            data-tooltip="{{ $size }}">{{ $size }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 ec-product-content" data-animation="flipInY">
-                    <div class="ec-product-inner">
-                        <div class="ec-pro-image-outer">
-                            <div class="ec-pro-image">
-                                <a href="###" class="image">
-                                    <img class="main-image"
-                                        src="{{ asset('frontend') }}/assets/images/product-image/11_1.jpg"
-                                        alt="Product" />
-                                    <img class="hover-image"
-                                        src="{{ asset('frontend') }}/assets/images/product-image/11_2.jpg"
-                                        alt="Product" />
-                                </a>
-                                <span class="flags">
-                                    <span class="new">New</span>
-                                </span>
-                                <a href="#" class="quickview" data-link-action="quickview" title="Quick view"
-                                    data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><i
-                                        class="fi-rr-eye"></i></a>
-                                <div class="ec-pro-actions">
-                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
-                                            class="fi fi-rr-arrows-repeat"></i></a>
-                                    <button title="Add To Cart" class="add-to-cart">
-                                        <i class="fi-rr-shopping-basket"></i> Add To Cart
-                                    </button>
-                                    <a class="ec-btn-group wishlist" title="Wishlist"><i class="fi-rr-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ec-pro-content">
-                            <h5 class="ec-pro-title">
-                                <a href="###">Classic Leather purse</a>
-                            </h5>
-                            <div class="ec-pro-rating">
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star"></i>
-                            </div>
-                            <span class="ec-price">
-                                <span class="old-price">$100.00</span>
-                                <span class="new-price">$80.00</span>
-                            </span>
-                            <div class="ec-pro-option">
-                                <div class="ec-pro-color">
-                                    <span class="ec-pro-opt-label">Color</span>
-                                    <ul class="ec-opt-swatch ec-change-img">
-                                        <li class="active">
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/11_1.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/11_1.jpg"
-                                                data-tooltip="Gray"><span style="background-color: #dba4ff"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/11_2.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/11_2.jpg"
-                                                data-tooltip="Orange"><span style="background-color: #ff4a77"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/11_3.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/11_3.jpg"
-                                                data-tooltip="Green"><span style="background-color: #c9ff55"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/11_4.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/11_4.jpg"
-                                                data-tooltip="Sky Blue"><span
-                                                    style="background-color: #ffcc5e"></span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 ec-product-content" data-animation="flipInY">
-                    <div class="ec-product-inner">
-                        <div class="ec-pro-image-outer">
-                            <div class="ec-pro-image">
-                                <a href="###" class="image">
-                                    <img class="main-image"
-                                        src="{{ asset('frontend') }}/assets/images/product-image/12_1.jpg"
-                                        alt="Product" />
-                                    <img class="hover-image"
-                                        src="{{ asset('frontend') }}/assets/images/product-image/12_2.jpg"
-                                        alt="Product" />
-                                </a>
-                                <span class="percentage">5%</span>
-                                <a href="#" class="quickview" data-link-action="quickview" title="Quick view"
-                                    data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><i
-                                        class="fi-rr-eye"></i></a>
-                                <div class="ec-pro-actions">
-                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
-                                            class="fi fi-rr-arrows-repeat"></i></a>
-                                    <button title="Add To Cart" class="add-to-cart">
-                                        <i class="fi-rr-shopping-basket"></i> Add To Cart
-                                    </button>
-                                    <a class="ec-btn-group wishlist" title="Wishlist"><i class="fi-rr-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ec-pro-content">
-                            <h5 class="ec-pro-title">
-                                <a href="###">Fancy Ladies Sandal</a>
-                            </h5>
-                            <div class="ec-pro-rating">
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star"></i>
-                            </div>
-                            <span class="ec-price">
-                                <span class="old-price">$100.00</span>
-                                <span class="new-price">$80.00</span>
-                            </span>
-                            <div class="ec-pro-option">
-                                <div class="ec-pro-color">
-                                    <span class="ec-pro-opt-label">Color</span>
-                                    <ul class="ec-opt-swatch ec-change-img">
-                                        <li class="active">
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/12_1.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/12_1.jpg"
-                                                data-tooltip="Gray"><span style="background-color: #db9dff"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/12_2.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/12_2.jpg"
-                                                data-tooltip="Orange"><span
-                                                    style="background-color: #00ffff"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/12_3.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/12_3.jpg"
-                                                data-tooltip="Green"><span style="background-color: #ffa7f3"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/12_4.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/12_4.jpg"
-                                                data-tooltip="Sky Blue"><span
-                                                    style="background-color: #89ff7e"></span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="ec-pro-size">
-                                    <span class="ec-pro-opt-label">Size</span>
-                                    <ul class="ec-opt-size">
-                                        <li class="active">
-                                            <a href="#" class="ec-opt-sz" data-old="$50.00" data-new="$40.00"
-                                                data-tooltip="Small">6</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-sz" data-old="$60.00" data-new="$50.00"
-                                                data-tooltip="Medium">7</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-sz" data-old="$70.00" data-new="$60.00"
-                                                data-tooltip="Large">8</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-sz" data-old="$80.00" data-new="$70.00"
-                                                data-tooltip="Extra Large">9</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 ec-product-content" data-animation="flipInY">
-                    <div class="ec-product-inner">
-                        <div class="ec-pro-image-outer">
-                            <div class="ec-pro-image">
-                                <a href="###" class="image">
-                                    <img class="main-image"
-                                        src="{{ asset('frontend') }}/assets/images/product-image/13_1.jpg"
-                                        alt="Product" />
-                                    <img class="hover-image"
-                                        src="{{ asset('frontend') }}/assets/images/product-image/13_2.jpg"
-                                        alt="Product" />
-                                </a>
-                                <a href="#" class="quickview" data-link-action="quickview" title="Quick view"
-                                    data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><i
-                                        class="fi-rr-eye"></i></a>
-                                <div class="ec-pro-actions">
-                                    <a href="#" class="ec-btn-group compare" title="Compare"><i
-                                            class="fi fi-rr-arrows-repeat"></i></a>
-                                    <button title="Add To Cart" class="add-to-cart">
-                                        <i class="fi-rr-shopping-basket"></i> Add To Cart
-                                    </button>
-                                    <a class="ec-btn-group wishlist" title="Wishlist"><i class="fi-rr-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ec-pro-content">
-                            <h5 class="ec-pro-title">
-                                <a href="###">Womens Leather Backpack</a>
-                            </h5>
-                            <div class="ec-pro-rating">
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star fill"></i>
-                                <i class="ecicon eci-star"></i>
-                            </div>
-                            <span class="ec-price">
-                                <span class="old-price">$100.00</span>
-                                <span class="new-price">$80.00</span>
-                            </span>
-                            <div class="ec-pro-option">
-                                <div class="ec-pro-color">
-                                    <span class="ec-pro-opt-label">Color</span>
-                                    <ul class="ec-opt-swatch ec-change-img">
-                                        <li class="active">
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/13_1.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/13_1.jpg"
-                                                data-tooltip="Gray"><span style="background-color: #deffa4"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/13_2.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/13_2.jpg"
-                                                data-tooltip="Orange"><span
-                                                    style="background-color: #ffcdbe"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/13_3.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/13_3.jpg"
-                                                data-tooltip="Green"><span style="background-color: #ff94df"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ec-opt-clr-img"
-                                                data-src="{{ asset('frontend') }}/assets/images/product-image/13_4.jpg"
-                                                data-src-hover="{{ asset('frontend') }}/assets/images/product-image/13_4.jpg"
-                                                data-tooltip="Sky Blue"><span
-                                                    style="background-color: #dd9bfc"></span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
                 <div class="col-sm-12 shop-all-btn">
                     <a href="{{ route('shop') }}">Shop All Collection</a>
                 </div>

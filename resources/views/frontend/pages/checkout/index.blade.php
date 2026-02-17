@@ -404,47 +404,6 @@
                         </div>
                         <!-- Sidebar Payment Block -->
                     </div>
-                    <div class="ec-sidebar-wrap ec-check-pay-img-wrap">
-                        <!-- Sidebar Payment Block -->
-                        <div class="ec-sidebar-block">
-                            <div class="ec-sb-title">
-                                <h3 class="ec-sidebar-title">Payment Method</h3>
-                            </div>
-                            <div class="ec-sb-block-content">
-                                <div class="ec-check-pay-img-inner">
-                                    <div class="ec-check-pay-img">
-                                        <img src="{{ asset('frontend') }}/assets/images/icons/payment1.png"
-                                            alt="" />
-                                    </div>
-                                    <div class="ec-check-pay-img">
-                                        <img src="{{ asset('frontend') }}/assets/images/icons/payment2.png"
-                                            alt="" />
-                                    </div>
-                                    <div class="ec-check-pay-img">
-                                        <img src="{{ asset('frontend') }}/assets/images/icons/payment3.png"
-                                            alt="" />
-                                    </div>
-                                    <div class="ec-check-pay-img">
-                                        <img src="{{ asset('frontend') }}/assets/images/icons/payment4.png"
-                                            alt="" />
-                                    </div>
-                                    <div class="ec-check-pay-img">
-                                        <img src="{{ asset('frontend') }}/assets/images/icons/payment5.png"
-                                            alt="" />
-                                    </div>
-                                    <div class="ec-check-pay-img">
-                                        <img src="{{ asset('frontend') }}/assets/images/icons/payment6.png"
-                                            alt="" />
-                                    </div>
-                                    <div class="ec-check-pay-img">
-                                        <img src="{{ asset('frontend') }}/assets/images/icons/payment7.png"
-                                            alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Sidebar Payment Block -->
-                    </div>
                 </div>
             </div>
         </div>
