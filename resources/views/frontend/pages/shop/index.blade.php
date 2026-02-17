@@ -1,4 +1,5 @@
 @extends('frontend.layouts.main')
+
 @section('content')
     <!-- Ec breadcrumb start -->
     <div class="sticky-header-next-sec ec-breadcrumb section-space-mb">
@@ -62,120 +63,15 @@
                     <!-- Shop content Start -->
                     <div class="shop-pro-content">
                         <div class="shop-pro-inner">
-                            <div class="row">
-                                @foreach ($products as $product)
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="{{ route('product', $product->slug) }}" class="image">
-                                                        @php
-                                                            $images = explode(',', $product->image); // Split images
-                                                            $mainImage = $images[0] ?? 'default.jpg'; // First image or default
-                                                            $hoverImage = $images[1] ?? $mainImage; // Second image or fallback
-                                                        @endphp
-                                                        <img class="main-image" src="{{ asset($mainImage) }}"
-                                                            alt="{{ $product->name }}" />
-                                                        <img class="hover-image" src="{{ asset($hoverImage) }}"
-                                                            alt="{{ $product->name }}" />
-                                                    </a>
-                                                    @if ($product->discount_price && $product->discount_price < $product->base_price)
-                                                        <span
-                                                            class="percentage">{{ round((($product->base_price - $product->discount_price) / $product->base_price) * 100) }}%</span>
-                                                    @endif
-                                                    <a href="#" class="ec-btn-group quickview"
-                                                        data-link-action="quickview" title="Quick view"
-                                                        data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"
-                                                        data-product-id="{{ $product->id }}">
-                                                        <i class="fi-rr-eye"></i>
-                                                    </a>
-                                                    <div class="ec-pro-actions">
-                                                        <a href="#" class="ec-btn-group compare" title="Compare"><i
-                                                                class="fi fi-rr-arrows-repeat"></i></a>
-                                                        <button title="Add To Cart" class="add-to-cart"
-                                                            onclick="addToCart({{ $product->id }}, '{{ $product->name }}', {{ $product->discount_price ?? $product->base_price }}, '{{ asset($mainImage) }}', 1)">
-                                                            <i class="fi-rr-shopping-basket"></i> Add To Cart
-                                                        </button>
-                                                        <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                                                class="fi-rr-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title">
-                                                    <a
-                                                        href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
-                                                </h5>
-                                                <div class="ec-pro-rating">
-                                                    <!-- Assuming a rating field; adjust if you have one -->
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <div class="ec-pro-list-desc">
-                                                    {{ Str::limit($product->description, 100) }}
-                                                    <!-- Limit description to 100 chars -->
-                                                </div>
-                                                <span class="ec-price">
-                                                    @if ($product->discount_price && $product->discount_price < $product->base_price)
-                                                        <span
-                                                            class="old-price">${{ number_format($product->base_price, 2) }}</span>
-                                                        <span
-                                                            class="new-price">${{ number_format($product->discount_price, 2) }}</span>
-                                                    @else
-                                                        <span
-                                                            class="new-price">${{ number_format($product->base_price, 2) }}</span>
-                                                    @endif
-                                                </span>
-                                                <div class="ec-pro-option">
-                                                    @if ($product->color)
-                                                        <div class="ec-pro-color">
-                                                            <span class="ec-pro-opt-label">Color</span>
-                                                            <ul class="ec-opt-swatch ec-change-img">
-                                                                @php $colors = explode(',', $product->color); @endphp
-                                                                @foreach ($colors as $index => $color)
-                                                                    <li class="{{ $index === 0 ? 'active' : '' }}">
-                                                                        <a href="#" class="ec-opt-clr-img"
-                                                                            data-src="{{ asset($images[$index] ?? $mainImage) }}"
-                                                                            data-src-hover="{{ asset($images[$index] ?? $mainImage) }}"
-                                                                            data-tooltip="{{ $color }}">
-                                                                            <span
-                                                                                style="background-color: {{ $color }}"></span>
-                                                                        </a>
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </div>
-                                                    @endif
-                                                    @if ($product->size)
-                                                        <div class="ec-pro-size">
-                                                            <span class="ec-pro-opt-label">Size</span>
-                                                            <ul class="ec-opt-size">
-                                                                @php $sizes = explode(',', $product->size); @endphp
-                                                                @foreach ($sizes as $index => $size)
-                                                                    <li class="{{ $index === 0 ? 'active' : '' }}">
-                                                                        <a href="#" class="ec-opt-sz"
-                                                                            data-old="${{ number_format($product->base_price, 2) }}"
-                                                                            data-new="${{ number_format($product->discount_price ?? $product->base_price, 2) }}"
-                                                                            data-tooltip="{{ $size }}">{{ $size }}</a>
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </div>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
+                            <div class="row" id="product-grid">
+                                <!-- Products will be rendered here dynamically -->
                             </div>
                         </div>
                         <!-- Ec Pagination Start -->
                         <div class="ec-pro-pagination">
-                            <span>Showing 1-12 of 21 item(s)</span>
-                            <ul class="ec-pro-pagination-inner">
+                            <span id="pagination-info">Showing 1-12 of 21 item(s)</span>
+                            <ul class="ec-pro-pagination-inner" id="pagination-controls">
+                                <!-- Pagination will be updated dynamically if needed -->
                                 <li><a class="active" href="#">1</a></li>
                                 <li><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
@@ -190,7 +86,7 @@
                     </div>
                     <!--Shop content End -->
                 </div>
-                <!-- Sidebar Area Start -->
+                <!-- filter by products Start -->
                 <div class="ec-shop-leftside col-lg-3 col-md-12 order-lg-first order-md-last">
                     <div id="shop_sidebar">
                         <div class="ec-sidebar-heading">
@@ -203,65 +99,8 @@
                                     <h3 class="ec-sidebar-title">Category</h3>
                                 </div>
                                 <div class="ec-sb-block-content">
-                                    <ul>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" checked />
-                                                <a href="#">clothes</a><span class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" /> <a href="#">Bags</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" /> <a href="#">Shoes</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" /> <a href="#">cosmetics</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" /> <a href="#">electrics</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" /> <a href="#">phone</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li id="ec-more-toggle-content" style="padding: 0; display: none">
-                                            <ul>
-                                                <li>
-                                                    <div class="ec-sidebar-block-item">
-                                                        <input type="checkbox" /> <a href="#">Watch</a><span
-                                                            class="checked"></span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="ec-sidebar-block-item">
-                                                        <input type="checkbox" /> <a href="#">Cap</a><span
-                                                            class="checked"></span>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item ec-more-toggle">
-                                                <span class="checked"></span><span id="ec-more-toggle">More
-                                                    Categories</span>
-                                            </div>
-                                        </li>
+                                    <ul id="category-filters">
+                                        <!-- Categories will be populated dynamically -->
                                     </ul>
                                 </div>
                             </div>
@@ -271,37 +110,8 @@
                                     <h3 class="ec-sidebar-title">Size</h3>
                                 </div>
                                 <div class="ec-sb-block-content">
-                                    <ul>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" value="" checked /><a
-                                                    href="#">S</a><span class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" value="" /><a href="#">M</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" value="" /> <a href="#">L</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" value="" /><a href="#">XL</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" value="" /><a href="#">XXL</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
+                                    <ul id="size-filters">
+                                        <!-- Sizes will be populated dynamically -->
                                     </ul>
                                 </div>
                             </div>
@@ -311,57 +121,8 @@
                                     <h3 class="ec-sidebar-title">Color</h3>
                                 </div>
                                 <div class="ec-sb-block-content">
-                                    <ul>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <span style="background-color: #c4d6f9"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <span style="background-color: #ff748b"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <span style="background-color: #000000"></span>
-                                            </div>
-                                        </li>
-                                        <li class="active">
-                                            <div class="ec-sidebar-block-item">
-                                                <span style="background-color: #2bff4a"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <span style="background-color: #ff7c5e"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <span style="background-color: #f155ff"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <span style="background-color: #ffef00"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <span style="background-color: #c89fff"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <span style="background-color: #7bfffa"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <span style="background-color: #56ffc1"></span>
-                                            </div>
-                                        </li>
+                                    <ul id="color-filters">
+                                        <!-- Colors will be populated dynamically -->
                                     </ul>
                                 </div>
                             </div>
@@ -372,14 +133,13 @@
                                 </div>
                                 <div class="ec-sb-block-content es-price-slider">
                                     <div class="ec-price-filter">
-                                        <div id="ec-sliderPrice" class="filter__slider-price" data-min="0"
-                                            data-max="250" data-step="10"></div>
+                                        <div id="ec-sliderPrice" class="filter__slider-price"></div>
                                         <div class="ec-price-input">
-                                            <label class="filter__label"><input type="text"
-                                                    class="filter__input" /></label>
+                                            <label class="filter__label"><input type="text" class="filter__input"
+                                                    id="price-min" /></label>
                                             <span class="ec-price-divider"></span>
-                                            <label class="filter__label"><input type="text"
-                                                    class="filter__input" /></label>
+                                            <label class="filter__label"><input type="text" class="filter__input"
+                                                    id="price-max" /></label>
                                         </div>
                                     </div>
                                 </div>
@@ -469,6 +229,220 @@
                 sortProducts(criteria);
             });
         });
-        // view button modal code
+        // script for filtering the products
+        try {
+            console.log('Shop filter script loaded successfully.');
+
+            // Load data from Laravel
+            let allProducts = @json($products);
+            let categories = @json($categories);
+            let sizes = @json($sizes);
+            let colors = @json($colors);
+            let minPrice = @json($minPrice);
+            let maxPrice = @json($maxPrice);
+            let filteredProducts = [...allProducts]; // Copy for filtering
+
+            // Function to populate filters dynamically
+            function populateFilters() {
+                // Categories
+                const categoryUl = document.getElementById('category-filters');
+                categories.forEach(cat => {
+                    const li = document.createElement('li');
+                    li.innerHTML =
+                        `<div class="ec-sidebar-block-item"><input type="checkbox" value="${cat.toLowerCase()}" /><a href="#">${cat}</a><span class="checked"></span></div>`;
+                    categoryUl.appendChild(li);
+                });
+
+                // Sizes
+                const sizeUl = document.getElementById('size-filters');
+                sizes.forEach(size => {
+                    const li = document.createElement('li');
+                    li.innerHTML =
+                        `<div class="ec-sidebar-block-item"><input type="checkbox" value="${size}" /><a href="#">${size}</a><span class="checked"></span></div>`;
+                    sizeUl.appendChild(li);
+                });
+
+                // Colors
+                const colorUl = document.getElementById('color-filters');
+                colors.forEach(color => {
+                    const li = document.createElement('li');
+                    li.innerHTML =
+                        `<div class="ec-sidebar-block-item"><span style="background-color: ${color}" data-color="${color}"></span></div>`;
+                    colorUl.appendChild(li);
+                });
+
+                // Price slider (using noUiSlider)
+                const slider = document.getElementById('ec-sliderPrice');
+                if (slider && typeof noUiSlider !== 'undefined') {
+                    noUiSlider.create(slider, {
+                        start: [minPrice, maxPrice],
+                        connect: true,
+                        range: {
+                            'min': minPrice,
+                            'max': maxPrice
+                        },
+                        step: 10
+                    });
+
+                    slider.noUiSlider.on('update', function(values) {
+                        document.getElementById('price-min').value = Math.round(values[0]);
+                        document.getElementById('price-max').value = Math.round(values[1]);
+                        applyFiltersAndSort();
+                    });
+                }
+            }
+
+            // Function to render products
+            function renderProducts(products) {
+                const grid = document.getElementById('product-grid');
+                if (!grid) {
+                    console.error('Product grid not found.');
+                    return;
+                }
+                grid.innerHTML = ''; // Clear grid
+
+                if (products.length === 0) {
+                    grid.innerHTML = '<p>No products found.</p>';
+                    return;
+                }
+
+                products.forEach(product => {
+                    const images = product.image ? product.image.split(',') : [];
+                    const mainImage = images[0] || 'default.jpg';
+                    const hoverImage = images[1] || mainImage;
+                    const price = product.discount_price || product.base_price;
+                    const oldPrice = product.discount_price ? product.base_price : '';
+
+                    // Generate product URL in JS to avoid Blade route error
+                    const productUrl = '{{ route('product', ':slug') }}'.replace(':slug', product.slug ||
+                        'default-slug');
+
+                    const productHtml = `
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
+                        <div class="ec-product-inner">
+                            <div class="ec-pro-image-outer">
+                                <div class="ec-pro-image">
+                                    <a href="${productUrl}" class="image">
+                                        <img class="main-image" src="/${mainImage}" alt="${product.name}" />
+                                        <img class="hover-image" src="/${hoverImage}" alt="${product.name}" />
+                                    </a>
+                                    ${product.discount_price ? `<span class="percentage">${Math.round(((product.base_price - product.discount_price) / product.base_price) * 100)}%</span>` : ''}
+                                    <a href="#" class="quickview" data-product-id="${product.id}">
+                                        <i class="fi-rr-eye"></i>
+                                    </a>
+                                    <div class="ec-pro-actions">
+                                        <a href="#" class="ec-btn-group compare"><i class="fi fi-rr-arrows-repeat"></i></a>
+                                        <button class="add-to-cart" onclick="addToCart(${product.id}, '${product.name}', ${price}, '/${mainImage}', 1, '${product.slug}')">
+                                            <i class="fi-rr-shopping-basket"></i> Add To Cart
+                                        </button>
+                                        <a class="ec-btn-group wishlist"><i class="fi-rr-heart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ec-pro-content">
+                                <h5 class="ec-pro-title">
+                                    <a href="${productUrl}">${product.name}</a>
+                                </h5>
+                                <div class="ec-pro-rating">
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star"></i>
+                                </div>
+                                <div class="ec-pro-list-desc">${product.description ? product.description.substring(0, 100) : 'No description.'}</div>
+                                <span class="ec-price">
+                                    ${oldPrice ? `<span class="old-price">$${parseFloat(oldPrice).toFixed(2)}</span>` : ''}
+                                    <span class="new-price">$${parseFloat(price).toFixed(2)}</span>
+                                </span>
+                                <div class="ec-pro-option">
+                                    ${product.color ? `<div class="ec-pro-color"><span class="ec-pro-opt-label">Color</span><ul class="ec-opt-swatch">${product.color.split(',').map(c => `<li><span style="background-color: ${c}"></span></li>`).join('')}</ul></div>` : ''}
+                                    ${product.size ? `<div class="ec-pro-size"><span class="ec-pro-opt-label">Size</span><ul class="ec-opt-size">${product.size.split(',').map(s => `<li><a href="#">${s}</a></li>`).join('')}</ul></div>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                    grid.insertAdjacentHTML('beforeend', productHtml);
+                });
+
+                // Update pagination info
+                const paginationInfo = document.getElementById('pagination-info');
+                if (paginationInfo) {
+                    paginationInfo.textContent = `Showing 1-${products.length} of ${allProducts.length} item(s)`;
+                }
+            }
+
+            // Function to apply filters and sort
+            function applyFiltersAndSort() {
+                // Apply filters
+                const selectedCategories = Array.from(document.querySelectorAll('#category-filters input:checked')).map(
+                    cb => cb.value.toLowerCase());
+                const selectedSizes = Array.from(document.querySelectorAll('#size-filters input:checked')).map(cb => cb
+                    .value);
+                const selectedColors = Array.from(document.querySelectorAll('#color-filters .active span')).map(span => span
+                    .getAttribute('data-color'));
+                const minPriceFilter = parseFloat(document.getElementById('price-min').value) || minPrice;
+                const maxPriceFilter = parseFloat(document.getElementById('price-max').value) || maxPrice;
+
+                filteredProducts = allProducts.filter(product => {
+                    const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(product
+                        .category?.name?.toLowerCase());
+                    const sizeMatch = selectedSizes.length === 0 || (product.size && product.size.split(',').some(
+                        s => selectedSizes.includes(s)));
+                    const colorMatch = selectedColors.length === 0 || (product.color && product.color.split(',')
+                        .some(c => selectedColors.includes(c)));
+                    const price = product.discount_price || product.base_price;
+                    const priceMatch = price >= minPriceFilter && price <= maxPriceFilter;
+
+                    return categoryMatch && sizeMatch && colorMatch && priceMatch;
+                });
+
+                // Apply sorting
+                const sortValue = document.getElementById('ec-select').value;
+                if (sortValue) {
+                    filteredProducts.sort((a, b) => {
+                        switch (sortValue) {
+                            case '2': // Name, A to Z
+                                return a.name.localeCompare(b.name);
+                            case '3': // Name, Z to A
+                                return b.name.localeCompare(a.name);
+                            case '4': // Price, low to high
+                                return (a.discount_price || a.base_price) - (b.discount_price || b.base_price);
+                            case '5': // Price, high to low
+                                return (b.discount_price || b.base_price) - (a.discount_price || a.base_price);
+                            default: // Relevance or default
+                                return 0;
+                        }
+                    });
+                }
+
+                renderProducts(filteredProducts);
+            }
+
+            // Event listeners for filters and sorting
+            document.addEventListener('change', function(e) {
+                if (e.target.closest('#category-filters') || e.target.closest('#size-filters') || e.target.id ===
+                    'ec-select') {
+                    applyFiltersAndSort();
+                }
+            });
+            document.getElementById('color-filters').addEventListener('click', function(e) {
+                if (e.target.tagName === 'SPAN') {
+                    e.target.closest('li').classList.toggle('active');
+                    applyFiltersAndSort();
+                }
+            });
+
+            // Initialize on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('DOM loaded, initializing shop filters.');
+                populateFilters(); // Populate filters from database
+                renderProducts(allProducts); // Show all products initially
+            });
+
+        } catch (e) {
+            console.error('Shop filter script failed to load:', e);
+        }
     </script>
 @endpush

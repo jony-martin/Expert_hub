@@ -18,7 +18,27 @@ class FrontendController extends Controller
 
     public function shop(){
         $products = Product::where('status', 1)->with('category')->take(8)->get();
-        return view('frontend.pages.shop.index', compact('products'));
+        // Fetch unique categories
+        $categories = $products->pluck('category.name')->unique()->filter()->values();
+
+        // Fetch unique sizes (explode comma-separated strings and flatten)
+        $sizes = $products->whereNotNull('size')->pluck('size')->map(function($s) {
+            return explode(',', $s);
+        })->flatten()->unique()->filter()->values();
+
+        // Fetch unique colors (explode comma-separated strings and flatten)
+        $colors = $products->whereNotNull('color')->pluck('color')->map(function($c) {
+            return explode(',', $c);
+        })->flatten()->unique()->filter()->values();
+
+        // Fetch min and max prices (using base_price or discount_price if available)
+        $prices = $products->map(function($p) {
+            return $p->discount_price ?? $p->base_price;
+        });
+        $minPrice = $prices->min() ?? 0;
+        $maxPrice = $prices->max() ?? 250;
+
+        return view('frontend.pages.shop.index', compact('products', 'categories', 'sizes', 'colors', 'minPrice', 'maxPrice'));
     }
 
     public function product($slug){
