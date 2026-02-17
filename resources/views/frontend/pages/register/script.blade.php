@@ -19,28 +19,29 @@
             localStorage.setItem(storageKey, JSON.stringify(formData));
         }
 
-        // Function to restore form data from localStorage
+        // Function to restore form data from localStorage (restore inputs, but start from step 1)
         function restoreFormData() {
             var storedData = localStorage.getItem(storageKey);
-            if (storedData) {
+            var resetFlag = localStorage.getItem('resetForm');
+            if (resetFlag === 'true') {
+                // Reset flag detected: Clear data and reset form
+                clearFormData();
+                resetForm();
+                localStorage.removeItem('resetForm');
+            } else if (storedData) {
                 try {
                     var formData = JSON.parse(storedData);
-                    current = formData.currentStep || 1;
-                    // Populate inputs
+                    // Restore input values
                     for (var id in formData.inputs) {
                         $('#' + id).val(formData.inputs[id]);
                     }
-                    // Update progress bar
+                    // Always start from step 1
+                    current = 1;
                     updateProgressBar(current);
-                    // Position fieldsets correctly for the restored step
+                    // Position fieldsets to first step
                     $('fieldset').each(function(index) {
                         var stepIndex = index + 1;
-                        if (stepIndex < current) {
-                            $(this).css({
-                                'left': '-100%',
-                                'z-index': 1
-                            }).hide();
-                        } else if (stepIndex === current) {
+                        if (stepIndex === 1) {
                             $(this).css({
                                 'left': '0',
                                 'z-index': 1
@@ -55,8 +56,34 @@
                 } catch (e) {
                     console.error('Error restoring form data:', e);
                     localStorage.removeItem(storageKey); // Clear corrupted data
+                    resetForm(); // Reset if corrupted
                 }
+            } else {
+                // No saved data: Reset form for fresh registration
+                resetForm();
             }
+        }
+
+        // Function to reset the form to initial state
+        function resetForm() {
+            $('#registration-form')[0].reset(); // Clear all form fields
+            current = 1; // Reset step
+            updateProgressBar(current); // Update progress bar
+            // Position fieldsets to first step
+            $('fieldset').each(function(index) {
+                var stepIndex = index + 1;
+                if (stepIndex === 1) {
+                    $(this).css({
+                        'left': '0',
+                        'z-index': 1
+                    }).show();
+                } else {
+                    $(this).css({
+                        'left': '100%',
+                        'z-index': 1
+                    }).hide();
+                }
+            });
         }
 
         // Function to clear form data from localStorage
@@ -64,7 +91,7 @@
             localStorage.removeItem(storageKey);
         }
 
-        // Restore data on page load
+        // Restore data on page load (inputs remembered, step reset to 1)
         restoreFormData();
 
         // Update on resize (for dynamic responsiveness)
@@ -220,9 +247,9 @@
             });
         });
 
-        // Submit button click (opens OTP modal)
-        $(".submit").click(function() {
-            console.log("Submit button clicked!");
+        // Final submit button click (opens OTP modal)
+        $(".final-submit").click(function() {
+            console.log("Final submit button clicked!");
             console.log("Current step:", current);
             if (validateStep(current)) {
                 console.log("Validation passed, opening modal.");
@@ -273,6 +300,7 @@
                 $('#otp-method').addClass('active');
             }, 250);
         });
+
         // OTP form submission (reinforced validation)
         $('#otp-form').on('submit', function(e) {
             e.preventDefault(); // Always prevent default submission
@@ -290,7 +318,10 @@
                 $('#otp-code').focus();
                 return false;
             }
-            // OTP valid: Submit the registration form
+            // OTP valid: Clear data, reset form, set flag, then submit
+            clearFormData();
+            resetForm();
+            localStorage.setItem('resetForm', 'true'); // Set flag for extra safety
             $('#registration-form').submit(); // Assumes your multi-step form has id="registration-form"
             // Fortify will handle registration and redirection
         });

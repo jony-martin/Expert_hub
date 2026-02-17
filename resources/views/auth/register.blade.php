@@ -179,8 +179,8 @@
                 <div class="hs-form-field">
                     <label for="edit-submitted-cultivation-amount-3">Facebook*</label>
                     <input id="edit-submitted-cultivation-amount-3" name="facebook" required type="url"
-                        placeholder="https://facebook.com/yourprofile" aria-describedby="facebook-error"
-                        autocomplete="url" />
+                        placeholder="https://facebook.com/yourprofile" aria-describedby="facebook-error" autocomplete="off"
+                        value="{{ $errors->any() ? old('facebook') : '' }}" />
                     <span id="facebook-error" class="error1" style="display: none;">
                         Please enter your Facebook Url.
                     </span>
@@ -190,17 +190,17 @@
                     <label for="edit-submitted-cultivation-amount-4">LinkedIn*</label>
                     <input id="edit-submitted-cultivation-amount-4" name="linkedin" required type="url"
                         placeholder="https://linkedin.com/in/yourprofile" aria-describedby="linkedin-error"
-                        autocomplete="url" />
+                        autocomplete="off" value="{{ $errors->any() ? old('linkedin') : '' }}" />
                     <span id="linkedin-error" class="error1" style="display: none;">
                         Please enter your linkedin URL.
                     </span>
                 </div>
 
-                <button type="button" class="previous action-button">Previous</button>
-                <button type="button" class="submit action-button">Submit</button>
+                <div class="button-group">
+                    <button type="button" class="previous action-button">Previous</button>
+                    <button type="button" class="final-submit action-button">Submit</button>
+                </div>
             </fieldset>
-
-
 
             <!-- Modal for OTP -->
             <div id="otp-modal" class="modal"> <!-- Removed modal-show to hide it on page load -->

@@ -639,4 +639,15 @@
             /* Smaller margin */
         }
     }
+
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .button-group .action-button {
+        flex: 0 0 auto;
+    }
 </style>
