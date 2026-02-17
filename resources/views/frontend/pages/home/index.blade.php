@@ -110,7 +110,7 @@
                                                         <a href="#" class="ec-btn-group compare" title="Compare"><i
                                                                 class="fi fi-rr-arrows-repeat"></i></a>
                                                         <button title="Add To Cart" class="add-to-cart"
-                                                            onclick="addToCart({{ $product->id }}, '{{ $product->name }}', {{ $product->discount_price ?? $product->base_price }}, '{{ asset($mainImage) }}', 1)">
+                                                            onclick="addToCart({{ $product->id }}, '{{ $product->name }}', {{ $product->discount_price ?? $product->base_price }}, '{{ asset($mainImage) }}', 1, '{{ $product->slug }}')">
                                                             <i class="fi-rr-shopping-basket"></i> Add To Cart
                                                         </button>
                                                         <a class="ec-btn-group wishlist" title="Wishlist"><i
