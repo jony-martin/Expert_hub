@@ -136,202 +136,32 @@
                                 <div class="ec-checkout-summary">
                                     <div>
                                         <span class="text-left">Sub-Total</span>
-                                        <span class="text-right">$80.00</span>
+                                        <span class="text-right" id="checkout-sub-total">$0.00</span>
                                     </div>
                                     <div>
                                         <span class="text-left">Delivery Charges</span>
-                                        <span class="text-right">$80.00</span>
+                                        <span class="text-right" id="checkout-delivery">$0.00</span>
                                     </div>
                                     <div>
-                                        <span class="text-left">Coupan Discount</span>
-                                        <span class="text-right"><a class="ec-checkout-coupan">Apply Coupan</a></span>
+                                        <span class="text-left">Coupon Discount</span>
+                                        <span class="text-right"><a class="ec-checkout-coupan">Apply Coupon</a></span>
                                     </div>
                                     <div class="ec-checkout-coupan-content">
                                         <form class="ec-checkout-coupan-form" name="ec-checkout-coupan-form"
                                             method="post" action="#">
                                             <input class="ec-coupan" type="text" required=""
-                                                placeholder="Enter Your Coupan Code" name="ec-coupan" value="" />
+                                                placeholder="Enter Your Coupon Code" name="ec-coupan" value="" />
                                             <button class="ec-coupan-btn button btn-primary" type="submit"
-                                                name="subscribe" value="">
-                                                Apply
-                                            </button>
+                                                name="subscribe" value="">Apply</button>
                                         </form>
                                     </div>
                                     <div class="ec-checkout-summary-total">
                                         <span class="text-left">Total Amount</span>
-                                        <span class="text-right">$80.00</span>
+                                        <span class="text-right" id="checkout-total">$0.00</span>
                                     </div>
                                 </div>
-                                <div class="ec-checkout-pro">
-                                    <div class="col-sm-12 mb-6">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="###" class="image">
-                                                        <img class="main-image"
-                                                            src="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg"
-                                                            alt="Product" />
-                                                        <img class="hover-image"
-                                                            src="{{ asset('frontend') }}/assets/images/product-image/1_2.jpg"
-                                                            alt="Product" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title">
-                                                    <a href="###">Baby toy teddy bear</a>
-                                                </h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">$95.00</span>
-                                                    <span class="new-price">$79.00</span>
-                                                </span>
-                                                <div class="ec-pro-option">
-                                                    <div class="ec-pro-color">
-                                                        <span class="ec-pro-opt-label">Color</span>
-                                                        <ul class="ec-opt-swatch ec-change-img">
-                                                            <li class="active">
-                                                                <a href="#" class="ec-opt-clr-img"
-                                                                    data-src="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg"
-                                                                    data-src-hover="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg"
-                                                                    data-tooltip="Gray"><span
-                                                                        style="background-color: #6d4c36"></span></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="ec-opt-clr-img"
-                                                                    data-src="{{ asset('frontend') }}/assets/images/product-image/1_2.jpg"
-                                                                    data-src-hover="{{ asset('frontend') }}/assets/images/product-image/1_2.jpg"
-                                                                    data-tooltip="Orange"><span
-                                                                        style="background-color: #ffb0e1"></span></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="ec-opt-clr-img"
-                                                                    data-src="{{ asset('frontend') }}/assets/images/product-image/1_3.jpg"
-                                                                    data-src-hover="{{ asset('frontend') }}/assets/images/product-image/1_3.jpg"
-                                                                    data-tooltip="Green"><span
-                                                                        style="background-color: #8beeff"></span></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="ec-opt-clr-img"
-                                                                    data-src="{{ asset('frontend') }}/assets/images/product-image/1_4.jpg"
-                                                                    data-src-hover="{{ asset('frontend') }}/assets/images/product-image/1_4.jpg"
-                                                                    data-tooltip="Sky Blue"><span
-                                                                        style="background-color: #74f8d1"></span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="ec-pro-size">
-                                                        <span class="ec-pro-opt-label">Size</span>
-                                                        <ul class="ec-opt-size">
-                                                            <li class="active">
-                                                                <a href="#" class="ec-opt-sz" data-old="$95.00"
-                                                                    data-new="$79.00" data-tooltip="Small">S</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="ec-opt-sz" data-old="$90.00"
-                                                                    data-new="$70.00" data-tooltip="Medium">M</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="ec-opt-sz" data-old="$80.00"
-                                                                    data-new="$60.00" data-tooltip="Large">X</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="ec-opt-sz" data-old="$70.00"
-                                                                    data-new="$50.00" data-tooltip="Extra Large">XL</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 mb-0">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="###" class="image">
-                                                        <img class="main-image"
-                                                            src="{{ asset('frontend') }}/assets/images/product-image/8_1.jpg"
-                                                            alt="Product" />
-                                                        <img class="hover-image"
-                                                            src="{{ asset('frontend') }}/assets/images/product-image/8_2.jpg"
-                                                            alt="Product" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title">
-                                                    <a href="###">Smart I watch 2GB</a>
-                                                </h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">$58.00</span>
-                                                    <span class="new-price">$45.00</span>
-                                                </span>
-                                                <div class="ec-pro-option">
-                                                    <div class="ec-pro-color">
-                                                        <span class="ec-pro-opt-label">Color</span>
-                                                        <ul class="ec-opt-swatch ec-change-img">
-                                                            <li class="active">
-                                                                <a href="#" class="ec-opt-clr-img"
-                                                                    data-src="{{ asset('frontend') }}/assets/images/product-image/8_2.jpg"
-                                                                    data-src-hover="{{ asset('frontend') }}/assets/images/product-image/8_2.jpg"
-                                                                    data-tooltip="Gray"><span
-                                                                        style="background-color: #f3f3f3"></span></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="ec-opt-clr-img"
-                                                                    data-src="{{ asset('frontend') }}/assets/images/product-image/8_3.jpg"
-                                                                    data-src-hover="{{ asset('frontend') }}/assets/images/product-image/8_3.jpg"
-                                                                    data-tooltip="Orange"><span
-                                                                        style="background-color: #fac7f3"></span></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="ec-opt-clr-img"
-                                                                    data-src="{{ asset('frontend') }}/assets/images/product-image/8_4.jpg"
-                                                                    data-src-hover="{{ asset('frontend') }}/assets/images/product-image/8_4.jpg"
-                                                                    data-tooltip="Green"><span
-                                                                        style="background-color: #c5f1ff"></span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="ec-pro-size">
-                                                        <span class="ec-pro-opt-label">Size</span>
-                                                        <ul class="ec-opt-size">
-                                                            <li class="active">
-                                                                <a href="#" class="ec-opt-sz" data-old="$48.00"
-                                                                    data-new="$45.00" data-tooltip="Small">S</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="ec-opt-sz" data-old="$90.00"
-                                                                    data-new="$70.00" data-tooltip="Medium">M</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="ec-opt-sz" data-old="$80.00"
-                                                                    data-new="$60.00" data-tooltip="Large">X</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="ec-opt-sz" data-old="$70.00"
-                                                                    data-new="$50.00" data-tooltip="Extra Large">XL</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="ec-checkout-pro" id="checkout-products">
+                                    <!-- Cart products will be dynamically added here -->
                                 </div>
                             </div>
                         </div>
@@ -346,15 +176,14 @@
                             <div class="ec-sb-block-content">
                                 <div class="ec-checkout-del">
                                     <div class="ec-del-desc">
-                                        Please select the preferred shipping method to use on this
-                                        order.
+                                        Please select the preferred shipping method to use on this order.
                                     </div>
                                     <form action="#">
                                         <span class="ec-del-option">
                                             <span>
                                                 <span class="ec-del-opt-head">Free Shipping</span>
                                                 <input type="radio" id="del1" name="radio-group" checked />
-                                                <label for="del1">Rate - $0 .00</label>
+                                                <label for="del1">Rate - $0.00</label>
                                             </span>
                                             <span>
                                                 <span class="ec-del-opt-head">Flat Rate</span>
@@ -381,8 +210,7 @@
                             <div class="ec-sb-block-content">
                                 <div class="ec-checkout-pay">
                                     <div class="ec-pay-desc">
-                                        Please select the preferred payment method to use on this
-                                        order.
+                                        Please select the preferred payment method to use on this order.
                                     </div>
                                     <form action="#">
                                         <span class="ec-pay-option">
@@ -396,8 +224,8 @@
                                             <textarea name="your-commemt" placeholder="Comments"></textarea>
                                         </span>
                                         <span class="ec-pay-agree"><input type="checkbox" value="" /><a
-                                                href="#">I have read and agree to the
-                                                <span>Terms & Conditions</span></a><span class="checked"></span></span>
+                                                href="#">I have read and agree to the <span>Terms &
+                                                    Conditions</span></a><span class="checked"></span></span>
                                     </form>
                                 </div>
                             </div>
@@ -409,3 +237,115 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        try {
+            console.log('Checkout page script loaded successfully.');
+
+            // Cart data stored in localStorage
+            let cart = [];
+            try {
+                cart = JSON.parse(localStorage.getItem('cart')) || [];
+                console.log('Cart loaded from localStorage:', cart);
+            } catch (e) {
+                console.error('Error loading cart from localStorage:', e);
+                cart = [];
+            }
+
+            // Function to render checkout summary and products
+            function renderCheckout() {
+                try {
+                    const productsContainer = document.getElementById('checkout-products');
+                    const subTotalElement = document.getElementById('checkout-sub-total');
+                    const deliveryElement = document.getElementById('checkout-delivery');
+                    const totalElement = document.getElementById('checkout-total');
+
+                    if (!productsContainer || !subTotalElement || !deliveryElement || !totalElement) {
+                        console.error('Checkout DOM elements not found. Skipping render.');
+                        return;
+                    }
+
+                    productsContainer.innerHTML = ''; // Clear existing products
+
+                    if (cart.length === 0) {
+                        productsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                        subTotalElement.textContent = '$0.00';
+                        deliveryElement.textContent = '$0.00';
+                        totalElement.textContent = '$0.00';
+                        return;
+                    }
+
+                    let subTotal = 0;
+                    cart.forEach(item => {
+                        const itemTotal = item.price * item.quantity;
+                        subTotal += itemTotal;
+
+                        // Generate product URL
+                        const productUrl = '{{ route('product', ':slug') }}'.replace(':slug', item.slug ||
+                            'default-slug');
+
+                        const productDiv = document.createElement('div');
+                        productDiv.className = 'col-sm-12 mb-6';
+                        productDiv.innerHTML = `
+                        <div class="ec-product-inner">
+                            <div class="ec-pro-image-outer">
+                                <div class="ec-pro-image">
+                                    <a href="${productUrl}" class="image">
+                                        <img class="main-image" src="${item.image}" alt="${item.name}" />
+                                        <img class="hover-image" src="${item.image}" alt="${item.name}" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ec-pro-content">
+                                <h5 class="ec-pro-title">
+                                    <a href="${productUrl}">${item.name}</a>
+                                </h5>
+                                <div class="ec-pro-rating">
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star"></i>
+                                </div>
+                                <span class="ec-price">
+                                    <span class="new-price">$${item.price.toFixed(2)} x ${item.quantity}</span>
+                                </span>
+                                <div class="ec-pro-option">
+                                    <!-- Add variations if stored in cart, e.g., color/size -->
+                                    <p>Quantity: ${item.quantity}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                        productsContainer.appendChild(productDiv);
+                    });
+
+                    // Calculate totals
+                    const deliveryCharges = 0.00; // Free shipping, update based on selection if needed
+                    const couponDiscount = 0.00; // Add coupon logic here
+                    const total = subTotal + deliveryCharges - couponDiscount;
+
+                    // Update the summary
+                    subTotalElement.textContent = `$${subTotal.toFixed(2)}`;
+                    deliveryElement.textContent = `$${deliveryCharges.toFixed(2)}`;
+                    totalElement.textContent = `$${total.toFixed(2)}`;
+
+                    console.log('Checkout totals calculated - Sub-Total:', subTotal, 'Delivery:', deliveryCharges, 'Total:',
+                        total);
+                } catch (e) {
+                    console.error('Error rendering checkout:', e);
+                }
+            }
+
+            // Initialize checkout on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('DOM loaded, initializing checkout.');
+                renderCheckout();
+            });
+
+        } catch (e) {
+            console.error('Checkout page script failed to load:', e);
+        }
+    </script>
+@endpush
