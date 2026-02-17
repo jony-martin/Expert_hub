@@ -161,4 +161,51 @@
             });
         });
     }
+
+    function productDelete(id) {
+        let url = "{{ route('admin.products.destroy', ':id') }}";
+        url = url.replace(':id', id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to delete this Product!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#2f4cdd',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed && id) {
+                $.ajax({
+                    url: url,
+                    type: 'DELETE',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        if (response.status) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Product has been deleted.',
+                                'success'
+                            ).then((result) => {
+                                if (result.isConfirmed) {
+                                    location
+                                .reload(); // Reloads the page to refresh the DataTable
+                                    // Alternative: Use DataTables API to reload without full page reload
+                                    // $('#your-table-id').DataTable().ajax.reload();
+                                }
+                            })
+                        } else {
+                            Swal.fire(
+                                'Error!',
+                                'Product has not been deleted.',
+                                'error'
+                            )
+                        }
+                    },
+                    
+                });
+            }
+        })
+    }
 </script>

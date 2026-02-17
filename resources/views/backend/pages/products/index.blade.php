@@ -21,17 +21,19 @@
             <div class="card-datatable">
                 <table class="common-products table" data-url="{{ route('admin.products.index') }}"
                     data-columns='[
+                { "data": "image" },
                 { "data": "name" },
-                { "data": "category" },
                 { "data": "base_price" },
+                { "data": "discount_price" },
                 { "data": "status" },
                 { "data": "actions" }
                 ]'>
                     <thead class="border-top">
                         <tr>
+                            <th>image</th>
                             <th>product</th>
-                            <th>category</th>
                             <th>price</th>
+                            <th>discount price</th>
                             <th>status</th>
                             <th>actions</th>
                         </tr>
