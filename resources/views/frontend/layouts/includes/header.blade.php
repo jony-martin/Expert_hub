@@ -50,10 +50,10 @@
                                         <li>
                                             <a class="dropdown-item" href="{{ route('login') }}">Login</a>
                                         </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('register') }}">Register</a>
+                                        </li>
                                     @endif
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('register') }}">Register</a>
-                                    </li>
                                 </ul>
                             </div>
                             <!-- Header User End -->
