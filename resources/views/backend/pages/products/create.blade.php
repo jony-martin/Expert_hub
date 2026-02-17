@@ -59,7 +59,8 @@
                                     <div class="mb-6 col ecommerce-select2-dropdown">
                                         <label class="form-label mb-1" for="status">Status
                                         </label>
-                                        <select id="status" name="status" class="select2 form-select" data-placeholder="Published">
+                                        <select id="status" name="status" class="select2 form-select"
+                                            data-placeholder="Published">
                                             <option value="">Published</option>
                                             <option value="Published">Published</option>
                                             <option value="Scheduled">Scheduled</option>
@@ -71,9 +72,8 @@
                                 <div class="col-12 col-md-6 mb-4">
                                     <div>
                                         <label for="tags" class="form-label mb-1">Tags</label>
-                                        <input id="tags" class="form-control"
-                                            name="tags" value="Normal,Standard,Premium"
-                                            aria-label="Product Tags" />
+                                        <input id="tags" class="form-control" name="tags"
+                                            value="Normal,Standard,Premium" aria-label="Product Tags" />
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 mb-4">
@@ -107,30 +107,27 @@
                                 <!-- color -->
                                 <div class="col-12 col-md-6 mb-4">
                                     <!-- Inline Checkboxes -->
-                                    <div class="row row-bordered g-0">
-                                        <label for="" class="form-label">Colors</label>
-                                        <!-- Color Picker -->
-                                        <div class="row">
-                                            <div class="classic col col-sm-3 col-lg-2">
-                                                <p>Classic</p>
-                                                <div id="color-picker-classic"></div>
-                                            </div>
-                                            <div class="monolith col col-sm-3 col-lg-2">
-                                                <p>Monolith</p>
-                                                <div id="color-picker-monolith"></div>
-                                            </div>
-                                            <div class="nano col col-sm-3 col-lg-2">
-                                                <p>Nano</p>
-                                                <div id="color-picker-nano"></div>
-                                            </div>
+                                    <div class="row flex-grow-1 row-bordered g-5">
+                                        <div class="col-auto">
+                                            <label for="exampleColorInput" class="form-label">Colors</label>
                                         </div>
-                                        <!-- /Color Picker-->
+                                        <div class="col-auto">
+                                            <input type="color" class="form-control form-control-color" id="colorOne"
+                                                value="#FF6284" title="Choose your color">
+                                        </div>
+                                        <div class="col-auto">
+                                            <input type="color" class="form-control form-control-color" id="colorTwo"
+                                                value="#A6D7F8" title="Choose your color">
+                                        </div>
+                                        <div class="col-auto">
+                                            <input type="color" class="form-control form-control-color" id="colorThree"
+                                                value="#FFCF91" title="Choose your color">
+                                        </div>
+                                        <div class="col-auto">
+                                            <input type="color" class="form-control form-control-color" id="colorFour"
+                                                value="#47F3C7" title="Choose your color">
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- Description -->
-                                <div class="col-12 col-md-12 mb-6">
-                                    <label class="form-label" for="description">Description</label>
-                                    <textarea class="form-control" id="description" name="description" rows="3">{{ old('description') }}</textarea>
                                 </div>
 
                             </div>
@@ -138,33 +135,35 @@
                     </div>
                     <div class="row">
                         <!-- Pricing Card -->
-                        <div class="col-12 col-md-6 mb-6">
-                            <div class="card mb-6">
+                        <div class="col-12 col-md-12 mb-6">
+                            <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title mb-0">Pricing</h5>
+                                    <h5 class="card-title mb-0">Description and Pricing</h5>
                                 </div>
                                 <div class="card-body">
-                                    <!-- Base Price -->
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-price">Base Price</label>
-                                        <input type="number" class="form-control" id="ecommerce-product-price"
-                                            placeholder="Price" name="base_price" aria-label="Product price" />
-                                    </div>
-                                    <!-- Discounted Price -->
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-discount-price">Discounted
-                                            Price</label>
-                                        <input type="number" class="form-control" id="ecommerce-product-discount-price"
-                                            placeholder="Discounted Price" name="discounted_price"
-                                            aria-label="Product discounted price" />
-                                    </div>
-                                    <!-- Instock switch -->
-                                    <div class="d-flex justify-content-between align-items-center border-top pt-2">
-                                        <span class="mb-0">In stock</span>
-                                        <div class="w-25 d-flex justify-content-end">
-                                            <div class="form-check form-switch me-n3">
-                                                <input type="checkbox" class="form-check-input" checked />
+                                    <div class="row">
+                                        <!-- Base Price -->
+                                        <div class="col-12 col-md-6 mb-6">
+                                            <label class="form-label mb-3" for="ecommerce-product-base-price">Product Price</label>
+                                            <div class="mb-6">
+                                                <label class="form-label" for="ecommerce-product-price">Base Price</label>
+                                                <input type="number" class="form-control" id="ecommerce-product-price"
+                                                    placeholder="Price" name="base_price" aria-label="Product price" />
                                             </div>
+                                            <!-- Discounted Price -->
+                                            <div class="mb-6">
+                                                <label class="form-label"
+                                                    for="ecommerce-product-discount-price">Discounted
+                                                    Price</label>
+                                                <input type="number" class="form-control"
+                                                    id="ecommerce-product-discount-price" placeholder="Discounted Price"
+                                                    name="discounted_price" aria-label="Product discounted price" />
+                                            </div>
+                                        </div>
+                                        <!-- Description -->
+                                        <div class="col-12 col-md-6 mb-6">
+                                            <label class="form-label" for="description">Description</label>
+                                            <textarea class="form-control" id="description" name="description" rows="3">{{ old('description') }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -172,48 +171,38 @@
                         </div>
                         <!-- /Pricing Card -->
                         <!-- Media -->
-                        <div class="col-12 col-md-6 mb-6">
-                            <div class="card mb-6">
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <h5 class="mb-0 card-title">Product Image</h5>
-                                </div>
+                        <!-- Multi  -->
+                        <div class="col-12 col-md-12 mb-6">
+                            <div class="card">
+                                <h5 class="card-header">Choose Multiple Images</h5>
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 col-md-8 mb-6">
-                                            <div class="mb-6">
-                                                <label class="form-label" for="ecommerce-product-image">Image</label>
-                                                <input type="file" class="form-control" id="ecommerce-product-image"
-                                                    name="image" aria-label="Product image" />
-                                            </div>
+                                    <form action="/upload" class="dropzone needsclick" id="dropzone-multi">
+                                        <div class="dz-message needsclick">
+                                            Drop files here or click to upload
+                                            <span class="note needsclick">(This is just a demo dropzone. Selected files are
+                                                <span class="fw-medium">not</span> actually
+                                                uploaded.)</span>
                                         </div>
-                                        <div class="col-12 col-md-4 mb-6">
-                                            <div class="mb-6">
-                                                <div class="form-control">
-                                                    <label class="form-label" for="logo_preview">Image Preview</label>
-                                                    <div class="image-preview">
-                                                        <img id="logo_preview"
-                                                            src="https://prodinsight.verticasoft.tech/uploads/settings/prodinsight1767380471695815f79b43c.png"
-                                                            class="img-fluid rounded" alt="Logo Preview" />
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="fallback">
+                                            <input name="file" type="file" />
                                         </div>
+                                    </form>
+                                    <div class="col-12 form-control-validation d-flex justify-content-end gap-2 mt-6 p-6">
+                                        <button type="submit" class="btn btn-primary me-2">
+                                            <i class="icon-base ti tabler-device-floppy icon-xs me-2"></i>
+                                            Update
+                                        </button>
+                                        <button type="button" class="btn btn-secondary me-2"
+                                            onclick="window.location.href='#'">
+                                            <i class="icon-base ti tabler-x icon-xs me-2"></i>
+                                            Cancel
+                                        </button>
+                                        <button type="button" class="btn btn-danger"
+                                            onclick="window.location.reload();">
+                                            <i class="icon-base ti tabler-refresh icon-xs me-2"></i>
+                                            Reset
+                                        </button>
                                     </div>
-                                </div>
-                                <div class="col-12 form-control-validation d-flex justify-content-end gap-2 mt-6 p-6">
-                                    <button type="submit" class="btn btn-primary me-2">
-                                        <i class="icon-base ti tabler-device-floppy icon-xs me-2"></i>
-                                        Update
-                                    </button>
-                                    <button type="button" class="btn btn-secondary me-2"
-                                        onclick="window.location.href='#'">
-                                        <i class="icon-base ti tabler-x icon-xs me-2"></i>
-                                        Cancel
-                                    </button>
-                                    <button type="button" class="btn btn-danger" onclick="window.location.reload();">
-                                        <i class="icon-base ti tabler-refresh icon-xs me-2"></i>
-                                        Reset
-                                    </button>
                                 </div>
                             </div>
                         </div>

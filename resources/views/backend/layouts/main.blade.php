@@ -201,6 +201,7 @@
     <script src="{{ asset('backend') }}/assets/js/pages-account-settings-account.js"></script>
     <script src="{{ asset('backend') }}/assets/js/forms-pickers.js"></script>
     <script src="{{ asset('backend') }}/assets/js/app-ecommerce-category-list.js"></script>
+    <script src="{{ asset('backend') }}/assets/js/forms-file-upload.js"></script>
 
     {{-- summernote --}}
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>

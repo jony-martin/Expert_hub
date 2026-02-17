@@ -8,16 +8,13 @@
         <!-- Users List Table -->
         <div class="card">
             <div class="card-header border-bottom">
-
                 <div class="d-flex justify-content-between align-items-center row pt-4 gap-4 gap-md-0">
                     <div class="col-md-4">
                         <h5 class="card-title mb-0">Users List</h5>
                     </div>
                     <div class="col-md-4 text-md-end">
-
                         <a href="{{ route('users.create') }}" class="btn btn-primary gap-2">
                             <i class="icon-base ti tabler-plus icon-xs"></i>Add New User</a>
-
                     </div>
                 </div>
             </div>
