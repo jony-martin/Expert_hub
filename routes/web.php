@@ -14,16 +14,14 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/shop', 'shop')->name('shop');
     Route::get('/cart', 'cart')->name('cart');
-    Route::get('/product', 'product')->name('product');
-
+    Route::get('/product/{slug}', 'product')->name('product');
 
 });
-
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
 
     Route::resource('profile', ProfileController::class);
     // checkout route
     Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout');
 
-
 });
+Route::get('/product/quickview/{id}', 'ProductController@quickview')->name('product.quickview');

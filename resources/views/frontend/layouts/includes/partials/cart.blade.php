@@ -9,10 +9,10 @@
             </div>
             <ul class="eccart-pro-items">
                 <li>
-                    <a href="{{ route('product') }}" class="sidekka_pro_img"><img
+                    <a href="###" class="sidekka_pro_img"><img
                             src="{{ asset('frontend') }}/assets/images/product-image/6_1.jpg" alt="product" /></a>
                     <div class="ec-pro-content">
-                        <a href="{{ route('product') }}" class="cart_pro_title">T-shirt For Women</a>
+                        <a href="###" class="cart_pro_title">T-shirt For Women</a>
                         <span class="cart-price"><span>$76.00</span> x 1</span>
                         <div class="qty-plus-minus">
                             <input class="qty-input" type="text" name="ec_qtybtn" value="1" />
@@ -21,10 +21,10 @@
                     </div>
                 </li>
                 <li>
-                    <a href="{{ route('product') }}" class="sidekka_pro_img"><img
+                    <a href="###" class="sidekka_pro_img"><img
                             src="{{ asset('frontend') }}/assets/images/product-image/12_1.jpg" alt="product" /></a>
                     <div class="ec-pro-content">
-                        <a href="{{ route('product') }}" class="cart_pro_title">Women Leather Shoes</a>
+                        <a href="###" class="cart_pro_title">Women Leather Shoes</a>
                         <span class="cart-price"><span>$64.00</span> x 1</span>
                         <div class="qty-plus-minus">
                             <input class="qty-input" type="text" name="ec_qtybtn" value="1" />
@@ -33,10 +33,10 @@
                     </div>
                 </li>
                 <li>
-                    <a href="{{ route('product') }}" class="sidekka_pro_img"><img
+                    <a href="###" class="sidekka_pro_img"><img
                             src="{{ asset('frontend') }}/assets/images/product-image/3_1.jpg" alt="product" /></a>
                     <div class="ec-pro-content">
-                        <a href="{{ route('product') }}" class="cart_pro_title">Girls Nylon Purse</a>
+                        <a href="###" class="cart_pro_title">Girls Nylon Purse</a>
                         <span class="cart-price"><span>$59.00</span> x 1</span>
                         <div class="qty-plus-minus">
                             <input class="qty-input" type="text" name="ec_qtybtn" value="1" />

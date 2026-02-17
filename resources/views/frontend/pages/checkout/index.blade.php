@@ -167,7 +167,7 @@
                                         <div class="ec-product-inner">
                                             <div class="ec-pro-image-outer">
                                                 <div class="ec-pro-image">
-                                                    <a href="{{ route('product') }}" class="image">
+                                                    <a href="###" class="image">
                                                         <img class="main-image"
                                                             src="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg"
                                                             alt="Product" />
@@ -179,7 +179,7 @@
                                             </div>
                                             <div class="ec-pro-content">
                                                 <h5 class="ec-pro-title">
-                                                    <a href="{{ route('product') }}">Baby toy teddy bear</a>
+                                                    <a href="###">Baby toy teddy bear</a>
                                                 </h5>
                                                 <div class="ec-pro-rating">
                                                     <i class="ecicon eci-star fill"></i>
@@ -255,7 +255,7 @@
                                         <div class="ec-product-inner">
                                             <div class="ec-pro-image-outer">
                                                 <div class="ec-pro-image">
-                                                    <a href="{{ route('product') }}" class="image">
+                                                    <a href="###" class="image">
                                                         <img class="main-image"
                                                             src="{{ asset('frontend') }}/assets/images/product-image/8_1.jpg"
                                                             alt="Product" />
@@ -267,7 +267,7 @@
                                             </div>
                                             <div class="ec-pro-content">
                                                 <h5 class="ec-pro-title">
-                                                    <a href="{{ route('product') }}">Smart I watch 2GB</a>
+                                                    <a href="###">Smart I watch 2GB</a>
                                                 </h5>
                                                 <div class="ec-pro-rating">
                                                     <i class="ecicon eci-star fill"></i>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -14,11 +15,13 @@ class FrontendController extends Controller
     }
 
     public function shop(){
-        return view('frontend.pages.shop.index');
+        $products = Product::where('status', 1)->with('category')->get();
+        return view('frontend.pages.shop.index', compact('products'));
     }
 
-    public function product(){
-        return view('frontend.pages.products.index');
+    public function product($slug){
+        $product = Product::where('slug', $slug)->where('status', 1)->firstOrFail();
+        return view('frontend.pages.products.index', compact('product'));
     }
 
     public function checkout(){

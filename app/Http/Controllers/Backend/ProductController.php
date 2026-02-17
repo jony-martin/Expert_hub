@@ -239,4 +239,10 @@ class ProductController extends Controller
             return $product;
         })->toArray();
     }
+
+    public function quickview($id)
+    {
+        $product = Product::findOrFail($id);
+        return response()->json($product);
+    }
 }

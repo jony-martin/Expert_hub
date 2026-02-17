@@ -74,7 +74,7 @@
     @include('frontend.layouts.includes.footer')
     <!-- Footer Area End -->
 
-    @include('frontend.layouts.includes.partials.modal')
+    {{-- @include('frontend.layouts.includes.partials.modal') --}}
 
     @include('frontend.layouts.includes.partials.mobile-navbar')
 

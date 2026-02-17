@@ -38,58 +38,34 @@
                                 <div class="single-pro-img single-pro-img-no-sidebar">
                                     <div class="single-product-scroll">
                                         <div class="single-product-cover">
-                                            <div class="single-slide zoom-image-hover">
-                                                <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/product-360/1_1.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="single-slide zoom-image-hover">
-                                                <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/product-360/1_2.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="single-slide zoom-image-hover">
-                                                <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/product-360/1_3.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="single-slide zoom-image-hover">
-                                                <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/product-360/1_4.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="single-slide zoom-image-hover">
-                                                <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/product-360/1_5.jpg"
-                                                    alt="" />
-                                            </div>
+                                            @php
+                                                $images = explode(',', $product->image); // Split images
+                                            @endphp
+                                            @foreach ($images as $image)
+                                                <div class="single-slide zoom-image-hover">
+                                                    <img class="img-responsive" src="{{ asset($image) }}"
+                                                        alt="{{ $product->name }}" />
+                                                </div>
+                                            @endforeach
                                         </div>
                                         <div class="single-nav-thumb">
-                                            <div class="single-slide">
-                                                <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/product-360/1_1.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="single-slide">
-                                                <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/product-360/1_2.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="single-slide">
-                                                <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/product-360/1_3.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="single-slide">
-                                                <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/product-360/1_4.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="single-slide">
-                                                <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/product-360/1_5.jpg"
-                                                    alt="" />
-                                            </div>
+                                            @foreach ($images as $image)
+                                                <div class="single-slide">
+                                                    <img class="img-responsive" src="{{ asset($image) }}"
+                                                        alt="{{ $product->name }}" />
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
                                 <div class="single-pro-desc single-pro-desc-no-sidebar">
                                     <div class="single-pro-content">
                                         <h5 class="ec-single-title">
-                                            Women Leather Heels Sandal
+                                            {{ $product->name }}
                                         </h5>
                                         <div class="ec-single-rating-wrap">
                                             <div class="ec-single-rating">
+                                                <!-- Assuming a rating field; adjust if you have one -->
                                                 <i class="ecicon eci-star fill"></i>
                                                 <i class="ecicon eci-star fill"></i>
                                                 <i class="ecicon eci-star fill"></i>
@@ -100,9 +76,7 @@
                                                     this product</a></span>
                                         </div>
                                         <div class="ec-single-desc">
-                                            Lorem Ipsum is simply dummy text of the printing and
-                                            typesetting industry. Lorem Ipsum has been the
-                                            industry's standard dummy text ever since the 1990
+                                            {{ $product->description ?? 'No description available.' }}
                                         </div>
 
                                         <div class="ec-single-sales">
@@ -114,7 +88,8 @@
                                                     real time <span>24</span> visitor right now!
                                                 </div>
                                                 <div class="ec-single-sales-progress">
-                                                    <span class="ec-single-progress-desc">Hurry up!left 29 in stock</span>
+                                                    <span class="ec-single-progress-desc">Hurry up! left
+                                                        {{ $product->stock }} in stock</span>
                                                     <span class="ec-single-progressbar"></span>
                                                 </div>
                                                 <div class="ec-single-sales-countdown">
@@ -130,45 +105,61 @@
                                         <div class="ec-single-price-stoke">
                                             <div class="ec-single-price">
                                                 <span class="ec-single-ps-title">As low as</span>
-                                                <span class="new-price">$68.00</span>
+                                                @if ($product->discount_price && $product->discount_price < $product->base_price)
+                                                    <span
+                                                        class="new-price">${{ number_format($product->discount_price, 2) }}</span>
+                                                @else
+                                                    <span
+                                                        class="new-price">${{ number_format($product->base_price, 2) }}</span>
+                                                @endif
                                             </div>
                                             <div class="ec-single-stoke">
                                                 <span class="ec-single-ps-title">IN STOCK</span>
-                                                <span class="ec-single-sku">SKU#: WH12</span>
+                                                <span class="ec-single-sku">SKU#: {{ $product->sku ?? 'N/A' }}</span>
                                             </div>
                                         </div>
                                         <div class="ec-pro-variation">
-                                            <div class="ec-pro-variation-inner ec-pro-variation-size">
-                                                <span>SIZE</span>
-                                                <div class="ec-pro-variation-content">
-                                                    <ul>
-                                                        <li class="active"><span>7</span></li>
-                                                        <li><span>8</span></li>
-                                                        <li><span>9</span></li>
-                                                    </ul>
+                                            @if ($product->size)
+                                                <div class="ec-pro-variation-inner ec-pro-variation-size">
+                                                    <span>SIZE</span>
+                                                    <div class="ec-pro-variation-content">
+                                                        <ul>
+                                                            @php $sizes = explode(',', $product->size); @endphp
+                                                            @foreach ($sizes as $index => $size)
+                                                                <li class="{{ $index === 0 ? 'active' : '' }}">
+                                                                    <span>{{ $size }}</span>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="ec-pro-variation-inner ec-pro-variation-color">
-                                                <span>Color</span>
-                                                <div class="ec-pro-variation-content">
-                                                    <ul>
-                                                        <li class="active">
-                                                            <span style="background-color: #23839c"></span>
-                                                        </li>
-                                                        <li>
-                                                            <span style="background-color: #000"></span>
-                                                        </li>
-                                                    </ul>
+                                            @endif
+                                            @if ($product->color)
+                                                <div class="ec-pro-variation-inner ec-pro-variation-color">
+                                                    <span>Color</span>
+                                                    <div class="ec-pro-variation-content">
+                                                        <ul>
+                                                            @php $colors = explode(',', $product->color); @endphp
+                                                            @foreach ($colors as $index => $color)
+                                                                <li class="{{ $index === 0 ? 'active' : '' }}">
+                                                                    <span
+                                                                        style="background-color: {{ $color }}"></span>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                         </div>
                                         <div class="ec-single-qty">
                                             <div class="qty-plus-minus">
-                                                <input class="qty-input" type="text" name="ec_qtybtn"
-                                                    value="1" />
+                                                <input class="qty-input" type="number" name="ec_qtybtn" value="1"
+                                                    min="1" max="{{ $product->stock }}" />
                                             </div>
                                             <div class="ec-single-cart">
-                                                <button class="btn btn-primary">Add To Cart</button>
+                                                <button class="btn btn-primary"
+                                                    onclick="addToCart({{ $product->id }}, '{{ $product->name }}', {{ $product->discount_price ?? $product->base_price }}, '{{ asset($images[0] ?? 'default.jpg') }}', parseInt(document.querySelector('.qty-input').value))">Add
+                                                    To Cart</button>
                                             </div>
                                             <div class="ec-single-wishlist">
                                                 <a class="ec-btn-group wishlist" title="Wishlist"><i
@@ -176,9 +167,8 @@
                                             </div>
                                             <div class="ec-single-quickview">
                                                 <a href="#" class="ec-btn-group quickview"
-                                                    data-link-action="quickview" title="Quick view"
-                                                    data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><i
-                                                        class="fi-rr-eye"></i></a>
+                                                    data-link-action="quickview" title="Quick view" data-bs-toggle="modal"
+                                                    data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
                                             </div>
                                         </div>
                                         <div class="ec-single-social">
@@ -234,19 +224,9 @@
                             <div class="tab-content ec-single-pro-tab-content">
                                 <div id="ec-spt-nav-details" class="tab-pane fade show active">
                                     <div class="ec-single-pro-tab-desc">
-                                        <p>
-                                            Lorem Ipsum is simply dummy text of the printing and
-                                            typesetting industry. Lorem Ipsum has been the
-                                            industry's standard dummy text ever since the 1500s,
-                                            when an unknown printer took a galley of type and
-                                            scrambled it to make a type specimen book. It has
-                                            survived not only five centuries, but also the leap into
-                                            electronic typesetting, remaining essentially unchanged.
-                                        </p>
+                                        <p>{{ $product->description ?? 'No detailed description available.' }}</p>
                                         <ul>
-                                            <li>
-                                                Any Product types that You want - Simple, Configurable
-                                            </li>
+                                            <li>Any Product types that You want - Simple, Configurable</li>
                                             <li>Downloadable/Digital Products, Virtual Products</li>
                                             <li>Inventory Management with Backordered items</li>
                                             <li>Flatlock seams throughout.</li>
@@ -258,7 +238,14 @@
                                         <ul>
                                             <li><span>Weight</span> 1000 g</li>
                                             <li><span>Dimensions</span> 35 × 30 × 7 cm</li>
-                                            <li><span>Color</span> Black, Pink, Red, White</li>
+                                            <li><span>Color</span>
+                                                {{ $product->color ? implode(', ', explode(',', $product->color)) : 'N/A' }}
+                                            </li>
+                                            <li><span>Size</span>
+                                                {{ $product->size ? implode(', ', explode(',', $product->size)) : 'N/A' }}
+                                            </li>
+                                            <li><span>Stock</span> {{ $product->stock }}</li>
+                                            <li><span>SKU</span> {{ $product->sku ?? 'N/A' }}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -266,9 +253,11 @@
                                 <div id="ec-spt-nav-review" class="tab-pane fade">
                                     <div class="row">
                                         <div class="ec-t-review-wrapper">
+                                            <!-- Static reviews; make dynamic if you have a reviews table -->
                                             <div class="ec-t-review-item">
                                                 <div class="ec-t-review-avtar">
-                                                    <img src="{{ asset('frontend') }}/assets/images/review-image/1.jpg" alt="" />
+                                                    <img src="{{ asset('frontend/assets/images/review-image/1.jpg') }}"
+                                                        alt="" />
                                                 </div>
                                                 <div class="ec-t-review-content">
                                                     <div class="ec-t-review-top">
@@ -282,44 +271,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="ec-t-review-bottom">
-                                                        <p>
-                                                            Lorem Ipsum is simply dummy text of the printing
-                                                            and typesetting industry. Lorem Ipsum has been
-                                                            the industry's standard dummy text ever since
-                                                            the 1500s, when an unknown printer took a galley
-                                                            of type and scrambled it to make a type
-                                                            specimen.
-                                                        </p>
+                                                        <p>Lorem Ipsum is simply dummy text...</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="ec-t-review-item">
-                                                <div class="ec-t-review-avtar">
-                                                    <img src="{{ asset('frontend') }}/assets/images/review-image/2.jpg" alt="" />
-                                                </div>
-                                                <div class="ec-t-review-content">
-                                                    <div class="ec-t-review-top">
-                                                        <div class="ec-t-review-name">Linda Morgus</div>
-                                                        <div class="ec-t-review-rating">
-                                                            <i class="ecicon eci-star fill"></i>
-                                                            <i class="ecicon eci-star fill"></i>
-                                                            <i class="ecicon eci-star fill"></i>
-                                                            <i class="ecicon eci-star-o"></i>
-                                                            <i class="ecicon eci-star-o"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ec-t-review-bottom">
-                                                        <p>
-                                                            Lorem Ipsum is simply dummy text of the printing
-                                                            and typesetting industry. Lorem Ipsum has been
-                                                            the industry's standard dummy text ever since
-                                                            the 1500s, when an unknown printer took a galley
-                                                            of type and scrambled it to make a type
-                                                            specimen.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <!-- Add more reviews here -->
                                         </div>
                                         <div class="ec-ratting-content">
                                             <h3>Add a Review</h3>
@@ -344,9 +300,8 @@
                                                     </div>
                                                     <div class="ec-ratting-input form-submit">
                                                         <textarea name="your-commemt" placeholder="Enter Your Comment"></textarea>
-                                                        <button class="btn btn-primary" type="submit" value="Submit">
-                                                            Submit
-                                                        </button>
+                                                        <button class="btn btn-primary" type="submit"
+                                                            value="Submit">Submit</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -364,7 +319,7 @@
     <!-- End Single product -->
 
     <!-- Related Product Start -->
-    <section class="section ec-releted-product section-space-p">
+    {{-- <section class="section ec-releted-product section-space-p">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -382,8 +337,12 @@
                         <div class="ec-pro-image-outer">
                             <div class="ec-pro-image">
                                 <a href="{{ route('product') }}" class="image">
-                                    <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/6_1.jpg" alt="Product" />
-                                    <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/6_2.jpg" alt="Product" />
+                                    <img class="main-image"
+                                        src="{{ asset('frontend') }}/assets/images/product-image/6_1.jpg"
+                                        alt="Product" />
+                                    <img class="hover-image"
+                                        src="{{ asset('frontend') }}/assets/images/product-image/6_2.jpg"
+                                        alt="Product" />
                                 </a>
                                 <span class="percentage">20%</span>
                                 <a href="#" class="quickview" data-link-action="quickview" title="Quick view"
@@ -463,8 +422,12 @@
                         <div class="ec-pro-image-outer">
                             <div class="ec-pro-image">
                                 <a href="{{ route('product') }}" class="image">
-                                    <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/7_1.jpg" alt="Product" />
-                                    <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/7_2.jpg" alt="Product" />
+                                    <img class="main-image"
+                                        src="{{ asset('frontend') }}/assets/images/product-image/7_1.jpg"
+                                        alt="Product" />
+                                    <img class="hover-image"
+                                        src="{{ asset('frontend') }}/assets/images/product-image/7_2.jpg"
+                                        alt="Product" />
                                 </a>
                                 <span class="percentage">20%</span>
                                 <span class="flags">
@@ -547,8 +510,12 @@
                         <div class="ec-pro-image-outer">
                             <div class="ec-pro-image">
                                 <a href="{{ route('product') }}" class="image">
-                                    <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg" alt="Product" />
-                                    <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/1_2.jpg" alt="Product" />
+                                    <img class="main-image"
+                                        src="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg"
+                                        alt="Product" />
+                                    <img class="hover-image"
+                                        src="{{ asset('frontend') }}/assets/images/product-image/1_2.jpg"
+                                        alt="Product" />
                                 </a>
                                 <span class="percentage">20%</span>
                                 <span class="flags">
@@ -595,7 +562,7 @@
                                             <a href="#" class="ec-opt-clr-img"
                                                 data-src="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg"
                                                 data-src-hover="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg"
-                                                data-tooltip="Gray"><span style="background-color: #90cdf7"></span></a>
+                                                data-tooltip="Gray"><span style="background-color: #90cdf7"></i></a>
                                         </li>
                                         <li>
                                             <a href="#" class="ec-opt-clr-img"
@@ -640,8 +607,12 @@
                         <div class="ec-pro-image-outer">
                             <div class="ec-pro-image">
                                 <a href="{{ route('product') }}" class="image">
-                                    <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/2_1.jpg" alt="Product" />
-                                    <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/2_2.jpg" alt="Product" />
+                                    <img class="main-image"
+                                        src="{{ asset('frontend') }}/assets/images/product-image/2_1.jpg"
+                                        alt="Product" />
+                                    <img class="hover-image"
+                                        src="{{ asset('frontend') }}/assets/images/product-image/2_2.jpg"
+                                        alt="Product" />
                                 </a>
                                 <span class="percentage">20%</span>
                                 <span class="flags">
@@ -698,6 +669,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Related Product end -->
 @endsection
