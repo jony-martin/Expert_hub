@@ -84,7 +84,7 @@
                                     <div class="ec-product-inner">
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
-                                                <a href="product-left-sidebar.html" class="image">
+                                                <a href="{{ route('product') }}" class="image">
                                                     <img class="main-image"
                                                         src="{{ asset('frontend') }}/assets/images/product-image/6_1.jpg"
                                                         alt="Product" />
@@ -172,7 +172,7 @@
                                     <div class="ec-product-inner">
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
-                                                <a href="product-left-sidebar.html" class="image">
+                                                <a href="{{ route('product') }}" class="image">
                                                     <img class="main-image"
                                                         src="{{ asset('frontend') }}/assets/images/product-image/7_1.jpg"
                                                         alt="Product" />
@@ -200,7 +200,7 @@
                                         </div>
                                         <div class="ec-pro-content">
                                             <h5 class="ec-pro-title">
-                                                <a href="product-left-sidebar.html">Full Sleeve Shirt</a>
+                                                <a href="{{ route('product') }}">Full Sleeve Shirt</a>
                                             </h5>
                                             <div class="ec-pro-rating">
                                                 <i class="ecicon eci-star fill"></i>
@@ -263,7 +263,7 @@
                                     <div class="ec-product-inner">
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
-                                                <a href="product-left-sidebar.html" class="image">
+                                                <a href="{{ route('product') }}" class="image">
                                                     <img class="main-image"
                                                         src="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg"
                                                         alt="Product" />
@@ -291,7 +291,7 @@
                                         </div>
                                         <div class="ec-pro-content">
                                             <h5 class="ec-pro-title">
-                                                <a href="product-left-sidebar.html">Cute Baby Toy's</a>
+                                                <a href="{{ route('product') }}">Cute Baby Toy's</a>
                                             </h5>
                                             <div class="ec-pro-rating">
                                                 <i class="ecicon eci-star fill"></i>
@@ -364,7 +364,7 @@
                                     <div class="ec-product-inner">
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
-                                                <a href="product-left-sidebar.html" class="image">
+                                                <a href="{{ route('product') }}" class="image">
                                                     <img class="main-image"
                                                         src="{{ asset('frontend') }}/assets/images/product-image/2_1.jpg"
                                                         alt="Product" />
@@ -392,7 +392,7 @@
                                         </div>
                                         <div class="ec-pro-content">
                                             <h5 class="ec-pro-title">
-                                                <a href="product-left-sidebar.html">Jumbo Carry Bag</a>
+                                                <a href="{{ route('product') }}">Jumbo Carry Bag</a>
                                             </h5>
                                             <div class="ec-pro-rating">
                                                 <i class="ecicon eci-star fill"></i>
@@ -431,7 +431,7 @@
                                     <div class="ec-product-inner">
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
-                                                <a href="product-left-sidebar.html" class="image">
+                                                <a href="{{ route('product') }}" class="image">
                                                     <img class="main-image"
                                                         src="{{ asset('frontend') }}/assets/images/product-image/3_1.jpg"
                                                         alt="Product" />
@@ -459,7 +459,7 @@
                                         </div>
                                         <div class="ec-pro-content">
                                             <h5 class="ec-pro-title">
-                                                <a href="product-left-sidebar.html">Designer Leather Purses</a>
+                                                <a href="{{ route('product') }}">Designer Leather Purses</a>
                                             </h5>
                                             <div class="ec-pro-rating">
                                                 <i class="ecicon eci-star fill"></i>
@@ -519,7 +519,7 @@
                                     <div class="ec-product-inner">
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
-                                                <a href="product-left-sidebar.html" class="image">
+                                                <a href="{{ route('product') }}" class="image">
                                                     <img class="main-image"
                                                         src="{{ asset('frontend') }}/assets/images/product-image/4_1.jpg"
                                                         alt="Product" />
@@ -543,7 +543,7 @@
                                         </div>
                                         <div class="ec-pro-content">
                                             <h5 class="ec-pro-title">
-                                                <a href="product-left-sidebar.html">Canvas Cowboy Hat</a>
+                                                <a href="{{ route('product') }}">Canvas Cowboy Hat</a>
                                             </h5>
                                             <div class="ec-pro-rating">
                                                 <i class="ecicon eci-star fill"></i>
@@ -603,7 +603,7 @@
                                     <div class="ec-product-inner">
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
-                                                <a href="product-left-sidebar.html" class="image">
+                                                <a href="{{ route('product') }}" class="image">
                                                     <img class="main-image"
                                                         src="{{ asset('frontend') }}/assets/images/product-image/5_1.jpg"
                                                         alt="Product" />
@@ -630,7 +630,7 @@
                                         </div>
                                         <div class="ec-pro-content">
                                             <h5 class="ec-pro-title">
-                                                <a href="product-left-sidebar.html">Leather Belt for Men</a>
+                                                <a href="{{ route('product') }}">Leather Belt for Men</a>
                                             </h5>
                                             <div class="ec-pro-rating">
                                                 <i class="ecicon eci-star fill"></i>
@@ -689,7 +689,7 @@
                                     <div class="ec-product-inner">
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
-                                                <a href="product-left-sidebar.html" class="image">
+                                                <a href="{{ route('product') }}" class="image">
                                                     <img class="main-image"
                                                         src="{{ asset('frontend') }}/assets/images/product-image/8_1.jpg"
                                                         alt="Product" />
@@ -717,7 +717,7 @@
                                         </div>
                                         <div class="ec-pro-content">
                                             <h5 class="ec-pro-title">
-                                                <a href="product-left-sidebar.html">Digital Smart Watches</a>
+                                                <a href="{{ route('product') }}">Digital Smart Watches</a>
                                             </h5>
                                             <div class="ec-pro-rating">
                                                 <i class="ecicon eci-star fill"></i>
@@ -810,7 +810,7 @@
                     <div class="ec-product-inner">
                         <div class="ec-pro-image-outer">
                             <div class="ec-pro-image">
-                                <a href="product-left-sidebar.html" class="image">
+                                <a href="{{ route('product') }}" class="image">
                                     <img class="main-image"
                                         src="{{ asset('frontend') }}/assets/images/product-image/9_1.jpg"
                                         alt="Product" />
@@ -836,7 +836,7 @@
                         </div>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">Full Sleeve Cap T-Shirt</a>
+                                <a href="{{ route('product') }}">Full Sleeve Cap T-Shirt</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>
@@ -903,7 +903,7 @@
                     <div class="ec-product-inner">
                         <div class="ec-pro-image-outer">
                             <div class="ec-pro-image">
-                                <a href="product-left-sidebar.html" class="image">
+                                <a href="{{ route('product') }}" class="image">
                                     <img class="main-image"
                                         src="{{ asset('frontend') }}/assets/images/product-image/11_1.jpg"
                                         alt="Product" />
@@ -929,7 +929,7 @@
                         </div>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">Classic Leather purse</a>
+                                <a href="{{ route('product') }}">Classic Leather purse</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>
@@ -981,7 +981,7 @@
                     <div class="ec-product-inner">
                         <div class="ec-pro-image-outer">
                             <div class="ec-pro-image">
-                                <a href="product-left-sidebar.html" class="image">
+                                <a href="{{ route('product') }}" class="image">
                                     <img class="main-image"
                                         src="{{ asset('frontend') }}/assets/images/product-image/12_1.jpg"
                                         alt="Product" />
@@ -1005,7 +1005,7 @@
                         </div>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">Fancy Ladies Sandal</a>
+                                <a href="{{ route('product') }}">Fancy Ladies Sandal</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>
@@ -1079,7 +1079,7 @@
                     <div class="ec-product-inner">
                         <div class="ec-pro-image-outer">
                             <div class="ec-pro-image">
-                                <a href="product-left-sidebar.html" class="image">
+                                <a href="{{ route('product') }}" class="image">
                                     <img class="main-image"
                                         src="{{ asset('frontend') }}/assets/images/product-image/13_1.jpg"
                                         alt="Product" />
@@ -1102,7 +1102,7 @@
                         </div>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">Womens Leather Backpack</a>
+                                <a href="{{ route('product') }}">Womens Leather Backpack</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>

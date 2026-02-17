@@ -381,7 +381,7 @@
                     <div class="ec-product-inner">
                         <div class="ec-pro-image-outer">
                             <div class="ec-pro-image">
-                                <a href="product-left-sidebar.html" class="image">
+                                <a href="{{ route('product') }}" class="image">
                                     <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/6_1.jpg" alt="Product" />
                                     <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/6_2.jpg" alt="Product" />
                                 </a>
@@ -401,7 +401,7 @@
                         </div>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">Round Neck T-Shirt</a>
+                                <a href="{{ route('product') }}">Round Neck T-Shirt</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>
@@ -462,7 +462,7 @@
                     <div class="ec-product-inner">
                         <div class="ec-pro-image-outer">
                             <div class="ec-pro-image">
-                                <a href="product-left-sidebar.html" class="image">
+                                <a href="{{ route('product') }}" class="image">
                                     <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/7_1.jpg" alt="Product" />
                                     <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/7_2.jpg" alt="Product" />
                                 </a>
@@ -485,7 +485,7 @@
                         </div>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">Full Sleeve Shirt</a>
+                                <a href="{{ route('product') }}">Full Sleeve Shirt</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>
@@ -546,7 +546,7 @@
                     <div class="ec-product-inner">
                         <div class="ec-pro-image-outer">
                             <div class="ec-pro-image">
-                                <a href="product-left-sidebar.html" class="image">
+                                <a href="{{ route('product') }}" class="image">
                                     <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/1_1.jpg" alt="Product" />
                                     <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/1_2.jpg" alt="Product" />
                                 </a>
@@ -569,7 +569,7 @@
                         </div>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">Cute Baby Toy's</a>
+                                <a href="{{ route('product') }}">Cute Baby Toy's</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>
@@ -639,7 +639,7 @@
                     <div class="ec-product-inner">
                         <div class="ec-pro-image-outer">
                             <div class="ec-pro-image">
-                                <a href="product-left-sidebar.html" class="image">
+                                <a href="{{ route('product') }}" class="image">
                                     <img class="main-image" src="{{ asset('frontend') }}/assets/images/product-image/2_1.jpg" alt="Product" />
                                     <img class="hover-image" src="{{ asset('frontend') }}/assets/images/product-image/2_2.jpg" alt="Product" />
                                 </a>
@@ -662,7 +662,7 @@
                         </div>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">Jumbo Carry Bag</a>
+                                <a href="{{ route('product') }}">Jumbo Carry Bag</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>

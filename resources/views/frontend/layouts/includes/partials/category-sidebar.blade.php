@@ -251,11 +251,11 @@
             <div class="ec-sb-pro-sl">
                 <div>
                     <div class="ec-sb-pro-sl-item">
-                        <a href="product-left-sidebar.html" class="sidekka_pro_img"><img
+                        <a href="{{ route('product') }}" class="sidekka_pro_img"><img
                                 src="{{ asset('frontend') }}/assets/images/product-image/1.jpg" alt="product" /></a>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">baby fabric shoes</a>
+                                <a href="{{ route('product') }}">baby fabric shoes</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>
@@ -273,11 +273,11 @@
                 </div>
                 <div>
                     <div class="ec-sb-pro-sl-item">
-                        <a href="product-left-sidebar.html" class="sidekka_pro_img"><img
+                        <a href="{{ route('product') }}" class="sidekka_pro_img"><img
                                 src="{{ asset('frontend') }}/assets/images/product-image/2.jpg" alt="product" /></a>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">Men's hoodies t-shirt</a>
+                                <a href="{{ route('product') }}">Men's hoodies t-shirt</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>
@@ -295,11 +295,11 @@
                 </div>
                 <div>
                     <div class="ec-sb-pro-sl-item">
-                        <a href="product-left-sidebar.html" class="sidekka_pro_img"><img
+                        <a href="{{ route('product') }}" class="sidekka_pro_img"><img
                                 src="{{ asset('frontend') }}/assets/images/product-image/3.jpg" alt="product" /></a>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">Girls t-shirt</a>
+                                <a href="{{ route('product') }}">Girls t-shirt</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>
@@ -317,11 +317,11 @@
                 </div>
                 <div>
                     <div class="ec-sb-pro-sl-item">
-                        <a href="product-left-sidebar.html" class="sidekka_pro_img"><img
+                        <a href="{{ route('product') }}" class="sidekka_pro_img"><img
                                 src="{{ asset('frontend') }}/assets/images/product-image/4.jpg" alt="product" /></a>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">woolen hat for men</a>
+                                <a href="{{ route('product') }}">woolen hat for men</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>
@@ -339,11 +339,11 @@
                 </div>
                 <div>
                     <div class="ec-sb-pro-sl-item">
-                        <a href="product-left-sidebar.html" class="sidekka_pro_img"><img
+                        <a href="{{ route('product') }}" class="sidekka_pro_img"><img
                                 src="{{ asset('frontend') }}/assets/images/product-image/5.jpg" alt="product" /></a>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">Womens purse</a>
+                                <a href="{{ route('product') }}">Womens purse</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>
@@ -361,11 +361,11 @@
                 </div>
                 <div>
                     <div class="ec-sb-pro-sl-item">
-                        <a href="product-left-sidebar.html" class="sidekka_pro_img"><img
+                        <a href="{{ route('product') }}" class="sidekka_pro_img"><img
                                 src="{{ asset('frontend') }}/assets/images/product-image/6.jpg" alt="product" /></a>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">Baby toy doctor kit</a>
+                                <a href="{{ route('product') }}">Baby toy doctor kit</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>
@@ -383,11 +383,11 @@
                 </div>
                 <div>
                     <div class="ec-sb-pro-sl-item">
-                        <a href="product-left-sidebar.html" class="sidekka_pro_img"><img
+                        <a href="{{ route('product') }}" class="sidekka_pro_img"><img
                                 src="{{ asset('frontend') }}/assets/images/product-image/7.jpg" alt="product" /></a>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">teddy bear baby toy</a>
+                                <a href="{{ route('product') }}">teddy bear baby toy</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>
@@ -405,11 +405,11 @@
                 </div>
                 <div>
                     <div class="ec-sb-pro-sl-item">
-                        <a href="product-left-sidebar.html" class="sidekka_pro_img"><img
+                        <a href="{{ route('product') }}" class="sidekka_pro_img"><img
                                 src="{{ asset('frontend') }}/assets/images/product-image/2.jpg" alt="product" /></a>
                         <div class="ec-pro-content">
                             <h5 class="ec-pro-title">
-                                <a href="product-left-sidebar.html">Mens hoodies blue</a>
+                                <a href="{{ route('product') }}">Mens hoodies blue</a>
                             </h5>
                             <div class="ec-pro-rating">
                                 <i class="ecicon eci-star fill"></i>
