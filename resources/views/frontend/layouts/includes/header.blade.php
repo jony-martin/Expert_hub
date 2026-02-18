@@ -60,7 +60,7 @@
                             <!-- Header wishlist Start -->
                             <a href="#" class="ec-header-btn ec-header-wishlist">
                                 <div class="header-icon"><i class="fi-rr-heart"></i></div>
-                                <span class="ec-header-count">4</span>
+                                <span class="ec-header-count">0</span>
                             </a>
                             <!-- Header wishlist End -->
                             <!-- Header Cart Start -->
@@ -68,7 +68,7 @@
                                 <div class="header-icon">
                                     <i class="fi-rr-shopping-bag"></i>
                                 </div>
-                                <span class="ec-header-count cart-count-lable">3</span>
+                                <span class="ec-header-count cart-count-lable">0</span>
                             </a>
                             <!-- Header Cart End -->
                         </div>

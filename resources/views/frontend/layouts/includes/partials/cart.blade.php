@@ -31,7 +31,7 @@
                 </table>
             </div>
             <div class="cart_btn">
-                <a href="{{ route('cart') }}" class="btn btn-primary">View Cart</a>
+                <a href="#" class="btn btn-primary">View Cart</a>
                 <a href="{{ route('checkout') }}" class="btn btn-secondary"
                     onclick="checkAuthAndRedirect(event)">Checkout</a>
             </div>

@@ -118,7 +118,7 @@
                             <!-- Sidebar Color item -->
                             <div class="ec-sidebar-block ec-sidebar-block-clr">
                                 <div class="ec-sb-title">
-                                    <h3 class="ec-sidebar-title">Color</h3>
+
                                 </div>
                                 <div class="ec-sb-block-content">
                                     <ul id="color-filters">
@@ -237,7 +237,6 @@
             let allProducts = @json($products);
             let categories = @json($categories);
             let sizes = @json($sizes);
-            let colors = @json($colors);
             let minPrice = @json($minPrice);
             let maxPrice = @json($maxPrice);
             let filteredProducts = [...allProducts]; // Copy for filtering
@@ -260,15 +259,6 @@
                     li.innerHTML =
                         `<div class="ec-sidebar-block-item"><input type="checkbox" value="${size}" /><a href="#">${size}</a><span class="checked"></span></div>`;
                     sizeUl.appendChild(li);
-                });
-
-                // Colors
-                const colorUl = document.getElementById('color-filters');
-                colors.forEach(color => {
-                    const li = document.createElement('li');
-                    li.innerHTML =
-                        `<div class="ec-sidebar-block-item"><span style="background-color: ${color}" data-color="${color}"></span></div>`;
-                    colorUl.appendChild(li);
                 });
 
                 // Price slider (using noUiSlider)
@@ -380,8 +370,6 @@
                     cb => cb.value.toLowerCase());
                 const selectedSizes = Array.from(document.querySelectorAll('#size-filters input:checked')).map(cb => cb
                     .value);
-                const selectedColors = Array.from(document.querySelectorAll('#color-filters .active span')).map(span => span
-                    .getAttribute('data-color'));
                 const minPriceFilter = parseFloat(document.getElementById('price-min').value) || minPrice;
                 const maxPriceFilter = parseFloat(document.getElementById('price-max').value) || maxPrice;
 
@@ -390,12 +378,10 @@
                         .category?.name?.toLowerCase());
                     const sizeMatch = selectedSizes.length === 0 || (product.size && product.size.split(',').some(
                         s => selectedSizes.includes(s)));
-                    const colorMatch = selectedColors.length === 0 || (product.color && product.color.split(',')
-                        .some(c => selectedColors.includes(c)));
                     const price = product.discount_price || product.base_price;
                     const priceMatch = price >= minPriceFilter && price <= maxPriceFilter;
 
-                    return categoryMatch && sizeMatch && colorMatch && priceMatch;
+                    return categoryMatch && sizeMatch && priceMatch;
                 });
 
                 // Apply sorting
@@ -424,12 +410,6 @@
             document.addEventListener('change', function(e) {
                 if (e.target.closest('#category-filters') || e.target.closest('#size-filters') || e.target.id ===
                     'ec-select') {
-                    applyFiltersAndSort();
-                }
-            });
-            document.getElementById('color-filters').addEventListener('click', function(e) {
-                if (e.target.tagName === 'SPAN') {
-                    e.target.closest('li').classList.toggle('active');
                     applyFiltersAndSort();
                 }
             });

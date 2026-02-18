@@ -9,14 +9,14 @@
             <div class="ec-nav-panel-icons">
                 <a href="#ec-side-cart" class="toggle-cart ec-header-btn ec-side-toggle"><i
                         class="fi-rr-shopping-bag"></i><span
-                        class="ec-cart-noti ec-header-count cart-count-lable">3</span></a>
+                        class="ec-cart-noti ec-header-count cart-count-lable">0</span></a>
             </div>
             <div class="ec-nav-panel-icons">
                 <a href="{{ route('home') }}" class="ec-header-btn"><i class="fi-rr-home"></i></a>
             </div>
             <div class="ec-nav-panel-icons">
                 <a href="#" class="ec-header-btn"><i class="fi-rr-heart"></i><span
-                        class="ec-cart-noti">4</span></a>
+                        class="ec-cart-noti">0</span></a>
             </div>
             <div class="ec-nav-panel-icons">
                 <a href="{{ route('register') }}" class="ec-header-btn"><i class="fi-rr-user"></i></a>
