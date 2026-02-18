@@ -1,4 +1,5 @@
 @extends('frontend.layouts.main')
+
 @section('content')
     <!-- Ec breadcrumb start -->
     <div class="sticky-header-next-sec ec-breadcrumb section-space-mb">
@@ -151,41 +152,43 @@
     </section>
     <!-- End Shop page -->
 @endsection
+
 @push('styles')
     <style>
         /* Initial state for animations */
         .pro-gl-content {
             opacity: 0;
-            transform: translateY(50px) scale(0.9);
-            transition: opacity 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform: translateY(50px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* Bounce-in animation */
+        /* Highly professional slide-up animation */
         .pro-gl-content.animate {
             opacity: 1;
-            transform: translateY(0) scale(1);
-            animation: bounceIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            transform: translateY(0);
+            animation: slideUpElite 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
 
-        /* Keyframes for bounce-in effect */
-        @keyframes bounceIn {
+        /* Keyframes for elite slide-up effect with refined bounce */
+        @keyframes slideUpElite {
             0% {
                 opacity: 0;
-                transform: translateY(50px) scale(0.9);
+                transform: translateY(50px);
             }
 
-            50% {
-                opacity: 0.8;
-                transform: translateY(-10px) scale(1.05);
+            60% {
+                opacity: 0.95;
+                transform: translateY(-3px);
             }
 
-            70% {
-                transform: translateY(5px) scale(0.98);
+            80% {
+                opacity: 1;
+                transform: translateY(1px);
             }
 
             100% {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0);
             }
         }
 
@@ -195,31 +198,31 @@
         }
 
         .pro-gl-content:nth-child(2) {
-            animation-delay: 0.05s;
+            animation-delay: 0.08s;
         }
 
         .pro-gl-content:nth-child(3) {
-            animation-delay: 0.1s;
+            animation-delay: 0.16s;
         }
 
         .pro-gl-content:nth-child(4) {
-            animation-delay: 0.15s;
+            animation-delay: 0.24s;
         }
 
         .pro-gl-content:nth-child(5) {
-            animation-delay: 0.2s;
+            animation-delay: 0.32s;
         }
 
         .pro-gl-content:nth-child(6) {
-            animation-delay: 0.25s;
+            animation-delay: 0.4s;
         }
 
         .pro-gl-content:nth-child(7) {
-            animation-delay: 0.3s;
+            animation-delay: 0.48s;
         }
 
         .pro-gl-content:nth-child(8) {
-            animation-delay: 0.35s;
+            animation-delay: 0.56s;
         }
 
         /* Add more if you have more cards */
@@ -423,19 +426,14 @@
                             entry.target.classList.add('animate');
                         } else {
                             entry.target.classList.remove(
-                                'animate'); // Remove to allow re-animation on scroll back
+                            'animate'); // Remove to allow re-animation on scroll back
                         }
                     });
                 }, observerOptions);
 
-                // Observe all product cards and trigger for already visible ones
+                // Observe all product cards
                 document.querySelectorAll('.pro-gl-content').forEach(card => {
                     observer.observe(card);
-                    // Check if card is already in viewport on load
-                    const rect = card.getBoundingClientRect();
-                    if (rect.top < window.innerHeight && rect.bottom > 0) {
-                        card.classList.add('animate');
-                    }
                 });
             }
 

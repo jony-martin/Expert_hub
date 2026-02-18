@@ -35,182 +35,6 @@
     <!-- Main Slider End -->
 
     <!-- Ec Shop page -->
-    {{-- <section class="ec-page-content section-space-p">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div class="section-title">
-                        <h2 class="ec-bg-title">Our Top Collection</h2>
-                        <h2 class="ec-title">Our Top Collection</h2>
-                        <p class="sub-title">Browse The Collection of Top Products</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="ec-shop-rightside col-lg-12 col-md-12">
-                    <!-- Shop Top Start -->
-                    <div class="ec-pro-list-top d-flex">
-                        <div class="col-md-6 ec-grid-list">
-                            <div class="ec-gl-btn">
-                                <button class="btn btn-grid-50 active">
-                                    <i class="fi-rr-apps"></i>
-                                </button>
-                                <button class="btn btn-list-50">
-                                    <i class="fi-rr-list"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-md-6 ec-sort-select">
-                            <span class="sort-by">Sort by</span>
-                            <div class="ec-select-inner">
-                                <select name="ec-select" id="ec-select">
-                                    <option selected disabled>Position</option>
-                                    <option value="1">Relevance</option>
-                                    <option value="2">Name, A to Z</option>
-                                    <option value="3">Name, Z to A</option>
-                                    <option value="4">Price, low to high</option>
-                                    <option value="5">Price, high to low</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Shop Top End -->
-
-                    <!-- Shop content Start -->
-                    <div class="shop-pro-content">
-                        <div class="shop-pro-inner">
-                            <div class="row">
-                                @foreach ($products as $product)
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="{{ route('product', $product->slug) }}" class="image">
-                                                        @php
-                                                            $images = explode(',', $product->image); // Split images
-                                                            $mainImage = $images[0] ?? 'default.jpg'; // First image or default
-                                                            $hoverImage = $images[1] ?? $mainImage; // Second image or fallback
-                                                        @endphp
-                                                        <img class="main-image" src="{{ asset($mainImage) }}"
-                                                            alt="{{ $product->name }}" />
-                                                        <img class="hover-image" src="{{ asset($hoverImage) }}"
-                                                            alt="{{ $product->name }}" />
-                                                    </a>
-                                                    @if ($product->discount_price && $product->discount_price < $product->base_price)
-                                                        <span
-                                                            class="percentage">{{ round((($product->base_price - $product->discount_price) / $product->base_price) * 100) }}%</span>
-                                                    @endif
-                                                    <a href="#" class="quickview" data-link-action="quickview"
-                                                        title="Quick view" data-bs-toggle="modal"
-                                                        data-bs-target="#ec_quickview_modal"
-                                                        data-product-id="{{ $product->id }}">
-                                                        <i class="fi-rr-eye"></i>
-                                                    </a>
-                                                    <div class="ec-pro-actions">
-                                                        <a href="#" class="ec-btn-group compare" title="Compare"><i
-                                                                class="fi fi-rr-arrows-repeat"></i></a>
-                                                        <button title="Add To Cart" class="add-to-cart"
-                                                            onclick="addToCart({{ $product->id }}, '{{ $product->name }}', {{ $product->discount_price ?? $product->base_price }}, '{{ asset($mainImage) }}', 1, '{{ $product->slug }}')">
-                                                            <i class="fi-rr-shopping-basket"></i> Add To Cart
-                                                        </button>
-                                                        <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                                                class="fi-rr-heart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title">
-                                                    <a
-                                                        href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
-                                                </h5>
-                                                <div class="ec-pro-rating">
-                                                    <!-- Assuming a rating field; adjust if you have one -->
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <div class="ec-pro-list-desc">
-                                                    {{ Str::limit($product->description, 100) }}
-                                                    <!-- Limit description to 100 chars -->
-                                                </div>
-                                                <span class="ec-price">
-                                                    @if ($product->discount_price && $product->discount_price < $product->base_price)
-                                                        <span
-                                                            class="old-price">${{ number_format($product->base_price, 2) }}</span>
-                                                        <span
-                                                            class="new-price">${{ number_format($product->discount_price, 2) }}</span>
-                                                    @else
-                                                        <span
-                                                            class="new-price">${{ number_format($product->base_price, 2) }}</span>
-                                                    @endif
-                                                </span>
-                                                <div class="ec-pro-option">
-                                                    @if ($product->color)
-                                                        <div class="ec-pro-color">
-                                                            <span class="ec-pro-opt-label">Color</span>
-                                                            <ul class="ec-opt-swatch ec-change-img">
-                                                                @php $colors = explode(',', $product->color); @endphp
-                                                                @foreach ($colors as $index => $color)
-                                                                    <li class="{{ $index === 0 ? 'active' : '' }}">
-                                                                        <a href="#" class="ec-opt-clr-img"
-                                                                            data-src="{{ asset($images[$index] ?? $mainImage) }}"
-                                                                            data-src-hover="{{ asset($images[$index] ?? $hoverImage) }}"
-                                                                            data-tooltip="{{ $color }}">
-                                                                            <span
-                                                                                style="background-color: {{ $color }}"></span>
-                                                                        </a>
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </div>
-                                                    @endif
-                                                    @if ($product->size)
-                                                        <div class="ec-pro-size">
-                                                            <span class="ec-pro-opt-label">Size</span>
-                                                            <ul class="ec-opt-size">
-                                                                @php $sizes = explode(',', $product->size); @endphp
-                                                                @foreach ($sizes as $index => $size)
-                                                                    <li class="{{ $index === 0 ? 'active' : '' }}">
-                                                                        <a href="#" class="ec-opt-sz"
-                                                                            data-old="${{ number_format($product->base_price, 2) }}"
-                                                                            data-new="${{ number_format($product->discount_price ?? $product->base_price, 2) }}"
-                                                                            data-tooltip="{{ $size }}">{{ $size }}</a>
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </div>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        <!-- Ec Pagination Start -->
-                        <div class="ec-pro-pagination">
-                            <span>Showing 1-12 of 21 item(s)</span>
-                            <ul class="ec-pro-pagination-inner">
-                                <li><a class="active" href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li>
-                                    <a class="next" href="#">Next <i class="ecicon eci-angle-right"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Ec Pagination End -->
-                    </div>
-                    <!--Shop content End -->
-                </div>
-
-            </div>
-        </div>
-    </section> --}}
     <section class="ec-page-content section-space-p">
         <div class="container">
             <div class="row">
@@ -512,41 +336,42 @@
     <!-- New Product end -->
 @endsection
 
-{{-- @push('styles')
+@push('styles')
     <style>
         /* Initial state for animations */
         .pro-gl-content {
             opacity: 0;
-            transform: translateY(50px) scale(0.9);
-            transition: opacity 1s cubic-bezier(0.68, -0.55, 0.265, 1.55), transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform: translateY(50px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* Bounce-in animation */
+        /* Highly professional slide-up animation */
         .pro-gl-content.animate {
             opacity: 1;
-            transform: translateY(0) scale(1);
-            animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            transform: translateY(0);
+            animation: slideUpElite 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
 
-        /* Keyframes for bounce-in effect */
-        @keyframes bounceIn {
+        /* Keyframes for elite slide-up effect with refined bounce */
+        @keyframes slideUpElite {
             0% {
                 opacity: 0;
-                transform: translateY(50px) scale(0.9);
+                transform: translateY(50px);
             }
 
-            50% {
-                opacity: 0.8;
-                transform: translateY(-10px) scale(1.05);
+            60% {
+                opacity: 0.95;
+                transform: translateY(-3px);
             }
 
-            70% {
-                transform: translateY(5px) scale(0.98);
+            80% {
+                opacity: 1;
+                transform: translateY(1px);
             }
 
             100% {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0);
             }
         }
 
@@ -556,37 +381,36 @@
         }
 
         .pro-gl-content:nth-child(2) {
-            animation-delay: 0.1s;
+            animation-delay: 0.08s;
         }
 
         .pro-gl-content:nth-child(3) {
-            animation-delay: 0.2s;
+            animation-delay: 0.16s;
         }
 
         .pro-gl-content:nth-child(4) {
-            animation-delay: 0.3s;
+            animation-delay: 0.24s;
         }
 
         .pro-gl-content:nth-child(5) {
-            animation-delay: 0.4s;
+            animation-delay: 0.32s;
         }
 
         .pro-gl-content:nth-child(6) {
-            animation-delay: 0.5s;
+            animation-delay: 0.4s;
         }
 
         .pro-gl-content:nth-child(7) {
-            animation-delay: 0.6s;
+            animation-delay: 0.48s;
         }
 
         .pro-gl-content:nth-child(8) {
-            animation-delay: 0.7s;
+            animation-delay: 0.56s;
         }
 
         /* Add more if you have more cards */
     </style>
 @endpush
-
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -653,190 +477,6 @@
                         } else {
                             entry.target.classList.remove(
                             'animate'); // Remove to allow re-animation on scroll back
-                        }
-                    });
-                }, observerOptions);
-
-                // Observe all product cards
-                document.querySelectorAll('.pro-gl-content').forEach(card => {
-                    observer.observe(card);
-                });
-            }
-
-            // Listen for select changes
-            sortSelect.addEventListener('change', function() {
-                const selectedValue = this.value;
-                let criteria = '';
-
-                switch (selectedValue) {
-                    case '1': // Relevance
-                        criteria = 'relevance';
-                        break;
-                    case '2': // Name, A to Z
-                        criteria = 'name-asc';
-                        break;
-                    case '3': // Name, Z to A
-                        criteria = 'name-desc';
-                        break;
-                    case '4': // Price, low to high
-                        criteria = 'price-asc';
-                        break;
-                    case '5': // Price, high to low
-                        criteria = 'price-desc';
-                        break;
-                    default:
-                        return; // Do nothing for invalid values
-                }
-
-                sortProducts(criteria);
-            });
-
-            // Initialize animations on page load
-            triggerAnimations();
-        });
-    </script>
-@endpush --}}
-
-@push('styles')
-    <style>
-        /* Initial state for animations */
-        .pro-gl-content {
-            opacity: 0;
-            transform: translateY(50px) scale(0.9);
-            transition: opacity 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        /* Bounce-in animation */
-        .pro-gl-content.animate {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            animation: bounceIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-        }
-
-        /* Keyframes for bounce-in effect */
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: translateY(50px) scale(0.9);
-            }
-
-            50% {
-                opacity: 0.8;
-                transform: translateY(-10px) scale(1.05);
-            }
-
-            70% {
-                transform: translateY(5px) scale(0.98);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* Staggered delays for cascading effect */
-        .pro-gl-content:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .pro-gl-content:nth-child(2) {
-            animation-delay: 0.05s;
-        }
-
-        .pro-gl-content:nth-child(3) {
-            animation-delay: 0.1s;
-        }
-
-        .pro-gl-content:nth-child(4) {
-            animation-delay: 0.15s;
-        }
-
-        .pro-gl-content:nth-child(5) {
-            animation-delay: 0.2s;
-        }
-
-        .pro-gl-content:nth-child(6) {
-            animation-delay: 0.25s;
-        }
-
-        .pro-gl-content:nth-child(7) {
-            animation-delay: 0.3s;
-        }
-
-        .pro-gl-content:nth-child(8) {
-            animation-delay: 0.35s;
-        }
-
-        /* Add more if you have more cards */
-    </style>
-@endpush
-@push('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const sortSelect = document.getElementById('ec-select');
-            const productsContainer = document.querySelector('.shop-pro-inner .row'); // Parent of product elements
-
-            // Function to get sort value from a product element
-            function getSortValue(product, criteria) {
-                const titleEl = product.querySelector('.ec-pro-title a');
-                const priceEl = product.querySelector('.new-price');
-
-                switch (criteria) {
-                    case 'name-asc':
-                        return titleEl ? titleEl.textContent.trim().toLowerCase() : '';
-                    case 'name-desc':
-                        return titleEl ? titleEl.textContent.trim().toLowerCase() : '';
-                    case 'price-asc':
-                        return priceEl ? parseFloat(priceEl.textContent.replace('$', '')) || 0 : 0;
-                    case 'price-desc':
-                        return priceEl ? parseFloat(priceEl.textContent.replace('$', '')) || 0 : 0;
-                    default:
-                        return 0; // For relevance, no specific value needed
-                }
-            }
-
-            // Function to sort and reorder products
-            function sortProducts(criteria) {
-                const products = Array.from(productsContainer.querySelectorAll('.pro-gl-content'));
-
-                if (criteria === 'relevance') {
-                    // For relevance, do nothing (keep original order)
-                    return;
-                }
-
-                products.sort((a, b) => {
-                    const valA = getSortValue(a, criteria);
-                    const valB = getSortValue(b, criteria);
-
-                    if (criteria === 'name-desc' || criteria === 'price-desc') {
-                        return valB > valA ? 1 : valB < valA ? -1 : 0; // Descending
-                    } else {
-                        return valA > valB ? 1 : valA < valB ? -1 : 0; // Ascending
-                    }
-                });
-
-                // Re-append sorted products to the container
-                products.forEach(product => productsContainer.appendChild(product));
-
-                // Re-trigger animations after sorting
-                triggerAnimations();
-            }
-
-            // Function to trigger animations on scroll (repeats every time the section is scrolled into view)
-            function triggerAnimations() {
-                const observerOptions = {
-                    threshold: 0.1, // Trigger when 10% of the element is visible
-                    rootMargin: '0px 0px -50px 0px' // Trigger a bit before fully visible
-                };
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('animate');
-                        } else {
-                            entry.target.classList.remove(
-                                'animate'); // Remove to allow re-animation on scroll back
                         }
                     });
                 }, observerOptions);

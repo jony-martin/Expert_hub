@@ -224,7 +224,7 @@
     }
 
     #progressbar li.completed:before {
-        background: #28a745;
+        background: #3474D4;
         /* Green for completed */
         content: '\f00c';
         /* Checkmark */
