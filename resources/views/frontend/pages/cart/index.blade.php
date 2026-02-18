@@ -57,7 +57,11 @@
                                         <div class="col-lg-12">
                                             <div class="ec-cart-update-bottom">
                                                 <a href="{{ route('shop') }}">Continue Shopping</a>
+                                                @if(Auth::check())
                                                 <a href="{{ route('checkout') }}" class="btn btn-primary">Check Out</a>
+                                                @else
+                                                <a href="{{ route('register') }}" class="btn btn-primary">Check Out</a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

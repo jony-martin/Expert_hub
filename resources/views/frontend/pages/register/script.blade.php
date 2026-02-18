@@ -99,9 +99,14 @@
             console.log("Window resized - width:", $(window).width());
         });
 
-        // Function to update progress bar
+        // Function to update progress bar (updated to handle completed steps)
         function updateProgressBar(step) {
-            $("#progressbar li").removeClass("active");
+            $("#progressbar li").removeClass("active completed"); // Clear all classes
+            // Mark previous steps as completed
+            for (var i = 1; i < step; i++) {
+                $("#progressbar li:nth-child(" + i + ")").addClass("completed");
+            }
+            // Mark current step as active
             $("#progressbar li:nth-child(" + step + ")").addClass("active");
         }
 
@@ -130,6 +135,9 @@
                 var phone = $("#edit-submitted-acquisition-amount-1").val().trim();
                 if (!phone) {
                     $("#phone-error").text("Please enter your phone number.").show();
+                    isValid = false;
+                } else if (!/^\d{11}$/.test(phone)) {
+                    $("#phone-error").text("Phone number must be exactly 11 digits.").show();
                     isValid = false;
                 } else {
                     $("#phone-error").hide();

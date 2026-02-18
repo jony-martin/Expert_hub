@@ -209,7 +209,8 @@
     }
 
     #progressbar li:before {
-        content: '';
+        content: counter(step);
+        counter-increment: step;
         width: 30px;
         height: 30px;
         line-height: 30px;
@@ -222,11 +223,22 @@
         transition: all 0.3s ease;
     }
 
-    #progressbar li.active:before {
-        background: #3474D4;
+    #progressbar li.completed:before {
+        background: #28a745;
+        /* Green for completed */
         content: '\f00c';
+        /* Checkmark */
         font-family: 'Font Awesome 6 Free';
         font-weight: 900;
+    }
+
+    #progressbar li.active:before {
+        background: #3474D4;
+        /* Blue for active */
+        content: counter(step);
+        /* Number for current step */
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
     }
 
     #progressbar li:after {
@@ -245,6 +257,7 @@
         content: none;
     }
 
+    #progressbar li.completed:after,
     #progressbar li.active:after {
         background: #3474D4;
     }
